@@ -21,12 +21,6 @@ composer install
 プロジェクトフォルダ内に `.env` ファイルを作成し、必要な設定を記述します。以下は `.env` ファイルの例です。データベースの作成とユーザー権限の付与はphpMyAdminなどで行ってください。
 
 ```
-APP_NAME=MyLaravelApp
-APP_ENV=local
-APP_KEY=base64:YourRandomKeyHere
-APP_DEBUG=true
-APP_URL=http://localhost
-
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
