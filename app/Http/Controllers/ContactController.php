@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BookStock;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
-class BookStockController extends Controller
+class ContactController extends Controller
 {
     /** @var string The message called when a record is not found  */
     private string $notfound_message = 'The record is not found.';
@@ -16,9 +16,9 @@ class BookStockController extends Controller
      */
     public function index()
     {
-        $books_stock = BookStock::all();
+        $contacts = Contact::all();
         return response()->json(
-            $books_stock,
+            $contacts,
             200
         );
     }
@@ -30,9 +30,9 @@ class BookStockController extends Controller
     public function store(Request $request)
     {
         var_dump($request->all());
-        $books_stock = BookStock::create($request->all());
+        $contacts = Contact::create($request->all());
         return response()->json(
-            $books_stock,
+            $contacts,
             201
         );
     }
@@ -43,7 +43,7 @@ class BookStockController extends Controller
      */
     public function show(string $id)
     {
-        $book_info = BookStock::find($id);
+        $book_info = Contact::find($id);
 
         if (!$book_info) {
             return response()->json(['message' => $this->notfound_message], 404);
@@ -61,7 +61,7 @@ class BookStockController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $book_info = BookStock::find($id);
+        $book_info = Contact::find($id);
 
         if (!$book_info) {
             return response()->json(['message' => $this->notfound_message], 404);
@@ -80,7 +80,7 @@ class BookStockController extends Controller
      */
     public function destroy(string $id)
     {
-        $book_info = BookStock::find($id);
+        $book_info = Contact::find($id);
 
         if (!$book_info) {
             return response()->json(['message' => $this->notfound_message], 404);

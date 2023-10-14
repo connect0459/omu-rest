@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookInfoController;
 use App\Http\Controllers\BookStockController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -41,3 +42,12 @@ Route::apiResource('/books_info', BookInfoController::class);
     DELETE          api/books_stock/{books_stock} .............................. books_stock.destroy › BookStockController@destroy  
 */
 Route::apiResource('/books_stock', BookStockController::class);
+
+/*
+    GET|HEAD        api/contacts ..................... contacts.index › ContactController@index  
+    POST            api/contacts ..................... contacts.store › ContactController@store  
+    GET|HEAD        api/contacts/{contact} ............. contacts.show › ContactController@show  
+    PUT|PATCH       api/contacts/{contact} ......... contacts.update › ContactController@update  
+    DELETE          api/contacts/{contact} ....... contacts.destroy › ContactController@destroy  
+*/
+Route::apiResource('/contacts', ContactController::class);
