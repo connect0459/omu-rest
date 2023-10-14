@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\InfoBookController;
+use App\Http\Controllers\BookInfoController;
+use App\Http\Controllers\BookStockController;
+use App\Models\BookStock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,12 +25,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
  * 以下、追加したコントローラーに対するルーティング設定
  * 使用するクラスを最上部でuse宣言することを忘れずに行う
  */
-/**
- *GET|HEAD        api/books ............................................................. books.index › InfoBookController@index  
- *POST            api/books ............................................................. books.store › InfoBookController@store  
- *GET|HEAD        api/books/{book} ........................................................ books.show › InfoBookController@show  
- *PUT|PATCH       api/books/{book} .................................................... books.update › InfoBookController@update  
- *DELETE          api/books/{book} .................................................. books.destroy › InfoBookController@destroy  
- */
-Route::apiResource('/books', InfoBookController::class);
+/*
+    GET|HEAD        api/books_info ................................................... books_info.index › BookInfoController@index  
+    POST            api/books_info ................................................... books_info.store › BookInfoController@store  
+    GET|HEAD        api/books_info/{books_info} ........................................ books_info.show › BookInfoController@show  
+    PUT|PATCH       api/books_info/{books_info} .................................... books_info.update › BookInfoController@update  
+    DELETE          api/books_info/{books_info} .................................. books_info.destroy › BookInfoController@destroy  
+*/
+Route::apiResource('/books_info', BookInfoController::class);
 
+/*
+    GET|HEAD        api/books_stock ................................................ books_stock.index › BookStockController@index  
+    POST            api/books_stock ................................................ books_stock.store › BookStockController@store  
+    GET|HEAD        api/books_stock/{books_stock} .................................... books_stock.show › BookStockController@show  
+    PUT|PATCH       api/books_stock/{books_stock} ................................ books_stock.update › BookStockController@update  
+    DELETE          api/books_stock/{books_stock} .............................. books_stock.destroy › BookStockController@destroy  
+*/
+Route::apiResource('/books_stock', BookStockController::class);
