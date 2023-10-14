@@ -320,3 +320,7 @@ curl -X DELETE http://localhost:8000/api/books_info/1
 ```bash:return
 [{"id":2,"isbn":"9784798009063","title":"\u306f\u3058\u3081\u3066\u306ePHP5\u30d7\u30ed\u30b0\u30e9\u30df\u30f3\u30b0 \u57fa\u672c\u7de8","author":"\u8c4a\u5d0e \u76f4\u4e5f","publisher":"\u79c0\u548c\u30b7\u30b9\u30c6\u30e0","genre":"\u60c5\u5831\u5b66","description":null,"list_price":2200,"sale_price":1100,"created_at":"2023-10-14T14:24:19.000000Z","updated_at":"2023-10-14T23:24:37.000000Z"}]
 ```
+
+## 著者
+
+[connect0459 (Akira Nakaoka)](https://github.com/connect0459)
