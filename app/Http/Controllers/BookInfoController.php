@@ -29,9 +29,10 @@ class BookInfoController extends Controller
      */
     public function store(Request $request)
     {
-        $book_info = BookInfo::create($request->all());
+        var_dump($request->all());
+        $books_info = BookInfo::create($request->all());
         return response()->json(
-            $book_info,
+            $books_info,
             201
         );
     }

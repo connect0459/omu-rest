@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('books_stock', function (Blueprint $table) {
+        Schema::create('users_admin', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('books_info_id')->unique()->constrained('books_info')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string('isbn', 13);
-            $table->integer('stock')->default(0);
-            $table->integer('order')->default(0);
-            $table->integer('sold')->default(0);
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->datetime('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->datetime('created_at')->useCurrent();
             $table->datetime('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('books_stock');
+        Schema::dropIfExists('users_admin');
     }
 };

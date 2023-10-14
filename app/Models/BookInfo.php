@@ -17,6 +17,7 @@ class BookInfo extends Model
         'author',
         'publisher',
         'genre',
+        'description',
         'list_price',
         'sale_price'
     ];

@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\BookInfoController;
 use App\Http\Controllers\BookStockController;
-use App\Models\BookStock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
