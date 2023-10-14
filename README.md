@@ -2,7 +2,9 @@
 Laravelで構築されたRESTful APIサーバーです。
 
 ## API エンドポイント（URI）の追加
+
 ### Model・Migration・Controllerの作成
+
 Migration（マイグレーション）ファイルとは、コマンドラインからデータベースの作成を行う際に参照される定義ファイルです。作成するModelの名前を`ModelName`とすると、次のコマンドでModel、Migration、Controllerファイルを一括で作成できます。
 ```bash
 php artisan make:model ModelName --migration --controller --api 
@@ -227,7 +229,9 @@ GET|HEAD        / ..............................................................
   DELETE          api/books_info/{books_info} ............................... books_info.destroy › BookInfoController@destroy 
 ```
 設定が確認出来たら、`curl`コマンドでエンドポイントが機能するか確認しましょう。
+
 ### curlでサーバーにリクエストを送信
+
 1. ローカルサーバーの起動
 次のコマンドを実行して、Laravelの開発サーバーを立ち上げましょう。デフォルトのポートは`8000`です。
 ```bash
