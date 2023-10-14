@@ -307,12 +307,12 @@ UPDATE（PUT|PATCH）には`update`メソッドが対応します。次のコマ
 ```bash:PUT
 curl -X PUT -H "Content-Type: application/json" -d "{\"sale_price\": \"1300\"}" http://localhost:8000/api/books_info/1
 ```
-結果を見ると、`sale_price`が1300になっていることが確認できます。
+結果を見ると、`sale_price`が`1300`になっていることが確認できます。
 ```bash:return
 {"id":1,"isbn":"9784798168494","title":"\u72ec\u5b66PHP \u7b2c4\u7248","author":"\u5c71\u7530 \u7965\u5bdb","publisher":"\u7fd4\u6cf3\u793e","genre":"\u60c5\u5831\u5b66","description":null,"list_price":2700,"sale_price":"1300","created_at":"2023-10-14T14:21:56.000000Z","updated_at":"2023-10-14T14:47:46.000000Z"}
 ```
 #### 5. SQLのレコードを削除（DELETE）
-DELETEには`dalete`メソッドが対応します。
+DELETEには`delete`メソッドが対応します。
 ```bash:DELETE
 curl -X DELETE http://localhost:8000/api/books_info/1
 ```
