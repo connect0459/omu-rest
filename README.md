@@ -42,6 +42,7 @@ Controllerを個別に作成する場合は以下のようにし、`--api`オプ
 php artisan make:controller ModelNameController --api
 ```
 生成されたファイルにはデフォルトでいくつかコードが書かれていますが、求める仕様を実現するコードを追記しましょう。例として、`books_info`テーブルに関するエンドポイントを作成するためのコードを示します。
+* Migration（database/）
 ```php:database/migrations2023_10_14_082639_create_books_info_table.php
 <?php
 
@@ -80,6 +81,7 @@ return new class extends Migration
     }
 };
 ```
+* Model（app/Models/）
 ```php:app/Models/BookInfo.php
 <?php
 
@@ -107,6 +109,7 @@ class BookInfo extends Model
     protected $dates = ['created_at', 'updated_at'];
 }
 ```
+* Controller（app/Http/Controllers/）
 ```php:app/Http/Controllers/BookInfoController.php
 <?php
 
