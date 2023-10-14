@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BookInfo;
+use App\Models\OrderCustomer;
 use Illuminate\Http\Request;
 
-class BookInfoController extends Controller
+class OrderCustomerController extends Controller
 {
     /** @var string The message called when a record is not found  */
     private string $notfound_message = 'The record is not found';
@@ -16,10 +16,10 @@ class BookInfoController extends Controller
      */
     /**
      * @SWG\Get(
-     *     path="/books_info",
-     *     description="books_infoテーブルからレコードをすべて取得する",
+     *     path="/orders_customers",
+     *     description="orders_customersテーブルからレコードをすべて取得する",
      *     produces={"application/json"},
-     *     tags={"books"},
+     *     tags={"orders"},
      *     @SWG\Response(
      *         response=200,
      *         description="Success"
@@ -36,9 +36,9 @@ class BookInfoController extends Controller
      */
     public function index()
     {
-        $books_info = BookInfo::all();
+        $orders_customers = OrderCustomer::all();
         return response()->json(
-            $books_info,
+            $orders_customers,
             200
         );
     }
@@ -49,10 +49,10 @@ class BookInfoController extends Controller
      */
     /**
      * @SWG\POST(
-     *     path="/books_info",
-     *     description="books_infoテーブルにレコードを新規に挿入する",
+     *     path="/orders_customers",
+     *     description="orders_customersテーブルにレコードを新規に挿入する",
      *     produces={"application/json"},
-     *     tags={"books"},
+     *     tags={"orders"},
      *     @SWG\Response(
      *         response=200,
      *         description="Success"
@@ -69,9 +69,9 @@ class BookInfoController extends Controller
      */
     public function store(Request $request)
     {
-        $books_info = BookInfo::create($request->all());
+        $orders_customers = OrderCustomer::create($request->all());
         return response()->json(
-            $books_info,
+            $orders_customers,
             201
         );
     }
@@ -82,13 +82,13 @@ class BookInfoController extends Controller
      */
     /**
      * @SWG\Get(
-     *     path="/books_info/{books_info}",
-     *     description="books_infoテーブルから指定のIDに一致するレコードを取得する",
+     *     path="/orders_customers/{orders_customers}",
+     *     description="orders_customersテーブルから指定のIDに一致するレコードを取得する",
      *     produces={"application/json"},
-     *     tags={"books"},
+     *     tags={"orders"},
      *     @SWG\Parameter(
-     *         name="books_info",
-     *         description="books_infoのPRIMARYキー",
+     *         name="orders_customers",
+     *         description="orders_customersのPRIMARYキー",
      *         in="path",
      *         required=true,
      *         type="string"
@@ -109,7 +109,7 @@ class BookInfoController extends Controller
      */
     public function show(string $id)
     {
-        $book_info = BookInfo::find($id);
+        $book_info = OrderCustomer::find($id);
 
         if (!$book_info) {
             return response()->json(['message' => $this->notfound_message], 404);
@@ -127,13 +127,13 @@ class BookInfoController extends Controller
      */
     /**
      * @SWG\PUT|PATCH(
-     *     path="/books_info/{books_info}",
-     *     description="books_infoテーブルから指定のIDに一致するレコードを更新する",
+     *     path="/orders_customers/{orders_customers}",
+     *     description="orders_customersテーブルから指定のIDに一致するレコードを更新する",
      *     produces={"application/json"},
-     *     tags={"books"},
+     *     tags={"orders"},
      *     @SWG\Parameter(
-     *         name="books_info",
-     *         description="books_infoのPRIMARYキー",
+     *         name="orders_customers",
+     *         description="orders_customersのPRIMARYキー",
      *         in="path",
      *         required=true,
      *         type="string"
@@ -154,7 +154,7 @@ class BookInfoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $book_info = BookInfo::find($id);
+        $book_info = OrderCustomer::find($id);
 
         if (!$book_info) {
             return response()->json(['message' => $this->notfound_message], 404);
@@ -173,13 +173,13 @@ class BookInfoController extends Controller
      */
     /**
      * @SWG\DELETE(
-     *     path="/books_info/{books_info}",
-     *     description="books_infoテーブルから指定のIDに一致するレコードを削除する",
+     *     path="/orders_customers/{orders_customers}",
+     *     description="orders_customersテーブルから指定のIDに一致するレコードを削除する",
      *     produces={"application/json"},
-     *     tags={"books"},
+     *     tags={"orders"},
      *     @SWG\Parameter(
-     *         name="books_info",
-     *         description="books_infoのPRIMARYキー",
+     *         name="orders_customers",
+     *         description="orders_customersのPRIMARYキー",
      *         in="path",
      *         required=true,
      *         type="string"
@@ -200,7 +200,7 @@ class BookInfoController extends Controller
      */
     public function destroy(string $id)
     {
-        $book_info = BookInfo::find($id);
+        $book_info = OrderCustomer::find($id);
 
         if (!$book_info) {
             return response()->json(['message' => $this->notfound_message], 404);

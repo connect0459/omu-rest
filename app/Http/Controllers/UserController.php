@@ -2,24 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BookInfo;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class BookInfoController extends Controller
+class UserController extends Controller
 {
     /** @var string The message called when a record is not found  */
-    private string $notfound_message = 'The record is not found';
+    private string $notfound_message = 'User not found';
 
     /**
-     * GET
      * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
      */
     /**
      * @SWG\Get(
-     *     path="/books_info",
-     *     description="books_infoテーブルからレコードをすべて取得する",
+     *     path="/users",
+     *     description="usersテーブルからレコードをすべて取得する",
      *     produces={"application/json"},
-     *     tags={"books"},
+     *     tags={"users"},
      *     @SWG\Response(
      *         response=200,
      *         description="Success"
@@ -36,23 +37,22 @@ class BookInfoController extends Controller
      */
     public function index()
     {
-        $books_info = BookInfo::all();
-        return response()->json(
-            $books_info,
-            200
-        );
+        $users = User::all();
+        return response()->json($users);
     }
 
     /**
-     * POST
      * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
      */
     /**
      * @SWG\POST(
-     *     path="/books_info",
-     *     description="books_infoテーブルにレコードを新規に挿入する",
+     *     path="/users",
+     *     description="usersテーブルにレコードを新規に挿入する",
      *     produces={"application/json"},
-     *     tags={"books"},
+     *     tags={"users"},
      *     @SWG\Response(
      *         response=200,
      *         description="Success"
@@ -69,26 +69,25 @@ class BookInfoController extends Controller
      */
     public function store(Request $request)
     {
-        $books_info = BookInfo::create($request->all());
-        return response()->json(
-            $books_info,
-            201
-        );
+        $user = User::create($request->all());
+        return response()->json($user, 201);
     }
 
     /**
-     * GET
      * Display the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
      */
     /**
      * @SWG\Get(
-     *     path="/books_info/{books_info}",
-     *     description="books_infoテーブルから指定のIDに一致するレコードを取得する",
+     *     path="/users/{users}",
+     *     description="usersテーブルから指定のIDに一致するレコードを取得する",
      *     produces={"application/json"},
-     *     tags={"books"},
+     *     tags={"users"},
      *     @SWG\Parameter(
-     *         name="books_info",
-     *         description="books_infoのPRIMARYキー",
+     *         name="users",
+     *         description="usersのPRIMARYキー",
      *         in="path",
      *         required=true,
      *         type="string"
@@ -107,33 +106,31 @@ class BookInfoController extends Controller
      *     ),
      * )
      */
-    public function show(string $id)
+    public function show($id)
     {
-        $book_info = BookInfo::find($id);
-
-        if (!$book_info) {
+        $user = User::find($id);
+        if (!$user) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
-
-        return response()->json(
-            $book_info,
-            200
-        );
+        return response()->json($user);
     }
 
     /**
-     * PUT
      * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * @return \Illuminate\Http\Response
      */
     /**
      * @SWG\PUT|PATCH(
-     *     path="/books_info/{books_info}",
-     *     description="books_infoテーブルから指定のIDに一致するレコードを更新する",
+     *     path="/users/{users}",
+     *     description="usersテーブルから指定のIDに一致するレコードを更新する",
      *     produces={"application/json"},
-     *     tags={"books"},
+     *     tags={"users"},
      *     @SWG\Parameter(
-     *         name="books_info",
-     *         description="books_infoのPRIMARYキー",
+     *         name="users",
+     *         description="usersのPRIMARYキー",
      *         in="path",
      *         required=true,
      *         type="string"
@@ -152,34 +149,32 @@ class BookInfoController extends Controller
      *     ),
      * )
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        $book_info = BookInfo::find($id);
-
-        if (!$book_info) {
+        $user = User::find($id);
+        if (!$user) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $book_info->update($request->all());
-        return response()->json(
-            $book_info,
-            200
-        );
+        $user->update($request->all());
+        return response()->json($user);
     }
 
     /**
-     * DELETE
      * Remove the specified resource from storage.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
      */
     /**
      * @SWG\DELETE(
-     *     path="/books_info/{books_info}",
-     *     description="books_infoテーブルから指定のIDに一致するレコードを削除する",
+     *     path="/users/{users}",
+     *     description="usersテーブルから指定のIDに一致するレコードを削除する",
      *     produces={"application/json"},
-     *     tags={"books"},
+     *     tags={"users"},
      *     @SWG\Parameter(
-     *         name="books_info",
-     *         description="books_infoのPRIMARYキー",
+     *         name="users",
+     *         description="usersのPRIMARYキー",
      *         in="path",
      *         required=true,
      *         type="string"
@@ -198,18 +193,14 @@ class BookInfoController extends Controller
      *     ),
      * )
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        $book_info = BookInfo::find($id);
-
-        if (!$book_info) {
+        $user = User::find($id);
+        if (!$user) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $book_info->delete();
-        return response()->json(
-            null,
-            204
-        );
+        $user->delete();
+        return response()->json(null, 204);
     }
 }
