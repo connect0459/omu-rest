@@ -232,12 +232,15 @@ GET|HEAD        / ..............................................................
 
 ### curlでサーバーにリクエストを送信
 
-1. ローカルサーバーの起動
+#### 1. ローカルサーバーの起動
+
 次のコマンドを実行して、Laravelの開発サーバーを立ち上げましょう。デフォルトのポートは`8000`です。
 ```bash
 php artisan serve
 ```
-2. ダミーデータの挿入（CREATE）  
+
+#### 2. ダミーデータの挿入（CREATE）
+
 CRUD操作のうちCREATE（POST）には`store`メソッドが対応します。ここでは「独学PHP 第4版」と「はじめてのPHP5プログラミング 基本編」をダミーデータとして扱います。storeメソッドは一つのJSONの送信にしか対応していないので、複数のデータ登録はエンドポイントを複数回叩くかSQLでまとめてInsertしましょう。
 * 独学PHP 第4版
 ```bash:POST
@@ -247,7 +250,9 @@ curl -X POST -H "Content-Type: application/json" -d "{\"id\":1,\"isbn\":\"978479
 ```bash
 curl -X POST -H "Content-Type: application/json" -d "{\"id\":2,\"isbn\":\"9784798009063\",\"title\":\"はじめてのPHP5プログラミング 基本編\",\"author\":\"豊崎 直也\",\"publisher\":\"秀和システム\",\"genre\":\"情報学\",\"description\":\"\",\"list_price\":2200,\"sale_price\":1100,\"created_at\":\"2023-09-12T23:37:39.000000Z\",\"updated_at\":\"2023-09-12T23:37:39.000000Z\"}" http://localhost:8000/api/books_info
 ```
-3. SQLに登録されたデータを確認（READ）  
+
+#### 3. SQLに登録されたデータを確認（READ）
+
 READ（GET）には全取得の`index`メソッドと部分取得の`show`メソッドが対応します。次のコマンドを実行して、登録されたデータを確認しましょう。
 ```bash:GET
 curl http://localhost:8000/api/books_info
@@ -264,7 +269,9 @@ curl http://localhost:8000/api/books_info/1
 ```bash:return
 {"id":1,"isbn":"9784798168494","title":"\u72ec\u5b66PHP \u7b2c4\u7248","author":"\u5c71\u7530 \u7965\u5bdb","publisher":"\u7fd4\u6cf3\u793e","genre":"\u60c5\u5831\u5b66","description":null,"list_price":2700,"sale_price":1350,"created_at":"2023-10-14T14:21:56.000000Z","updated_at":"2023-10-14T23:24:35.000000Z"}
 ```
-4. SQLのレコードを更新（UPDATE）  
+
+#### 4. SQLのレコードを更新（UPDATE）
+
 UPDATE（PUT|PATCH）には`update`メソッドが対応します。次のコマンドを実行して、「独習PHP 第4版」の販売額を1350円から1300円に変更します。
 ```bash:PUT
 curl -X PUT -H "Content-Type: application/json" -d "{\"sale_price\": \"1300\"}" http://localhost:8000/api/books_info/1
