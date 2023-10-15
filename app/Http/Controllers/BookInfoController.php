@@ -13,7 +13,7 @@ class BookInfoController extends Controller
 
     /**
      * @OA\Get(
-     *      path="/api/books_info",
+     *      path="/books_info",
      *      tags={"books_info"},
      *      summary="Get a list of books_info",
      *      @OA\Response(
@@ -37,7 +37,7 @@ class BookInfoController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/books_info",
+     *     path="/books_info",
      *     tags={"books_info"},
      *     summary="Create a new books_info",
      *     @OA\RequestBody(
@@ -80,7 +80,7 @@ class BookInfoController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/books_info/{id}",
+     *     path="/books_info/{id}",
      *     tags={"books_info"},
      *     summary="Get a specific books_info by ID",
      *     @OA\Parameter(
@@ -119,7 +119,7 @@ class BookInfoController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/books_info/{id}",
+     *     path="/books_info/{id}",
      *     tags={"books_info"},
      *     summary="Update a specific books_info by ID",
      *     @OA\Parameter(
@@ -181,7 +181,7 @@ class BookInfoController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/api/books_info/{id}",
+     *     path="/books_info/{id}",
      *     tags={"books_info"},
      *     summary="Delete a specific books_info by ID",
      *     @OA\Parameter(

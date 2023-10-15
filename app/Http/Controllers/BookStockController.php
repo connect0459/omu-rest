@@ -13,7 +13,7 @@ class BookStockController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/books_stock",
+     *     path="/books_stock",
      *     tags={"books_stock"},
      *     summary="Get a list of books_stock",
      *     @OA\Response(
@@ -37,7 +37,7 @@ class BookStockController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/books_stock",
+     *     path="/books_stock",
      *     tags={"books_stock"},
      *     summary="Create a new books_stock",
      *     @OA\RequestBody(
@@ -80,7 +80,7 @@ class BookStockController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/books_stock/{id}",
+     *     path="/books_stock/{id}",
      *     tags={"books_stock"},
      *     summary="Get a specific books_stock by ID",
      *     @OA\Parameter(
@@ -119,7 +119,7 @@ class BookStockController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/books_stock/{id}",
+     *     path="/books_stock/{id}",
      *     tags={"books_stock"},
      *     summary="Update a specific books_stock by ID",
      *     @OA\Parameter(
@@ -181,7 +181,7 @@ class BookStockController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/api/books_stock/{id}",
+     *     path="/books_stock/{id}",
      *     tags={"books_stock"},
      *     summary="Delete a specific books_stock by ID",
      *     @OA\Parameter(

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use OpenApi\Annotations as OA;
 
 class ContactController extends Controller
 {
@@ -11,27 +12,18 @@ class ContactController extends Controller
     private string $notfound_message = 'The record is not found';
 
     /**
-     * GET
-     * Display a listing of the resource.
-     */
-    /**
-     * @SWG\Get(
+     * @OA\Get(
      *     path="/contacts",
-     *     description="contactsテーブルからレコードをすべて取得する",
-     *     produces={"application/json"},
      *     tags={"contacts"},
-     *     @SWG\Response(
+     *     summary="Get a list of contacts",
+     *     @OA\Response(
      *         response=200,
-     *         description="Success"
-     *     ),
-     *     @SWG\Response(
-     *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
+     *         description="Successful response",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/Contact")
+     *         )
+     *     )
      * )
      */
     public function index()
@@ -44,27 +36,25 @@ class ContactController extends Controller
     }
 
     /**
-     * POST
-     * Store a newly created resource in storage.
-     */
-    /**
-     * @SWG\POST(
+     * @OA\Post(
      *     path="/contacts",
-     *     description="contactsテーブルにレコードを新規に挿入する",
-     *     produces={"application/json"},
      *     tags={"contacts"},
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Success"
+     *     summary="Create a new contact",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="Contact data",
+     *         @OA\JsonContent(ref="#/components/schemas/Contact")
      *     ),
-     *     @SWG\Response(
-     *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Resource created",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             allOf={
+     *                 @OA\Schema(ref="#/components/schemas/Contact")
+     *             }
+     *         )
+     *     )
      * )
      */
     public function store(Request $request)
@@ -77,136 +67,127 @@ class ContactController extends Controller
     }
 
     /**
-     * GET
-     * Display the specified resource.
-     */
-    /**
-     * @SWG\Get(
-     *     path="/contacts/{contacts}",
-     *     description="contactsテーブルから指定のIDに一致するレコードを取得する",
-     *     produces={"application/json"},
+     * @OA\Get(
+     *     path="/contacts/{id}",
      *     tags={"contacts"},
-     *     @SWG\Parameter(
-     *         name="contacts",
-     *         description="contactsのPRIMARYキー",
+     *     summary="Get a specific contact by ID",
+     *     @OA\Parameter(
+     *         name="id",
      *         in="path",
      *         required=true,
-     *         type="string"
+     *         description="ID of the contact",
+     *         @OA\Schema(
+     *             type="string"
+     *         )
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=200,
-     *         description="Success"
+     *         description="Successful response",
+     *         @OA\JsonContent(ref="#/components/schemas/Contact")
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
+     *         description="Resource not found"
+     *     )
      * )
      */
     public function show(string $id)
     {
-        $book_info = Contact::find($id);
+        $contact = Contact::find($id);
 
-        if (!$book_info) {
+        if (!$contact) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
         return response()->json(
-            $book_info,
+            $contact,
             200
         );
     }
 
     /**
-     * PUT
-     * Update the specified resource in storage.
-     */
-    /**
-     * @SWG\PUT|PATCH(
-     *     path="/contacts/{contacts}",
-     *     description="contactsテーブルから指定のIDに一致するレコードを更新する",
-     *     produces={"application/json"},
+     * @OA\Put(
+     *     path="/contacts/{id}",
      *     tags={"contacts"},
-     *     @SWG\Parameter(
-     *         name="contacts",
-     *         description="contactsのPRIMARYキー",
+     *     summary="Update a specific contact by ID",
+     *     @OA\Parameter(
+     *         name="id",
      *         in="path",
      *         required=true,
-     *         type="string"
+     *         description="ID of the contact",
+     *         @OA\Schema(
+     *             type="string"
+     *         )
      *     ),
-     *     @SWG\Response(
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="Contact data",
+     *         @OA\JsonContent(ref="#/components/schemas/Contact")
+     *     ),
+     *     @OA\Response(
      *         response=200,
-     *         description="Success"
+     *         description="Resource updated",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             allOf={
+     *                 @OA\Schema(ref="#/components/schemas/Contact")
+     *             }
+     *         )
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
+     *         description="Resource not found"
+     *     )
      * )
      */
     public function update(Request $request, string $id)
     {
-        $book_info = Contact::find($id);
+        $contact = Contact::find($id);
 
-        if (!$book_info) {
+        if (!$contact) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $book_info->update($request->all());
+        $contact->update($request->all());
         return response()->json(
-            $book_info,
+            $contact,
             200
         );
     }
 
     /**
-     * DELETE
-     * Remove the specified resource from storage.
-     */
-    /**
-     * @SWG\DELETE(
-     *     path="/contacts/{contacts}",
-     *     description="contactsテーブルから指定のIDに一致するレコードを削除する",
-     *     produces={"application/json"},
+     * @OA\Delete(
+     *     path="/contacts/{id}",
      *     tags={"contacts"},
-     *     @SWG\Parameter(
-     *         name="contacts",
-     *         description="contactsのPRIMARYキー",
+     *     summary="Delete a specific contact by ID",
+     *     @OA\Parameter(
+     *         name="id",
      *         in="path",
      *         required=true,
-     *         type="string"
+     *         description="ID of the contact",
+     *         @OA\Schema(
+     *             type="string"
+     *         )
      *     ),
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Success"
+     *     @OA\Response(
+     *         response=204,
+     *         description="Resource deleted"
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
+     *         description="Resource not found"
+     *     )
      * )
      */
     public function destroy(string $id)
     {
-        $book_info = Contact::find($id);
+        $contact = Contact::find($id);
 
-        if (!$book_info) {
+        if (!$contact) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $book_info->delete();
+        $contact->delete();
         return response()->json(
             null,
             204

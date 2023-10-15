@@ -12,13 +12,13 @@
         }
     ],
     "paths": {
-        "/api/books_info": {
+        "/books_info": {
             "get": {
                 "tags": [
                     "books_info"
                 ],
                 "summary": "Get a list of books_info",
-                "operationId": "54eee08eb4100fc0bbe01d724ab2cfbb",
+                "operationId": "2f9e356b188781492d6410beee2297c6",
                 "responses": {
                     "200": {
                         "description": "Successful response",
@@ -40,7 +40,7 @@
                     "books_info"
                 ],
                 "summary": "Create a new books_info",
-                "operationId": "305d474b44a5a96c9f0bced1770a3a54",
+                "operationId": "0c3283a323f1a4a3e81dbd5915be7518",
                 "requestBody": {
                     "description": "BookInfo data",
                     "required": true,
@@ -84,13 +84,13 @@
                 }
             }
         },
-        "/api/books_info/{id}": {
+        "/books_info/{id}": {
             "get": {
                 "tags": [
                     "books_info"
                 ],
                 "summary": "Get a specific books_info by ID",
-                "operationId": "88d1f91b3b119b754fc02c31e2c656da",
+                "operationId": "aefd1f8354eca94d504850ef936b3fb4",
                 "parameters": [
                     {
                         "name": "id",
@@ -123,7 +123,7 @@
                     "books_info"
                 ],
                 "summary": "Update a specific books_info by ID",
-                "operationId": "917e81d0c3138ab81e4eff55c769d2bd",
+                "operationId": "57b90f97a8a076e500862e557256c7aa",
                 "parameters": [
                     {
                         "name": "id",
@@ -185,7 +185,7 @@
                     "books_info"
                 ],
                 "summary": "Delete a specific books_info by ID",
-                "operationId": "deba97993ae0aeda983a2fe29c5c2417",
+                "operationId": "e98599424d7afa9076f6f9f4df52e4e4",
                 "parameters": [
                     {
                         "name": "id",
@@ -207,13 +207,13 @@
                 }
             }
         },
-        "/api/books_stock": {
+        "/books_stock": {
             "get": {
                 "tags": [
                     "books_stock"
                 ],
                 "summary": "Get a list of books_stock",
-                "operationId": "ba47c722bcc76000ff23979e593bc7e1",
+                "operationId": "c9044c5b54d9d6b8c37064812524bb45",
                 "responses": {
                     "200": {
                         "description": "Successful response",
@@ -235,7 +235,7 @@
                     "books_stock"
                 ],
                 "summary": "Create a new books_stock",
-                "operationId": "cd8ea928c7e88183370f5f491498691e",
+                "operationId": "e50cdeddc9681f7435a9afe4a049ac83",
                 "requestBody": {
                     "description": "BookStock data",
                     "required": true,
@@ -279,13 +279,13 @@
                 }
             }
         },
-        "/api/books_stock/{id}": {
+        "/books_stock/{id}": {
             "get": {
                 "tags": [
                     "books_stock"
                 ],
                 "summary": "Get a specific books_stock by ID",
-                "operationId": "af7548b593741a5abd2df5a3c381a3f6",
+                "operationId": "008048fd9acd897a85d8a1426225a9ec",
                 "parameters": [
                     {
                         "name": "id",
@@ -318,7 +318,7 @@
                     "books_stock"
                 ],
                 "summary": "Update a specific books_stock by ID",
-                "operationId": "a22f219ac69a07a4c856becc80d49783",
+                "operationId": "8e070be5f279eddb026b7f03673016f6",
                 "parameters": [
                     {
                         "name": "id",
@@ -380,12 +380,181 @@
                     "books_stock"
                 ],
                 "summary": "Delete a specific books_stock by ID",
-                "operationId": "57e584fe365ae97a635dfc76802aa4ed",
+                "operationId": "97a518364a1e7381ea6bbc749668ee1f",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "description": "ID of the books_stock",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            }
+        },
+        "/contacts": {
+            "get": {
+                "tags": [
+                    "contacts"
+                ],
+                "summary": "Get a list of contacts",
+                "operationId": "e670331f5da6af785062a857ec92def2",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Contact"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "contacts"
+                ],
+                "summary": "Create a new contact",
+                "operationId": "77b53a0b0cb97bf04eafa192e4cbac4e",
+                "requestBody": {
+                    "description": "Contact data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Contact"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Resource created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/Contact"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/contacts/{id}": {
+            "get": {
+                "tags": [
+                    "contacts"
+                ],
+                "summary": "Get a specific contact by ID",
+                "operationId": "4c4e002507e3a53acc022b210aad20ac",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the contact",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Contact"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "contacts"
+                ],
+                "summary": "Update a specific contact by ID",
+                "operationId": "adc814a54ff3a1fdc424293b19ffe8a7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the contact",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Contact data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Contact"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Resource updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/Contact"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "contacts"
+                ],
+                "summary": "Delete a specific contact by ID",
+                "operationId": "bc8b0b91abd89481c321fcdb966dc355",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the contact",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -509,6 +678,66 @@
                         "type": "integer",
                         "format": "int64",
                         "example": "1"
+                    },
+                    "created_at": {
+                        "description": "レコード作成日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    },
+                    "updated_at": {
+                        "description": "レコード更新日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "Contact": {
+                "description": "Contact Model",
+                "properties": {
+                    "id": {
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
+                    "unique": {
+                        "description": "お問い合わせ番号として相手に送信する一意な値",
+                        "type": "string",
+                        "format": "string",
+                        "example": "230C001"
+                    },
+                    "name": {
+                        "description": "名前",
+                        "type": "string",
+                        "format": "string",
+                        "example": "SFT太郎"
+                    },
+                    "belong": {
+                        "description": "所属",
+                        "type": "string",
+                        "format": "string",
+                        "example": "SFT大学"
+                    },
+                    "email": {
+                        "description": "メールアドレス",
+                        "type": "string",
+                        "format": "string",
+                        "example": "example@studyfortwo.org"
+                    },
+                    "summary": {
+                        "description": "概要",
+                        "type": "string",
+                        "format": "string",
+                        "example": "メンバー加入について"
+                    },
+                    "detail": {
+                        "description": "詳細",
+                        "type": "string",
+                        "format": "string",
+                        "example": "活動に興味があるのですが、この時期からでも入れますか？"
                     },
                     "created_at": {
                         "description": "レコード作成日",
