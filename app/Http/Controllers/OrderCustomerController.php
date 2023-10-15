@@ -19,7 +19,7 @@ class OrderCustomerController extends Controller
      *     path="/orders_customers",
      *     description="orders_customersテーブルからレコードをすべて取得する",
      *     produces={"application/json"},
-     *     tags={"orders"},
+     *     tags={"orders_customers"},
      *     @SWG\Response(
      *         response=200,
      *         description="Success"
@@ -52,7 +52,7 @@ class OrderCustomerController extends Controller
      *     path="/orders_customers",
      *     description="orders_customersテーブルにレコードを新規に挿入する",
      *     produces={"application/json"},
-     *     tags={"orders"},
+     *     tags={"orders_customers"},
      *     @SWG\Response(
      *         response=200,
      *         description="Success"
@@ -85,7 +85,7 @@ class OrderCustomerController extends Controller
      *     path="/orders_customers/{orders_customers}",
      *     description="orders_customersテーブルから指定のIDに一致するレコードを取得する",
      *     produces={"application/json"},
-     *     tags={"orders"},
+     *     tags={"orders_customers"},
      *     @SWG\Parameter(
      *         name="orders_customers",
      *         description="orders_customersのPRIMARYキー",
@@ -130,7 +130,7 @@ class OrderCustomerController extends Controller
      *     path="/orders_customers/{orders_customers}",
      *     description="orders_customersテーブルから指定のIDに一致するレコードを更新する",
      *     produces={"application/json"},
-     *     tags={"orders"},
+     *     tags={"orders_customers"},
      *     @SWG\Parameter(
      *         name="orders_customers",
      *         description="orders_customersのPRIMARYキー",
@@ -176,7 +176,7 @@ class OrderCustomerController extends Controller
      *     path="/orders_customers/{orders_customers}",
      *     description="orders_customersテーブルから指定のIDに一致するレコードを削除する",
      *     produces={"application/json"},
-     *     tags={"orders"},
+     *     tags={"orders_customers"},
      *     @SWG\Parameter(
      *         name="orders_customers",
      *         description="orders_customersのPRIMARYキー",

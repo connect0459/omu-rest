@@ -22,6 +22,10 @@ class OrderCustomer extends Model
         'receive_method',
         'receive_date',
         'receive_time',
+        'payment_method',
+        'payment_due_date',
+        'payment_due_time',
+        'is_paid',
         'notes'
     ];
     protected $dates = ['created_at', 'updated_at'];

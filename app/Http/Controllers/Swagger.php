@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use OpenApi\Annotations as OA;
 
 /**
+ * Swaggerに出力する単一または共通の設定を記述するための空クラス
+ * 
+ * 基本情報
  * @OA\Info(
  *     version="1.0.0",
  *     title="omu-rest",
@@ -25,7 +28,6 @@ use OpenApi\Annotations as OA;
  *   name="api_token"
  * )
  */
-
 class Swagger
 {
 }
