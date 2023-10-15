@@ -374,6 +374,116 @@ paths:
           description: 'Resource deleted'
         404:
           description: 'Resource not found'
+  /news:
+    get:
+      tags:
+        - news
+      summary: 'Get a list of news'
+      operationId: 21b84dbdd75fd20b9c9ddb9b9e68f0a1
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/News'
+    post:
+      tags:
+        - news
+      summary: 'Create a new news'
+      operationId: d6a12c2e3b4ea9ab588ba9b1cb14748f
+      requestBody:
+        description: 'News data'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/News'
+      responses:
+        201:
+          description: 'Resource created'
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  -
+                    $ref: '#/components/schemas/News'
+  '/news/{id}':
+    get:
+      tags:
+        - news
+      summary: 'Get a specific news by ID'
+      operationId: eb815321a4dd395639d4aeef25d9a45c
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'ID of the news'
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/News'
+        404:
+          description: 'Resource not found'
+    put:
+      tags:
+        - news
+      summary: 'Update a specific news by ID'
+      operationId: 25ea273290c6cb379ab85e08ff4fadfc
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'ID of the news'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: 'News data'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/News'
+      responses:
+        200:
+          description: 'Resource updated'
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  -
+                    $ref: '#/components/schemas/News'
+        404:
+          description: 'Resource not found'
+    delete:
+      tags:
+        - news
+      summary: 'Delete a specific news by ID'
+      operationId: bbe79a918bfbb58bc46ed74b43e9b986
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'ID of the news'
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: 'Resource deleted'
+        404:
+          description: 'Resource not found'
 components:
   schemas:
     BookInfo:
@@ -512,6 +622,35 @@ components:
           type: string
           format: string
           example: 活動に興味があるのですが、この時期からでも入れますか？
+        created_at:
+          description: レコード作成日
+          type: string
+          format: date-time
+          example: '2023-06-20T21:20:14.000000Z'
+        updated_at:
+          description: レコード更新日
+          type: string
+          format: date-time
+          example: '2023-06-20T21:20:14.000000Z'
+      type: object
+    News:
+      description: 'News Model'
+      properties:
+        id:
+          description: ID
+          type: integer
+          format: int64
+          example: '1'
+        title:
+          description: ニュースのタイトル
+          type: string
+          format: string
+          example: サイトの稼働が開始しました。
+        detail:
+          description: ニュースの記事
+          type: string
+          format: string
+          example: 2023年6月20日からサイトを稼働しております。
         created_at:
           description: レコード作成日
           type: string

@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookInfoController;
 use App\Http\Controllers\BookStockController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 /**
  * 以下、追加したコントローラーに対するルーティング設定
  * 使用するクラスを最上部でuse宣言することを忘れずに行う
+ * `php artisan route:list`コマンドでルーティングを確認可能
  */
 /*
     GET|HEAD        api/books_info ................................................... books_info.index › BookInfoController@index  
@@ -51,3 +53,12 @@ Route::apiResource('/books_stock', BookStockController::class);
     DELETE          api/contacts/{contact} ....... contacts.destroy › ContactController@destroy  
 */
 Route::apiResource('/contacts', ContactController::class);
+
+/*
+    GET|HEAD        api/news ................................................................................. news.index › NewsController@index  
+    POST            api/news ................................................................................. news.store › NewsController@store  
+    GET|HEAD        api/news/{news} ............................................................................ news.show › NewsController@show  
+    PUT|PATCH       api/news/{news} ........................................................................ news.update › NewsController@update  
+    DELETE          api/news/{news} ...................................................................... news.destroy › NewsController@destroy  
+*/
+Route::apiResource('/news', NewsController::class);
