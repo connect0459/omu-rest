@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BookStock;
 use Illuminate\Http\Request;
+use OpenApi\Annotations as OA;
 
 class BookStockController extends Controller
 {
@@ -11,27 +12,18 @@ class BookStockController extends Controller
     private string $notfound_message = 'The record is not found';
 
     /**
-     * GET
-     * Display a listing of the resource.
-     */
-    /**
-     * @SWG\Get(
-     *     path="/books_stock",
-     *     description="books_stockテーブルからレコードをすべて取得する",
-     *     produces={"application/json"},
-     *     tags={"books"},
-     *     @SWG\Response(
+     * @OA\Get(
+     *     path="/api/books_stock",
+     *     tags={"books_stock"},
+     *     summary="Get a list of books_stock",
+     *     @OA\Response(
      *         response=200,
-     *         description="Success"
-     *     ),
-     *     @SWG\Response(
-     *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
+     *         description="Successful response",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/BookStock")
+     *         )
+     *     )
      * )
      */
     public function index()
@@ -44,27 +36,37 @@ class BookStockController extends Controller
     }
 
     /**
-     * POST
-     * Store a newly created resource in storage.
-     */
-    /**
-     * @SWG\POST(
-     *     path="/books_stock",
-     *     description="books_stockテーブルにレコードを新規に挿入する",
-     *     produces={"application/json"},
-     *     tags={"books"},
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Success"
+     * @OA\Post(
+     *     path="/api/books_stock",
+     *     tags={"books_stock"},
+     *     summary="Create a new books_stock",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="BookStock data",
+     *         @OA\JsonContent(ref="#/components/schemas/BookStock")
      *     ),
-     *     @SWG\Response(
-     *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Resource created",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             allOf={
+     *                 @OA\Schema(ref="#/components/schemas/BookStock"),
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="created_at",
+     *                         type="string",
+     *                         format="date-time"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="updated_at",
+     *                         type="string",
+     *                         format="date-time"
+     *                     )
+     *                 )
+     *             }
+     *         )
+     *     )
      * )
      */
     public function store(Request $request)
@@ -77,136 +79,139 @@ class BookStockController extends Controller
     }
 
     /**
-     * GET
-     * Display the specified resource.
-     */
-    /**
-     * @SWG\Get(
-     *     path="/books_stock/{books_stock}",
-     *     description="books_stockテーブルから指定のIDに一致するレコードを取得する",
-     *     produces={"application/json"},
-     *     tags={"books"},
-     *     @SWG\Parameter(
-     *         name="books_stock",
-     *         description="books_stockのPRIMARYキー",
+     * @OA\Get(
+     *     path="/api/books_stock/{id}",
+     *     tags={"books_stock"},
+     *     summary="Get a specific books_stock by ID",
+     *     @OA\Parameter(
+     *         name="id",
      *         in="path",
      *         required=true,
-     *         type="string"
+     *         description="ID of the books_stock",
+     *         @OA\Schema(
+     *             type="string"
+     *         )
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=200,
-     *         description="Success"
+     *         description="Successful response",
+     *         @OA\JsonContent(ref="#/components/schemas/BookStock")
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
+     *         description="Resource not found"
+     *     )
      * )
      */
     public function show(string $id)
     {
-        $book_info = BookStock::find($id);
+        $book_stock = BookStock::find($id);
 
-        if (!$book_info) {
+        if (!$book_stock) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
         return response()->json(
-            $book_info,
+            $book_stock,
             200
         );
     }
 
     /**
-     * PUT
-     * Update the specified resource in storage.
-     */
-    /**
-     * @SWG\PUT|PATCH(
-     *     path="/books_stock/{books_stock}",
-     *     description="books_stockテーブルから指定のIDに一致するレコードを更新する",
-     *     produces={"application/json"},
-     *     tags={"books"},
-     *     @SWG\Parameter(
-     *         name="books_stock",
-     *         description="books_stockのPRIMARYキー",
+     * @OA\Put(
+     *     path="/api/books_stock/{id}",
+     *     tags={"books_stock"},
+     *     summary="Update a specific books_stock by ID",
+     *     @OA\Parameter(
+     *         name="id",
      *         in="path",
      *         required=true,
-     *         type="string"
+     *         description="ID of the books_stock",
+     *         @OA\Schema(
+     *             type="string"
+     *         )
      *     ),
-     *     @SWG\Response(
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="BookStock data",
+     *         @OA\JsonContent(ref="#/components/schemas/BookStock")
+     *     ),
+     *     @OA\Response(
      *         response=200,
-     *         description="Success"
+     *         description="Resource updated",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             allOf={
+     *                 @OA\Schema(ref="#/components/schemas/BookStock"),
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="created_at",
+     *                         type="string",
+     *                         format="date-time"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="updated_at",
+     *                         type="string",
+     *                         format="date-time"
+     *                     )
+     *                 )
+     *             }
+     *         )
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
+     *         description="Resource not found"
+     *     )
      * )
      */
     public function update(Request $request, string $id)
     {
-        $book_info = BookStock::find($id);
+        $book_stock = BookStock::find($id);
 
-        if (!$book_info) {
+        if (!$book_stock) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $book_info->update($request->all());
+        $book_stock->update($request->all());
         return response()->json(
-            $book_info,
+            $book_stock,
             200
         );
     }
 
     /**
-     * DELETE
-     * Remove the specified resource from storage.
-     */
-    /**
-     * @SWG\DELETE(
-     *     path="/books_stock/{books_stock}",
-     *     description="books_stockテーブルから指定のIDに一致するレコードを削除する",
-     *     produces={"application/json"},
-     *     tags={"books"},
-     *     @SWG\Parameter(
-     *         name="books_stock",
-     *         description="books_stockのPRIMARYキー",
+     * @OA\Delete(
+     *     path="/api/books_stock/{id}",
+     *     tags={"books_stock"},
+     *     summary="Delete a specific books_stock by ID",
+     *     @OA\Parameter(
+     *         name="id",
      *         in="path",
      *         required=true,
-     *         type="string"
+     *         description="ID of the books_stock",
+     *         @OA\Schema(
+     *             type="string"
+     *         )
      *     ),
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Success"
+     *     @OA\Response(
+     *         response=204,
+     *         description="Resource deleted"
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
+     *         description="Resource not found"
+     *     )
      * )
      */
     public function destroy(string $id)
     {
-        $book_info = BookStock::find($id);
+        $book_stock = BookStock::find($id);
 
-        if (!$book_info) {
+        if (!$book_stock) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $book_info->delete();
+        $book_stock->delete();
         return response()->json(
             null,
             204

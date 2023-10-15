@@ -12,7 +12,7 @@ paths:
     get:
       tags:
         - books_info
-      summary: 'Get a list of book_info'
+      summary: 'Get a list of books_info'
       operationId: 54eee08eb4100fc0bbe01d724ab2cfbb
       responses:
         200:
@@ -26,7 +26,7 @@ paths:
     post:
       tags:
         - books_info
-      summary: 'Create a new book_info'
+      summary: 'Create a new books_info'
       operationId: 305d474b44a5a96c9f0bced1770a3a54
       requestBody:
         description: 'BookInfo data'
@@ -58,13 +58,13 @@ paths:
     get:
       tags:
         - books_info
-      summary: 'Get a specific book_info by ID'
+      summary: 'Get a specific books_info by ID'
       operationId: 88d1f91b3b119b754fc02c31e2c656da
       parameters:
         -
           name: id
           in: path
-          description: 'ID of the book_info'
+          description: 'ID of the books_info'
           required: true
           schema:
             type: string
@@ -80,13 +80,13 @@ paths:
     put:
       tags:
         - books_info
-      summary: 'Update a specific book_info by ID'
+      summary: 'Update a specific books_info by ID'
       operationId: 917e81d0c3138ab81e4eff55c769d2bd
       parameters:
         -
           name: id
           in: path
-          description: 'ID of the book_info'
+          description: 'ID of the books_info'
           required: true
           schema:
             type: string
@@ -121,13 +121,141 @@ paths:
     delete:
       tags:
         - books_info
-      summary: 'Delete a specific book_info by ID'
+      summary: 'Delete a specific books_info by ID'
       operationId: deba97993ae0aeda983a2fe29c5c2417
       parameters:
         -
           name: id
           in: path
-          description: 'ID of the book_info'
+          description: 'ID of the books_info'
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: 'Resource deleted'
+        404:
+          description: 'Resource not found'
+  /api/books_stock:
+    get:
+      tags:
+        - books_stock
+      summary: 'Get a list of books_stock'
+      operationId: ba47c722bcc76000ff23979e593bc7e1
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BookStock'
+    post:
+      tags:
+        - books_stock
+      summary: 'Create a new books_stock'
+      operationId: cd8ea928c7e88183370f5f491498691e
+      requestBody:
+        description: 'BookStock data'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookStock'
+      responses:
+        201:
+          description: 'Resource created'
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  -
+                    $ref: '#/components/schemas/BookStock'
+                  -
+                    properties:
+                      created_at:
+                        type: string
+                        format: date-time
+                      updated_at:
+                        type: string
+                        format: date-time
+                    type: object
+  '/api/books_stock/{id}':
+    get:
+      tags:
+        - books_stock
+      summary: 'Get a specific books_stock by ID'
+      operationId: af7548b593741a5abd2df5a3c381a3f6
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'ID of the books_stock'
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookStock'
+        404:
+          description: 'Resource not found'
+    put:
+      tags:
+        - books_stock
+      summary: 'Update a specific books_stock by ID'
+      operationId: a22f219ac69a07a4c856becc80d49783
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'ID of the books_stock'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: 'BookStock data'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookStock'
+      responses:
+        200:
+          description: 'Resource updated'
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  -
+                    $ref: '#/components/schemas/BookStock'
+                  -
+                    properties:
+                      created_at:
+                        type: string
+                        format: date-time
+                      updated_at:
+                        type: string
+                        format: date-time
+                    type: object
+        404:
+          description: 'Resource not found'
+    delete:
+      tags:
+        - books_stock
+      summary: 'Delete a specific books_stock by ID'
+      operationId: 57e584fe365ae97a635dfc76802aa4ed
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'ID of the books_stock'
           required: true
           schema:
             type: string
@@ -181,6 +309,50 @@ components:
           type: integer
           format: int64
           example: '500'
+        created_at:
+          description: レコード作成日
+          type: string
+          format: date-time
+          example: '2023-06-20T21:20:14.000000Z'
+        updated_at:
+          description: レコード更新日
+          type: string
+          format: date-time
+          example: '2023-06-20T21:20:14.000000Z'
+      type: object
+    BookStock:
+      description: 'BookStock Model'
+      properties:
+        id:
+          description: ID
+          type: integer
+          format: int64
+          example: '1'
+        books_info_id:
+          description: ユニーク制約・外部キー制約（books_infoテーブル）
+          type: integer
+          format: int64
+          example: '1'
+        isbn:
+          description: 'ISBN-13 or ISBN-10'
+          type: string
+          format: string
+          example: '9784908434266'
+        stock:
+          description: 未販売の在庫数
+          type: integer
+          format: int64
+          example: '4'
+        order:
+          description: 未処理の予約数
+          type: integer
+          format: int64
+          example: '1'
+        sold:
+          description: 販売済みの在庫数
+          type: integer
+          format: int64
+          example: '1'
         created_at:
           description: レコード作成日
           type: string

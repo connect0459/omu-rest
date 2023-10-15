@@ -15,7 +15,7 @@ class BookInfoController extends Controller
      * @OA\Get(
      *      path="/api/books_info",
      *      tags={"books_info"},
-     *      summary="Get a list of book_info",
+     *      summary="Get a list of books_info",
      *      @OA\Response(
      *          response=200,
      *          description="Successful response",
@@ -39,7 +39,7 @@ class BookInfoController extends Controller
      * @OA\Post(
      *     path="/api/books_info",
      *     tags={"books_info"},
-     *     summary="Create a new book_info",
+     *     summary="Create a new books_info",
      *     @OA\RequestBody(
      *         required=true,
      *         description="BookInfo data",
@@ -82,12 +82,12 @@ class BookInfoController extends Controller
      * @OA\Get(
      *     path="/api/books_info/{id}",
      *     tags={"books_info"},
-     *     summary="Get a specific book_info by ID",
+     *     summary="Get a specific books_info by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the book_info",
+     *         description="ID of the books_info",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -105,14 +105,14 @@ class BookInfoController extends Controller
      */
     public function show(string $id)
     {
-        $book_info = BookInfo::find($id);
+        $books_info = BookInfo::find($id);
 
-        if (!$book_info) {
+        if (!$books_info) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
         return response()->json(
-            $book_info,
+            $books_info,
             200
         );
     }
@@ -121,12 +121,12 @@ class BookInfoController extends Controller
      * @OA\Put(
      *     path="/api/books_info/{id}",
      *     tags={"books_info"},
-     *     summary="Update a specific book_info by ID",
+     *     summary="Update a specific books_info by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the book_info",
+     *         description="ID of the books_info",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -166,15 +166,15 @@ class BookInfoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $book_info = BookInfo::find($id);
+        $books_info = BookInfo::find($id);
 
-        if (!$book_info) {
+        if (!$books_info) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $book_info->update($request->all());
+        $books_info->update($request->all());
         return response()->json(
-            $book_info,
+            $books_info,
             200
         );
     }
@@ -183,12 +183,12 @@ class BookInfoController extends Controller
      * @OA\Delete(
      *     path="/api/books_info/{id}",
      *     tags={"books_info"},
-     *     summary="Delete a specific book_info by ID",
+     *     summary="Delete a specific books_info by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the book_info",
+     *         description="ID of the books_info",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -205,13 +205,13 @@ class BookInfoController extends Controller
      */
     public function destroy(string $id)
     {
-        $book_info = BookInfo::find($id);
+        $books_info = BookInfo::find($id);
 
-        if (!$book_info) {
+        if (!$books_info) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $book_info->delete();
+        $books_info->delete();
         return response()->json(
             null,
             204
