@@ -1,0 +1,199 @@
+openapi: 3.0.0
+info:
+  title: omu-rest
+  description: 'Laravel製RESTful APIサーバー。著者: [connect0459](https://github.com/connect0459)'
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8000/api'
+    description: 'OpenApi host'
+paths:
+  /api/books_info:
+    get:
+      tags:
+        - books_info
+      summary: 'Get a list of book_info'
+      operationId: 54eee08eb4100fc0bbe01d724ab2cfbb
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BookInfo'
+    post:
+      tags:
+        - books_info
+      summary: 'Create a new book_info'
+      operationId: 305d474b44a5a96c9f0bced1770a3a54
+      requestBody:
+        description: 'BookInfo data'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookInfo'
+      responses:
+        201:
+          description: 'Resource created'
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  -
+                    $ref: '#/components/schemas/BookInfo'
+                  -
+                    properties:
+                      created_at:
+                        type: string
+                        format: date-time
+                      updated_at:
+                        type: string
+                        format: date-time
+                    type: object
+  '/api/books_info/{id}':
+    get:
+      tags:
+        - books_info
+      summary: 'Get a specific book_info by ID'
+      operationId: 88d1f91b3b119b754fc02c31e2c656da
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'ID of the book_info'
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookInfo'
+        404:
+          description: 'Resource not found'
+    put:
+      tags:
+        - books_info
+      summary: 'Update a specific book_info by ID'
+      operationId: 917e81d0c3138ab81e4eff55c769d2bd
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'ID of the book_info'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: 'BookInfo data'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookInfo'
+      responses:
+        200:
+          description: 'Resource updated'
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  -
+                    $ref: '#/components/schemas/BookInfo'
+                  -
+                    properties:
+                      created_at:
+                        type: string
+                        format: date-time
+                      updated_at:
+                        type: string
+                        format: date-time
+                    type: object
+        404:
+          description: 'Resource not found'
+    delete:
+      tags:
+        - books_info
+      summary: 'Delete a specific book_info by ID'
+      operationId: deba97993ae0aeda983a2fe29c5c2417
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'ID of the book_info'
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: 'Resource deleted'
+        404:
+          description: 'Resource not found'
+components:
+  schemas:
+    BookInfo:
+      description: 'BookInfo Model'
+      properties:
+        id:
+          description: ID
+          type: integer
+          format: int64
+          example: '1'
+        isbn:
+          description: 'ISBN-13 or ISBN-10'
+          type: string
+          format: string
+          example: '9784908434266'
+        title:
+          description: タイトル
+          type: string
+          format: string
+          example: これだけは知っておこう!情報リテラシー
+        author:
+          description: 著者
+          type: string
+          format: string
+          example: noa出版
+        publisher:
+          description: 出版社
+          type: string
+          format: string
+          example: '9784908434266'
+        genre:
+          description: ジャンル
+          type: string
+          format: string
+          example: 情報学
+        list_price:
+          description: 定価
+          type: integer
+          format: int64
+          example: '1000'
+        sale_price:
+          description: 販売額
+          type: integer
+          format: int64
+          example: '500'
+        created_at:
+          description: レコード作成日
+          type: string
+          format: date-time
+          example: '2023-06-20T21:20:14.000000Z'
+        updated_at:
+          description: レコード更新日
+          type: string
+          format: date-time
+          example: '2023-06-20T21:20:14.000000Z'
+      type: object
+  securitySchemes:
+    BearerAuth:
+      type: apiKey
+      name: api_token
+      in: header

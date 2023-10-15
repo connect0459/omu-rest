@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BookInfo;
 use Illuminate\Http\Request;
+use OpenApi\Annotations as OA;
 
 class BookInfoController extends Controller
 {
@@ -11,27 +12,18 @@ class BookInfoController extends Controller
     private string $notfound_message = 'The record is not found';
 
     /**
-     * GET
-     * Display a listing of the resource.
-     */
-    /**
-     * @SWG\Get(
-     *     path="/books_info",
-     *     description="books_infoテーブルからレコードをすべて取得する",
-     *     produces={"application/json"},
-     *     tags={"books"},
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Success"
-     *     ),
-     *     @SWG\Response(
-     *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
+     * @OA\Get(
+     *      path="/api/books_info",
+     *      tags={"books_info"},
+     *      summary="Get a list of book_info",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful response",
+     *          @OA\JsonContent(
+     *              type="array",
+     *              @OA\Items(ref="#/components/schemas/BookInfo")
+     *          )
+     *      )
      * )
      */
     public function index()
@@ -44,27 +36,37 @@ class BookInfoController extends Controller
     }
 
     /**
-     * POST
-     * Store a newly created resource in storage.
-     */
-    /**
-     * @SWG\POST(
-     *     path="/books_info",
-     *     description="books_infoテーブルにレコードを新規に挿入する",
-     *     produces={"application/json"},
-     *     tags={"books"},
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Success"
+     * @OA\Post(
+     *     path="/api/books_info",
+     *     tags={"books_info"},
+     *     summary="Create a new book_info",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="BookInfo data",
+     *         @OA\JsonContent(ref="#/components/schemas/BookInfo")
      *     ),
-     *     @SWG\Response(
-     *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Resource created",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             allOf={
+     *                 @OA\Schema(ref="#/components/schemas/BookInfo"),
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="created_at",
+     *                         type="string",
+     *                         format="date-time"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="updated_at",
+     *                         type="string",
+     *                         format="date-time"
+     *                     )
+     *                 )
+     *             }
+     *         )
+     *     )
      * )
      */
     public function store(Request $request)
@@ -77,34 +79,28 @@ class BookInfoController extends Controller
     }
 
     /**
-     * GET
-     * Display the specified resource.
-     */
-    /**
-     * @SWG\Get(
-     *     path="/books_info/{books_info}",
-     *     description="books_infoテーブルから指定のIDに一致するレコードを取得する",
-     *     produces={"application/json"},
-     *     tags={"books"},
-     *     @SWG\Parameter(
-     *         name="books_info",
-     *         description="books_infoのPRIMARYキー",
+     * @OA\Get(
+     *     path="/api/books_info/{id}",
+     *     tags={"books_info"},
+     *     summary="Get a specific book_info by ID",
+     *     @OA\Parameter(
+     *         name="id",
      *         in="path",
      *         required=true,
-     *         type="string"
+     *         description="ID of the book_info",
+     *         @OA\Schema(
+     *             type="string"
+     *         )
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=200,
-     *         description="Success"
+     *         description="Successful response",
+     *         @OA\JsonContent(ref="#/components/schemas/BookInfo")
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
+     *         description="Resource not found"
+     *     )
      * )
      */
     public function show(string $id)
@@ -122,34 +118,50 @@ class BookInfoController extends Controller
     }
 
     /**
-     * PUT
-     * Update the specified resource in storage.
-     */
-    /**
-     * @SWG\PUT|PATCH(
-     *     path="/books_info/{books_info}",
-     *     description="books_infoテーブルから指定のIDに一致するレコードを更新する",
-     *     produces={"application/json"},
-     *     tags={"books"},
-     *     @SWG\Parameter(
-     *         name="books_info",
-     *         description="books_infoのPRIMARYキー",
+     * @OA\Put(
+     *     path="/api/books_info/{id}",
+     *     tags={"books_info"},
+     *     summary="Update a specific book_info by ID",
+     *     @OA\Parameter(
+     *         name="id",
      *         in="path",
      *         required=true,
-     *         type="string"
+     *         description="ID of the book_info",
+     *         @OA\Schema(
+     *             type="string"
+     *         )
      *     ),
-     *     @SWG\Response(
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="BookInfo data",
+     *         @OA\JsonContent(ref="#/components/schemas/BookInfo")
+     *     ),
+     *     @OA\Response(
      *         response=200,
-     *         description="Success"
+     *         description="Resource updated",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             allOf={
+     *                 @OA\Schema(ref="#/components/schemas/BookInfo"),
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="created_at",
+     *                         type="string",
+     *                         format="date-time"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="updated_at",
+     *                         type="string",
+     *                         format="date-time"
+     *                     )
+     *                 )
+     *             }
+     *         )
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
+     *         description="Resource not found"
+     *     )
      * )
      */
     public function update(Request $request, string $id)
@@ -168,34 +180,27 @@ class BookInfoController extends Controller
     }
 
     /**
-     * DELETE
-     * Remove the specified resource from storage.
-     */
-    /**
-     * @SWG\DELETE(
-     *     path="/books_info/{books_info}",
-     *     description="books_infoテーブルから指定のIDに一致するレコードを削除する",
-     *     produces={"application/json"},
-     *     tags={"books"},
-     *     @SWG\Parameter(
-     *         name="books_info",
-     *         description="books_infoのPRIMARYキー",
+     * @OA\Delete(
+     *     path="/api/books_info/{id}",
+     *     tags={"books_info"},
+     *     summary="Delete a specific book_info by ID",
+     *     @OA\Parameter(
+     *         name="id",
      *         in="path",
      *         required=true,
-     *         type="string"
+     *         description="ID of the book_info",
+     *         @OA\Schema(
+     *             type="string"
+     *         )
      *     ),
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Success"
+     *     @OA\Response(
+     *         response=204,
+     *         description="Resource deleted"
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
+     *         description="Resource not found"
+     *     )
      * )
      */
     public function destroy(string $id)
