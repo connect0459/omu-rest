@@ -14,26 +14,7 @@ class OrderCustomerController extends Controller
      * GET
      * Display a listing of the resource.
      */
-    /**
-     * @SWG\Get(
-     *     path="/orders_customers",
-     *     description="orders_customersテーブルからレコードをすべて取得する",
-     *     produces={"application/json"},
-     *     tags={"orders_customers"},
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Success"
-     *     ),
-     *     @SWG\Response(
-     *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
-     * )
-     */
+    
     public function index()
     {
         $orders_customers = OrderCustomer::all();
@@ -47,26 +28,7 @@ class OrderCustomerController extends Controller
      * POST
      * Store a newly created resource in storage.
      */
-    /**
-     * @SWG\POST(
-     *     path="/orders_customers",
-     *     description="orders_customersテーブルにレコードを新規に挿入する",
-     *     produces={"application/json"},
-     *     tags={"orders_customers"},
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Success"
-     *     ),
-     *     @SWG\Response(
-     *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
-     * )
-     */
+    
     public function store(Request $request)
     {
         $orders_customers = OrderCustomer::create($request->all());
@@ -80,33 +42,7 @@ class OrderCustomerController extends Controller
      * GET
      * Display the specified resource.
      */
-    /**
-     * @SWG\Get(
-     *     path="/orders_customers/{orders_customers}",
-     *     description="orders_customersテーブルから指定のIDに一致するレコードを取得する",
-     *     produces={"application/json"},
-     *     tags={"orders_customers"},
-     *     @SWG\Parameter(
-     *         name="orders_customers",
-     *         description="orders_customersのPRIMARYキー",
-     *         in="path",
-     *         required=true,
-     *         type="string"
-     *     ),
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Success"
-     *     ),
-     *     @SWG\Response(
-     *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
-     * )
-     */
+    
     public function show(string $id)
     {
         $book_info = OrderCustomer::find($id);
@@ -125,33 +61,7 @@ class OrderCustomerController extends Controller
      * PUT
      * Update the specified resource in storage.
      */
-    /**
-     * @SWG\PUT|PATCH(
-     *     path="/orders_customers/{orders_customers}",
-     *     description="orders_customersテーブルから指定のIDに一致するレコードを更新する",
-     *     produces={"application/json"},
-     *     tags={"orders_customers"},
-     *     @SWG\Parameter(
-     *         name="orders_customers",
-     *         description="orders_customersのPRIMARYキー",
-     *         in="path",
-     *         required=true,
-     *         type="string"
-     *     ),
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Success"
-     *     ),
-     *     @SWG\Response(
-     *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
-     * )
-     */
+    
     public function update(Request $request, string $id)
     {
         $book_info = OrderCustomer::find($id);
@@ -171,33 +81,7 @@ class OrderCustomerController extends Controller
      * DELETE
      * Remove the specified resource from storage.
      */
-    /**
-     * @SWG\DELETE(
-     *     path="/orders_customers/{orders_customers}",
-     *     description="orders_customersテーブルから指定のIDに一致するレコードを削除する",
-     *     produces={"application/json"},
-     *     tags={"orders_customers"},
-     *     @SWG\Parameter(
-     *         name="orders_customers",
-     *         description="orders_customersのPRIMARYキー",
-     *         in="path",
-     *         required=true,
-     *         type="string"
-     *     ),
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Success"
-     *     ),
-     *     @SWG\Response(
-     *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
-     * )
-     */
+    
     public function destroy(string $id)
     {
         $book_info = OrderCustomer::find($id);
