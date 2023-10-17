@@ -2,47 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OrderCustomer;
+use App\Models\OrderPayment;
 use Illuminate\Http\Request;
 
-class OrderCustomerController extends Controller
+class OrderPaymentController extends Controller
 {
     /** @var string The message called when a record is not found  */
     private string $notfound_message = 'The record is not found';
 
     /**
      * @OA\Get(
-     *     path="/orders_customers",
-     *     tags={"orders_customers"},
-     *     summary="Get a list of orders_customers",
+     *     path="/orders_payments",
+     *     tags={"orders_payments"},
+     *     summary="Get a list of orders_payments",
      *     @OA\Response(
      *         response=200,
      *         description="Successful response",
      *         @OA\JsonContent(
      *             type="array",
-     *             @OA\Items(ref="#/components/schemas/OrderCustomer")
+     *             @OA\Items(ref="#/components/schemas/OrderPayment")
      *         )
      *     )
      * )
      */
     public function index()
     {
-        $orders_customers = OrderCustomer::all();
+        $orders_payments = OrderPayment::all();
         return response()->json(
-            $orders_customers,
+            $orders_payments,
             200
         );
     }
 
     /**
      * @OA\Post(
-     *     path="/orders_customers",
-     *     tags={"orders_customers"},
-     *     summary="Create a new orders_customers",
+     *     path="/orders_payments",
+     *     tags={"orders_payments"},
+     *     summary="Create a new orders_payments",
      *     @OA\RequestBody(
      *         required=true,
-     *         description="OrderCustomer data",
-     *         @OA\JsonContent(ref="#/components/schemas/OrderCustomer")
+     *         description="OrderPayment data",
+     *         @OA\JsonContent(ref="#/components/schemas/OrderPayment")
      *     ),
      *     @OA\Response(
      *         response=201,
@@ -50,7 +50,7 @@ class OrderCustomerController extends Controller
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
-     *                 @OA\Schema(ref="#/components/schemas/OrderCustomer")
+     *                 @OA\Schema(ref="#/components/schemas/OrderPayment")
      *             }
      *         )
      *     )
@@ -58,23 +58,23 @@ class OrderCustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $orders_customers = OrderCustomer::create($request->all());
+        $orders_payments = OrderPayment::create($request->all());
         return response()->json(
-            $orders_customers,
+            $orders_payments,
             201
         );
     }
 
     /**
      * @OA\Get(
-     *     path="/orders_customers/{id}",
-     *     tags={"orders_customers"},
-     *     summary="Get a specific orders_customers by ID",
+     *     path="/orders_payments/{id}",
+     *     tags={"orders_payments"},
+     *     summary="Get a specific orders_payments by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the orders_customers",
+     *         description="ID of the orders_payments",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -82,7 +82,7 @@ class OrderCustomerController extends Controller
      *     @OA\Response(
      *         response=200,
      *         description="Successful response",
-     *         @OA\JsonContent(ref="#/components/schemas/OrderCustomer")
+     *         @OA\JsonContent(ref="#/components/schemas/OrderPayment")
      *     ),
      *     @OA\Response(
      *         response=404,
@@ -92,36 +92,36 @@ class OrderCustomerController extends Controller
      */
     public function show(string $id)
     {
-        $orders_customers = OrderCustomer::find($id);
+        $orders_payments = OrderPayment::find($id);
 
-        if (!$orders_customers) {
+        if (!$orders_payments) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
         return response()->json(
-            $orders_customers,
+            $orders_payments,
             200
         );
     }
 
     /**
      * @OA\Put(
-     *     path="/orders_customers/{id}",
-     *     tags={"orders_customers"},
-     *     summary="Update a specific orders_customers by ID",
+     *     path="/orders_payments/{id}",
+     *     tags={"orders_payments"},
+     *     summary="Update a specific orders_payments by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the orders_customers",
+     *         description="ID of the orders_payments",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         description="OrderCustomer data",
-     *         @OA\JsonContent(ref="#/components/schemas/OrderCustomer")
+     *         description="OrderPayment data",
+     *         @OA\JsonContent(ref="#/components/schemas/OrderPayment")
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -129,7 +129,7 @@ class OrderCustomerController extends Controller
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
-     *                 @OA\Schema(ref="#/components/schemas/OrderCustomer")
+     *                 @OA\Schema(ref="#/components/schemas/OrderPayment")
      *             }
      *         )
      *     ),
@@ -141,29 +141,29 @@ class OrderCustomerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $orders_customers = OrderCustomer::find($id);
+        $orders_payments = OrderPayment::find($id);
 
-        if (!$orders_customers) {
+        if (!$orders_payments) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $orders_customers->update($request->all());
+        $orders_payments->update($request->all());
         return response()->json(
-            $orders_customers,
+            $orders_payments,
             200
         );
     }
 
     /**
      * @OA\Delete(
-     *     path="/orders_customers/{id}",
-     *     tags={"orders_customers"},
-     *     summary="Delete a specific orders_customers by ID",
+     *     path="/orders_payments/{id}",
+     *     tags={"orders_payments"},
+     *     summary="Delete a specific orders_payments by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the orders_customers",
+     *         description="ID of the orders_payments",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -180,13 +180,13 @@ class OrderCustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        $orders_customers = OrderCustomer::find($id);
+        $orders_payments = OrderPayment::find($id);
 
-        if (!$orders_customers) {
+        if (!$orders_payments) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $orders_customers->delete();
+        $orders_payments->delete();
         return response()->json(
             null,
             204

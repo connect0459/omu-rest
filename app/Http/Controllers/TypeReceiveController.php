@@ -2,47 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OrderCustomer;
+use App\Models\TypeReceive;
 use Illuminate\Http\Request;
 
-class OrderCustomerController extends Controller
+class TypeReceiveController extends Controller
 {
     /** @var string The message called when a record is not found  */
     private string $notfound_message = 'The record is not found';
 
     /**
      * @OA\Get(
-     *     path="/orders_customers",
-     *     tags={"orders_customers"},
-     *     summary="Get a list of orders_customers",
+     *     path="/types_receive",
+     *     tags={"types_receive"},
+     *     summary="Get a list of types_receive",
      *     @OA\Response(
      *         response=200,
      *         description="Successful response",
      *         @OA\JsonContent(
      *             type="array",
-     *             @OA\Items(ref="#/components/schemas/OrderCustomer")
+     *             @OA\Items(ref="#/components/schemas/TypeReceive")
      *         )
      *     )
      * )
      */
     public function index()
     {
-        $orders_customers = OrderCustomer::all();
+        $types_receive = TypeReceive::all();
         return response()->json(
-            $orders_customers,
+            $types_receive,
             200
         );
     }
 
     /**
      * @OA\Post(
-     *     path="/orders_customers",
-     *     tags={"orders_customers"},
-     *     summary="Create a new orders_customers",
+     *     path="/types_receive",
+     *     tags={"types_receive"},
+     *     summary="Create a new types_receive",
      *     @OA\RequestBody(
      *         required=true,
-     *         description="OrderCustomer data",
-     *         @OA\JsonContent(ref="#/components/schemas/OrderCustomer")
+     *         description="TypeReceive data",
+     *         @OA\JsonContent(ref="#/components/schemas/TypeReceive")
      *     ),
      *     @OA\Response(
      *         response=201,
@@ -50,7 +50,7 @@ class OrderCustomerController extends Controller
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
-     *                 @OA\Schema(ref="#/components/schemas/OrderCustomer")
+     *                 @OA\Schema(ref="#/components/schemas/TypeReceive")
      *             }
      *         )
      *     )
@@ -58,23 +58,23 @@ class OrderCustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $orders_customers = OrderCustomer::create($request->all());
+        $types_receive = TypeReceive::create($request->all());
         return response()->json(
-            $orders_customers,
+            $types_receive,
             201
         );
     }
 
     /**
      * @OA\Get(
-     *     path="/orders_customers/{id}",
-     *     tags={"orders_customers"},
-     *     summary="Get a specific orders_customers by ID",
+     *     path="/types_receive/{id}",
+     *     tags={"types_receive"},
+     *     summary="Get a specific types_receive by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the orders_customers",
+     *         description="ID of the types_receive",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -82,7 +82,7 @@ class OrderCustomerController extends Controller
      *     @OA\Response(
      *         response=200,
      *         description="Successful response",
-     *         @OA\JsonContent(ref="#/components/schemas/OrderCustomer")
+     *         @OA\JsonContent(ref="#/components/schemas/TypeReceive")
      *     ),
      *     @OA\Response(
      *         response=404,
@@ -92,36 +92,36 @@ class OrderCustomerController extends Controller
      */
     public function show(string $id)
     {
-        $orders_customers = OrderCustomer::find($id);
+        $types_receive = TypeReceive::find($id);
 
-        if (!$orders_customers) {
+        if (!$types_receive) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
         return response()->json(
-            $orders_customers,
+            $types_receive,
             200
         );
     }
 
     /**
      * @OA\Put(
-     *     path="/orders_customers/{id}",
-     *     tags={"orders_customers"},
-     *     summary="Update a specific orders_customers by ID",
+     *     path="/types_receive/{id}",
+     *     tags={"types_receive"},
+     *     summary="Update a specific types_receive by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the orders_customers",
+     *         description="ID of the types_receive",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         description="OrderCustomer data",
-     *         @OA\JsonContent(ref="#/components/schemas/OrderCustomer")
+     *         description="TypeReceive data",
+     *         @OA\JsonContent(ref="#/components/schemas/TypeReceive")
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -129,7 +129,7 @@ class OrderCustomerController extends Controller
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
-     *                 @OA\Schema(ref="#/components/schemas/OrderCustomer")
+     *                 @OA\Schema(ref="#/components/schemas/TypeReceive")
      *             }
      *         )
      *     ),
@@ -141,29 +141,29 @@ class OrderCustomerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $orders_customers = OrderCustomer::find($id);
+        $types_receive = TypeReceive::find($id);
 
-        if (!$orders_customers) {
+        if (!$types_receive) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $orders_customers->update($request->all());
+        $types_receive->update($request->all());
         return response()->json(
-            $orders_customers,
+            $types_receive,
             200
         );
     }
 
     /**
      * @OA\Delete(
-     *     path="/orders_customers/{id}",
-     *     tags={"orders_customers"},
-     *     summary="Delete a specific orders_customers by ID",
+     *     path="/types_receive/{id}",
+     *     tags={"types_receive"},
+     *     summary="Delete a specific types_receive by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the orders_customers",
+     *         description="ID of the types_receive",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -180,13 +180,13 @@ class OrderCustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        $orders_customers = OrderCustomer::find($id);
+        $types_receive = TypeReceive::find($id);
 
-        if (!$orders_customers) {
+        if (!$types_receive) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $orders_customers->delete();
+        $types_receive->delete();
         return response()->json(
             null,
             204
