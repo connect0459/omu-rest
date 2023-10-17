@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('orders_items', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('numbering');
+            $table->integer('order_state');
+            $table->string('isbn', 13);
+            $table->string('title');
+            $table->integer('sale_price');
+            $table->datetime('created_at')->useCurrent();
+            $table->datetime('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

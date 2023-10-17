@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('orders_payments', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('numbering');
+            $table->integer('subtotal');
+            $table->integer('postage')->nullable()->default(0);
+            $table->integer('fee')->nullable()->default(0);
+            $table->datetime('created_at')->useCurrent();
+            $table->datetime('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 
