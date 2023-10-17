@@ -739,6 +739,1189 @@
                     }
                 }
             }
+        },
+        "/orders_customers": {
+            "get": {
+                "tags": [
+                    "orders_customers"
+                ],
+                "summary": "Get a list of orders_customers",
+                "operationId": "5217a452519ec6ef916c6a3e2f4070dc",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/OrderCustomer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "orders_customers"
+                ],
+                "summary": "Create a new orders_customers",
+                "operationId": "75e0485900f170d2424fdeadf59b0752",
+                "requestBody": {
+                    "description": "OrderCustomer data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OrderCustomer"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Resource created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/OrderCustomer"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/orders_customers/{id}": {
+            "get": {
+                "tags": [
+                    "orders_customers"
+                ],
+                "summary": "Get a specific orders_customers by ID",
+                "operationId": "4dd012aac3be308644f1e2e152f92c19",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the orders_customers",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrderCustomer"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "orders_customers"
+                ],
+                "summary": "Update a specific orders_customers by ID",
+                "operationId": "a0a94057f0311e2193b5897f80221470",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the orders_customers",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "OrderCustomer data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OrderCustomer"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Resource updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/OrderCustomer"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "orders_customers"
+                ],
+                "summary": "Delete a specific orders_customers by ID",
+                "operationId": "5608eff2ef8984e0b7447765f27595aa",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the orders_customers",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            }
+        },
+        "/orders_items": {
+            "get": {
+                "tags": [
+                    "orders_items"
+                ],
+                "summary": "Get a list of orders_items",
+                "operationId": "89fde6ad08076b992c521fb7c680e29e",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/OrderItem"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "orders_items"
+                ],
+                "summary": "Create a new orders_items",
+                "operationId": "b2909cc3849277b1d5345ccb4205c71d",
+                "requestBody": {
+                    "description": "OrderItem data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OrderItem"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Resource created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/OrderItem"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/orders_items/{id}": {
+            "get": {
+                "tags": [
+                    "orders_items"
+                ],
+                "summary": "Get a specific orders_items by ID",
+                "operationId": "0b2a7a56e7d5c2c49b7d11bdb0f48f5c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the orders_items",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrderItem"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "orders_items"
+                ],
+                "summary": "Update a specific orders_items by ID",
+                "operationId": "8bee2e95aba24db3af9b2bc7b5a53f0d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the orders_items",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "OrderItem data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OrderItem"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Resource updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/OrderItem"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "orders_items"
+                ],
+                "summary": "Delete a specific orders_items by ID",
+                "operationId": "6d397dbc3afd3a3f44e4cc08820e0921",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the orders_items",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            }
+        },
+        "/orders_payments": {
+            "get": {
+                "tags": [
+                    "orders_payments"
+                ],
+                "summary": "Get a list of orders_payments",
+                "operationId": "52140bdaf9965edfc692b030a9f1898f",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/OrderPayment"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "orders_payments"
+                ],
+                "summary": "Create a new orders_payments",
+                "operationId": "231e4438ab66e1f3ba4205adf67e0df7",
+                "requestBody": {
+                    "description": "OrderPayment data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OrderPayment"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Resource created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/OrderPayment"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/orders_payments/{id}": {
+            "get": {
+                "tags": [
+                    "orders_payments"
+                ],
+                "summary": "Get a specific orders_payments by ID",
+                "operationId": "ed63e750658440b279ee8040dc02aba5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the orders_payments",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrderPayment"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "orders_payments"
+                ],
+                "summary": "Update a specific orders_payments by ID",
+                "operationId": "e7043bcd7e8fc712b2e3a6516f1b8ca8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the orders_payments",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "OrderPayment data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OrderPayment"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Resource updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/OrderPayment"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "orders_payments"
+                ],
+                "summary": "Delete a specific orders_payments by ID",
+                "operationId": "41c8a438add65c3a1a6f1f7f0efeeea3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the orders_payments",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            }
+        },
+        "/types_branch": {
+            "get": {
+                "tags": [
+                    "types_branch"
+                ],
+                "summary": "Get a list of types_branch",
+                "operationId": "680fb4bfffe160f8b66f3f0d065a57af",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/TypeBranch"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "types_branch"
+                ],
+                "summary": "Create a new types_branch",
+                "operationId": "d00cd959bca490146300dabddfd77416",
+                "requestBody": {
+                    "description": "TypeBranch data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TypeBranch"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Resource created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/TypeBranch"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/types_branch/{id}": {
+            "get": {
+                "tags": [
+                    "types_branch"
+                ],
+                "summary": "Get a specific types_branch by ID",
+                "operationId": "a6ea0a8dae4bac8c5cd2e5b7329d81b8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the types_branch",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TypeBranch"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "types_branch"
+                ],
+                "summary": "Update a specific types_branch by ID",
+                "operationId": "9c921c71297596a3321507fd311c8b85",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the types_branch",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "TypeBranch data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TypeBranch"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Resource updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/TypeBranch"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "types_branch"
+                ],
+                "summary": "Delete a specific types_branch by ID",
+                "operationId": "b630577c5f333e231347e92bd0de9701",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the types_branch",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            }
+        },
+        "/types_order_state": {
+            "get": {
+                "tags": [
+                    "types_order_state"
+                ],
+                "summary": "Get a list of types_order_state",
+                "operationId": "e4d3452bfc7a5e9875878ee276dc81d9",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/TypeOrderState"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "types_order_state"
+                ],
+                "summary": "Create a new types_order_state",
+                "operationId": "6e6a65d7be458b082d22b9a277919bfc",
+                "requestBody": {
+                    "description": "TypeOrderState data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TypeOrderState"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Resource created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/TypeOrderState"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/types_order_state/{id}": {
+            "get": {
+                "tags": [
+                    "types_order_state"
+                ],
+                "summary": "Get a specific types_order_state by ID",
+                "operationId": "32f9a7463d0868fe5d0a126224a10bf3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the types_order_state",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TypeOrderState"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "types_order_state"
+                ],
+                "summary": "Update a specific types_order_state by ID",
+                "operationId": "4015277c80f542148d2d6ea80056c8bd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the types_order_state",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "TypeOrderState data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TypeOrderState"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Resource updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/TypeOrderState"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "types_order_state"
+                ],
+                "summary": "Delete a specific types_order_state by ID",
+                "operationId": "cd1908f1588886fafc78f5fcbd7e6171",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the types_order_state",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            }
+        },
+        "/types_payment": {
+            "get": {
+                "tags": [
+                    "types_payment"
+                ],
+                "summary": "Get a list of types_payment",
+                "operationId": "9b80092029b115a9f65e7d63bff49263",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/TypePayment"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "types_payment"
+                ],
+                "summary": "Create a new types_payment",
+                "operationId": "80c537417b9cbfb6fee32d0c37c90058",
+                "requestBody": {
+                    "description": "TypePayment data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TypePayment"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Resource created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/TypePayment"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/types_payment/{id}": {
+            "get": {
+                "tags": [
+                    "types_payment"
+                ],
+                "summary": "Get a specific types_payment by ID",
+                "operationId": "581af02e6aa4ea77b2233bf92ab11517",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the types_payment",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TypePayment"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "types_payment"
+                ],
+                "summary": "Update a specific types_payment by ID",
+                "operationId": "ac8b0661b952549d152d7ddd5ba97470",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the types_payment",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "TypePayment data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TypePayment"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Resource updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/TypePayment"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "types_payment"
+                ],
+                "summary": "Delete a specific types_payment by ID",
+                "operationId": "cbb922f2a8472eba820e954f6a5cfdaa",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the types_payment",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            }
+        },
+        "/types_receive": {
+            "get": {
+                "tags": [
+                    "types_receive"
+                ],
+                "summary": "Get a list of types_receive",
+                "operationId": "60e40651e889a946cb02f7cd642930d6",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/TypeReceive"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "types_receive"
+                ],
+                "summary": "Create a new types_receive",
+                "operationId": "610ad288b24a66d9196f37b7fdd422d0",
+                "requestBody": {
+                    "description": "TypeReceive data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TypeReceive"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Resource created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/TypeReceive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/types_receive/{id}": {
+            "get": {
+                "tags": [
+                    "types_receive"
+                ],
+                "summary": "Get a specific types_receive by ID",
+                "operationId": "276a714bfbd4795126a848f8bc11bccc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the types_receive",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TypeReceive"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "types_receive"
+                ],
+                "summary": "Update a specific types_receive by ID",
+                "operationId": "2c2b11422907ef1c682ee7cabfc46def",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the types_receive",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "TypeReceive data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TypeReceive"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Resource updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/TypeReceive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "types_receive"
+                ],
+                "summary": "Delete a specific types_receive by ID",
+                "operationId": "4bb0f0c50631dc0c8af3740a26bf5f87",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the types_receive",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -943,6 +2126,330 @@
                         "type": "string",
                         "format": "string",
                         "example": "2023年6月20日からサイトを稼働しております。"
+                    },
+                    "created_at": {
+                        "description": "レコード作成日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    },
+                    "updated_at": {
+                        "description": "レコード更新日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "OrderCustomer": {
+                "description": "OrderCustomer Model",
+                "properties": {
+                    "id": {
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
+                    "numbering": {
+                        "description": "整理番号",
+                        "type": "string",
+                        "format": "string",
+                        "example": "231B001"
+                    },
+                    "name1": {
+                        "description": "名前",
+                        "type": "string",
+                        "format": "string",
+                        "example": "中岡暉"
+                    },
+                    "name2": {
+                        "description": "フリガナ or ローマ字",
+                        "type": "string",
+                        "format": "string",
+                        "example": "ナカオカアキラ"
+                    },
+                    "university": {
+                        "description": "大学",
+                        "type": "string",
+                        "format": "string",
+                        "example": "○○大学"
+                    },
+                    "grade": {
+                        "description": "学年",
+                        "type": "string",
+                        "format": "string",
+                        "example": "1年"
+                    },
+                    "belong": {
+                        "description": "学科など",
+                        "type": "string",
+                        "format": "string",
+                        "example": "工学部"
+                    },
+                    "email": {
+                        "description": "メールアドレス",
+                        "type": "string",
+                        "format": "string",
+                        "example": "example@gmail.com"
+                    },
+                    "receive_type": {
+                        "description": "受取り方法",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
+                    "receive_date": {
+                        "description": "受取り日時",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    },
+                    "payment_type": {
+                        "description": "支払い方法",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
+                    "payment_due_date": {
+                        "description": "支払い期限",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    },
+                    "is_paid": {
+                        "description": "支払い済みか",
+                        "type": "boolean",
+                        "format": "boolean",
+                        "example": "true"
+                    },
+                    "notes": {
+                        "description": "備考・質問",
+                        "type": "string",
+                        "format": "string",
+                        "example": "受け取り日時は後から変更できますか？"
+                    },
+                    "created_at": {
+                        "description": "レコード作成日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    },
+                    "updated_at": {
+                        "description": "レコード更新日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "OrderItem": {
+                "description": "OrderItem Model",
+                "properties": {
+                    "id": {
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
+                    "numbering": {
+                        "description": "整理番号",
+                        "type": "string",
+                        "format": "string",
+                        "example": "231B001"
+                    },
+                    "order_state": {
+                        "description": "予約の処理状態を表すステータス。types_order_stateテーブルから取得",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
+                    "isbn": {
+                        "description": "ISBN-13 or ISBN-10",
+                        "type": "string",
+                        "format": "string",
+                        "example": "9784908434266"
+                    },
+                    "title": {
+                        "description": "タイトル",
+                        "type": "string",
+                        "format": "string",
+                        "example": "これだけは知っておこう!情報リテラシー"
+                    },
+                    "sale_price": {
+                        "description": "販売額",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "500"
+                    },
+                    "created_at": {
+                        "description": "レコード作成日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    },
+                    "updated_at": {
+                        "description": "レコード更新日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "OrderPayment": {
+                "description": "OrderPayment Model",
+                "properties": {
+                    "id": {
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
+                    "numbering": {
+                        "description": "整理番号",
+                        "type": "string",
+                        "format": "string",
+                        "example": "231B001"
+                    },
+                    "subtotal": {
+                        "description": "教科書代の小計",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1000"
+                    },
+                    "postage": {
+                        "description": "送料",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "400"
+                    },
+                    "fee": {
+                        "description": "手数料",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "100"
+                    },
+                    "created_at": {
+                        "description": "レコード作成日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    },
+                    "updated_at": {
+                        "description": "レコード更新日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "TypeBranch": {
+                "description": "TypeBranch Model",
+                "properties": {
+                    "id": {
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
+                    "type": {
+                        "description": "支部名",
+                        "type": "string",
+                        "format": "string",
+                        "example": "○○大学"
+                    },
+                    "created_at": {
+                        "description": "レコード作成日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    },
+                    "updated_at": {
+                        "description": "レコード更新日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "TypeOrderState": {
+                "description": "TypeOrderState Model",
+                "properties": {
+                    "id": {
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
+                    "type": {
+                        "description": "予約、販売済み、キャンセル、返品などのステータス",
+                        "type": "string",
+                        "format": "string",
+                        "example": "予約"
+                    },
+                    "created_at": {
+                        "description": "レコード作成日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    },
+                    "updated_at": {
+                        "description": "レコード更新日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "TypePayment": {
+                "description": "TypePayment Model",
+                "properties": {
+                    "id": {
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
+                    "type": {
+                        "description": "支払い方法",
+                        "type": "string",
+                        "format": "string",
+                        "example": "現金"
+                    },
+                    "created_at": {
+                        "description": "レコード作成日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    },
+                    "updated_at": {
+                        "description": "レコード更新日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "TypeReceive": {
+                "description": "TypeReceive Model",
+                "properties": {
+                    "id": {
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
+                    "type": {
+                        "description": "受取り方法",
+                        "type": "string",
+                        "format": "string",
+                        "example": "露店"
                     },
                     "created_at": {
                         "description": "レコード作成日",

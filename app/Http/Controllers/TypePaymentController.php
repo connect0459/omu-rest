@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TypePayment;
 use Illuminate\Http\Request;
+use OpenApi\Annotations as OA;
 
 class TypePaymentController extends Controller
 {

@@ -8,9 +8,9 @@ use OpenApi\Annotations as OA;
 
 /**
  *  @OA\Schema(
- *      schema="TypeBranch",
+ *      schema="TypeReceive",
  *      type="object",
- *      description="TypeBranch Model",
+ *      description="TypeReceive Model",
  *      @OA\Property(
  *          property="id",
  *          description="ID",

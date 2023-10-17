@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TypeReceive;
 use Illuminate\Http\Request;
+use OpenApi\Annotations as OA;
 
 class TypeReceiveController extends Controller
 {

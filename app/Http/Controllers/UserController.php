@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use OpenApi\Annotations as OA;
 
 class UserController extends Controller
 {
@@ -15,26 +16,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /**
-     * @SWG\Get(
-     *     path="/users",
-     *     description="usersテーブルからレコードをすべて取得する",
-     *     produces={"application/json"},
-     *     tags={"users"},
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Success"
-     *     ),
-     *     @SWG\Response(
-     *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
-     * )
-     */
+    
     public function index()
     {
         $users = User::all();
@@ -47,26 +29,7 @@ class UserController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    /**
-     * @SWG\POST(
-     *     path="/users",
-     *     description="usersテーブルにレコードを新規に挿入する",
-     *     produces={"application/json"},
-     *     tags={"users"},
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Success"
-     *     ),
-     *     @SWG\Response(
-     *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
-     * )
-     */
+    
     public function store(Request $request)
     {
         $user = User::create($request->all());
@@ -79,33 +42,7 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    /**
-     * @SWG\Get(
-     *     path="/users/{users}",
-     *     description="usersテーブルから指定のIDに一致するレコードを取得する",
-     *     produces={"application/json"},
-     *     tags={"users"},
-     *     @SWG\Parameter(
-     *         name="users",
-     *         description="usersのPRIMARYキー",
-     *         in="path",
-     *         required=true,
-     *         type="string"
-     *     ),
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Success"
-     *     ),
-     *     @SWG\Response(
-     *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
-     * )
-     */
+    
     public function show($id)
     {
         $user = User::find($id);
@@ -122,33 +59,7 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    /**
-     * @SWG\PUT|PATCH(
-     *     path="/users/{users}",
-     *     description="usersテーブルから指定のIDに一致するレコードを更新する",
-     *     produces={"application/json"},
-     *     tags={"users"},
-     *     @SWG\Parameter(
-     *         name="users",
-     *         description="usersのPRIMARYキー",
-     *         in="path",
-     *         required=true,
-     *         type="string"
-     *     ),
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Success"
-     *     ),
-     *     @SWG\Response(
-     *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
-     * )
-     */
+    
     public function update(Request $request, $id)
     {
         $user = User::find($id);
@@ -166,33 +77,7 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    /**
-     * @SWG\DELETE(
-     *     path="/users/{users}",
-     *     description="usersテーブルから指定のIDに一致するレコードを削除する",
-     *     produces={"application/json"},
-     *     tags={"users"},
-     *     @SWG\Parameter(
-     *         name="users",
-     *         description="usersのPRIMARYキー",
-     *         in="path",
-     *         required=true,
-     *         type="string"
-     *     ),
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Success"
-     *     ),
-     *     @SWG\Response(
-     *         response=404,
-     *         description="Parameter error"
-     *     ),
-     *     @SWG\Response(
-     *         response=403,
-     *         description="Auth error",
-     *     ),
-     * )
-     */
+    
     public function destroy($id)
     {
         $user = User::find($id);
