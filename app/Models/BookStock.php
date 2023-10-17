@@ -26,6 +26,13 @@ use OpenApi\Annotations as OA;
  *          example="1"
  *      ),
  *      @OA\Property(
+ *          property="branch",
+ *          description="支部番号",
+ *          type="integer",
+ *          format="int64",
+ *          example="1"
+ *      ),
+ *      @OA\Property(
  *          property="isbn",
  *          description="ISBN-13 or ISBN-10",
  *          type="string",

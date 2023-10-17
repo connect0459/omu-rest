@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('books_stock', function (Blueprint $table) {
             $table->id();
             $table->foreignId('books_info_id')->unique()->constrained('books_info')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->integer('branch');
             $table->string('isbn', 13);
             $table->integer('stock')->default(0);
             $table->integer('order')->default(0);

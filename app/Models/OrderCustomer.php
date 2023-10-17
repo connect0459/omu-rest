@@ -19,6 +19,13 @@ use OpenApi\Annotations as OA;
  *          example="1"
  *      ),
  *      @OA\Property(
+ *          property="branch",
+ *          description="支部番号",
+ *          type="integer",
+ *          format="int64",
+ *          example="1"
+ *      ),
+ *      @OA\Property(
  *          property="numbering",
  *          description="整理番号",
  *          type="string",
@@ -132,8 +139,8 @@ class OrderCustomer extends Model
     protected $table = 'orders_customers';
     protected $primaryKey = 'id';
     protected $fillable = [
+        'branch',
         'numbering',
-        'order_state',
         'name1',
         'name2',
         'university',

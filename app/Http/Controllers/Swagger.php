@@ -16,7 +16,7 @@ use OpenApi\Annotations as OA;
  *
  * サーバー情報
  * @OA\Server(
- *   description="OpenApi host",
+ *   description="ローカルホストのAPIエンドポイント",
  *   url="http://localhost:8000/api"
  * )
  * 
