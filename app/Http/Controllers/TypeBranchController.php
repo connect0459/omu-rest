@@ -13,9 +13,9 @@ class TypeBranchController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/types_branch",
-     *     tags={"types_branch"},
-     *     summary="Get a list of types_branch",
+     *     path="/types_branches",
+     *     tags={"types_branches"},
+     *     summary="Get a list of types_branches",
      *     @OA\Response(
      *         response=200,
      *         description="Successful response",
@@ -28,18 +28,18 @@ class TypeBranchController extends Controller
      */
     public function index()
     {
-        $types_branch = TypeBranch::all();
+        $types_branches = TypeBranch::all();
         return response()->json(
-            $types_branch,
+            $types_branches,
             200
         );
     }
 
     /**
      * @OA\Post(
-     *     path="/types_branch",
-     *     tags={"types_branch"},
-     *     summary="Create a new types_branch",
+     *     path="/types_branches",
+     *     tags={"types_branches"},
+     *     summary="Create a new types_branches",
      *     @OA\RequestBody(
      *         required=true,
      *         description="TypeBranch data",
@@ -59,23 +59,23 @@ class TypeBranchController extends Controller
      */
     public function store(Request $request)
     {
-        $types_branch = TypeBranch::create($request->all());
+        $types_branches = TypeBranch::create($request->all());
         return response()->json(
-            $types_branch,
+            $types_branches,
             201
         );
     }
 
     /**
      * @OA\Get(
-     *     path="/types_branch/{id}",
-     *     tags={"types_branch"},
-     *     summary="Get a specific types_branch by ID",
+     *     path="/types_branches/{id}",
+     *     tags={"types_branches"},
+     *     summary="Get a specific types_branches by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_branch",
+     *         description="ID of the types_branches",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -93,28 +93,28 @@ class TypeBranchController extends Controller
      */
     public function show(string $id)
     {
-        $types_branch = TypeBranch::find($id);
+        $types_branches = TypeBranch::find($id);
 
-        if (!$types_branch) {
+        if (!$types_branches) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
         return response()->json(
-            $types_branch,
+            $types_branches,
             200
         );
     }
 
     /**
      * @OA\Put(
-     *     path="/types_branch/{id}",
-     *     tags={"types_branch"},
-     *     summary="Update a specific types_branch by ID",
+     *     path="/types_branches/{id}",
+     *     tags={"types_branches"},
+     *     summary="Update a specific types_branches by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_branch",
+     *         description="ID of the types_branches",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -142,29 +142,29 @@ class TypeBranchController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $types_branch = TypeBranch::find($id);
+        $types_branches = TypeBranch::find($id);
 
-        if (!$types_branch) {
+        if (!$types_branches) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $types_branch->update($request->all());
+        $types_branches->update($request->all());
         return response()->json(
-            $types_branch,
+            $types_branches,
             200
         );
     }
 
     /**
      * @OA\Delete(
-     *     path="/types_branch/{id}",
-     *     tags={"types_branch"},
-     *     summary="Delete a specific types_branch by ID",
+     *     path="/types_branches/{id}",
+     *     tags={"types_branches"},
+     *     summary="Delete a specific types_branches by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_branch",
+     *         description="ID of the types_branches",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -181,13 +181,13 @@ class TypeBranchController extends Controller
      */
     public function destroy(string $id)
     {
-        $types_branch = TypeBranch::find($id);
+        $types_branches = TypeBranch::find($id);
 
-        if (!$types_branch) {
+        if (!$types_branches) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $types_branch->delete();
+        $types_branches->delete();
         return response()->json(
             null,
             204

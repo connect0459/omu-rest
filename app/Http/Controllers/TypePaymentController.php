@@ -13,9 +13,9 @@ class TypePaymentController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/types_payment",
-     *     tags={"types_payment"},
-     *     summary="Get a list of types_payment",
+     *     path="/types_payments",
+     *     tags={"types_payments"},
+     *     summary="Get a list of types_payments",
      *     @OA\Response(
      *         response=200,
      *         description="Successful response",
@@ -28,18 +28,18 @@ class TypePaymentController extends Controller
      */
     public function index()
     {
-        $types_payment = TypePayment::all();
+        $types_payments = TypePayment::all();
         return response()->json(
-            $types_payment,
+            $types_payments,
             200
         );
     }
 
     /**
      * @OA\Post(
-     *     path="/types_payment",
-     *     tags={"types_payment"},
-     *     summary="Create a new types_payment",
+     *     path="/types_payments",
+     *     tags={"types_payments"},
+     *     summary="Create a new types_payments",
      *     @OA\RequestBody(
      *         required=true,
      *         description="TypePayment data",
@@ -59,23 +59,23 @@ class TypePaymentController extends Controller
      */
     public function store(Request $request)
     {
-        $types_payment = TypePayment::create($request->all());
+        $types_payments = TypePayment::create($request->all());
         return response()->json(
-            $types_payment,
+            $types_payments,
             201
         );
     }
 
     /**
      * @OA\Get(
-     *     path="/types_payment/{id}",
-     *     tags={"types_payment"},
-     *     summary="Get a specific types_payment by ID",
+     *     path="/types_payments/{id}",
+     *     tags={"types_payments"},
+     *     summary="Get a specific types_payments by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_payment",
+     *         description="ID of the types_payments",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -93,28 +93,28 @@ class TypePaymentController extends Controller
      */
     public function show(string $id)
     {
-        $types_payment = TypePayment::find($id);
+        $types_payments = TypePayment::find($id);
 
-        if (!$types_payment) {
+        if (!$types_payments) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
         return response()->json(
-            $types_payment,
+            $types_payments,
             200
         );
     }
 
     /**
      * @OA\Put(
-     *     path="/types_payment/{id}",
-     *     tags={"types_payment"},
-     *     summary="Update a specific types_payment by ID",
+     *     path="/types_payments/{id}",
+     *     tags={"types_payments"},
+     *     summary="Update a specific types_payments by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_payment",
+     *         description="ID of the types_payments",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -142,29 +142,29 @@ class TypePaymentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $types_payment = TypePayment::find($id);
+        $types_payments = TypePayment::find($id);
 
-        if (!$types_payment) {
+        if (!$types_payments) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $types_payment->update($request->all());
+        $types_payments->update($request->all());
         return response()->json(
-            $types_payment,
+            $types_payments,
             200
         );
     }
 
     /**
      * @OA\Delete(
-     *     path="/types_payment/{id}",
-     *     tags={"types_payment"},
-     *     summary="Delete a specific types_payment by ID",
+     *     path="/types_payments/{id}",
+     *     tags={"types_payments"},
+     *     summary="Delete a specific types_payments by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_payment",
+     *         description="ID of the types_payments",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -181,13 +181,13 @@ class TypePaymentController extends Controller
      */
     public function destroy(string $id)
     {
-        $types_payment = TypePayment::find($id);
+        $types_payments = TypePayment::find($id);
 
-        if (!$types_payment) {
+        if (!$types_payments) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $types_payment->delete();
+        $types_payments->delete();
         return response()->json(
             null,
             204

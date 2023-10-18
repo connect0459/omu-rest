@@ -37,13 +37,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('/books_info', BookInfoController::class);
 
 /*
-    GET|HEAD        api/books_stock ................................................ books_stock.index › BookStockController@index  
-    POST            api/books_stock ................................................ books_stock.store › BookStockController@store  
-    GET|HEAD        api/books_stock/{books_stock} .................................... books_stock.show › BookStockController@show  
-    PUT|PATCH       api/books_stock/{books_stock} ................................ books_stock.update › BookStockController@update  
-    DELETE          api/books_stock/{books_stock} .............................. books_stock.destroy › BookStockController@destroy  
+    GET|HEAD        api/books_stocks ................................................ books_stocks.index › BookStockController@index  
+    POST            api/books_stocks ................................................ books_stocks.store › BookStockController@store  
+    GET|HEAD        api/books_stocks/{books_stocks} .................................... books_stocks.show › BookStockController@show  
+    PUT|PATCH       api/books_stocks/{books_stocks} ................................ books_stocks.update › BookStockController@update  
+    DELETE          api/books_stocks/{books_stocks} .............................. books_stocks.destroy › BookStockController@destroy  
 */
-Route::apiResource('/books_stock', BookStockController::class);
+Route::apiResource('/books_stocks', BookStockController::class);
 
 /*
     GET|HEAD        api/contacts ..................... contacts.index › ContactController@index  

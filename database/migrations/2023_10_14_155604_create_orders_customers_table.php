@@ -13,20 +13,19 @@ return new class extends Migration
     {
         Schema::create('orders_customers', function (Blueprint $table) {
             $table->id();
-            $table->integer('branch');
-            $table->string('numbering');
+            $table->foreignId('type_branch_id')->constrained('types_branches')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('numbering')->unique();
             $table->string('name1');
             $table->string('name2');
             $table->string('university')->nullable();
             $table->string('grade')->nullable();
             $table->string('belong')->nullable();
             $table->string('email');
-            $table->integer('receive_type');
-            $table->datetime('receive_date')->nullable();
             $table->integer('total');
-            $table->integer('payment_type');
+            $table->foreignId('type_receive_id')->constrained('types_receives')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->datetime('receive_date')->nullable();
+            $table->foreignId('type_payment_id')->constrained('types_payments')->cascadeOnUpdate()->cascadeOnDelete();
             $table->datetime('payment_due_date')->nullable();
-            $table->string('is_paid');
             $table->text('notes')->nullable();
             $table->datetime('created_at')->useCurrent();
             $table->datetime('updated_at')->useCurrent()->useCurrentOnUpdate();

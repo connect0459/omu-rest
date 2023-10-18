@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('orders_payments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_customer_id')->constrained('orders_customers')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('numbering');
             $table->integer('subtotal');
             $table->integer('postage')->nullable()->default(0);
             $table->integer('fee')->nullable()->default(0);
+            $table->boolean('is_paid')->nullable()->default(false);
             $table->datetime('created_at')->useCurrent();
             $table->datetime('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

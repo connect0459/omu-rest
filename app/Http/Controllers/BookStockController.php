@@ -13,9 +13,9 @@ class BookStockController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/books_stock",
-     *     tags={"books_stock"},
-     *     summary="Get a list of books_stock",
+     *     path="/books_stocks",
+     *     tags={"books_stocks"},
+     *     summary="Get a list of books_stocks",
      *     @OA\Response(
      *         response=200,
      *         description="Successful response",
@@ -28,18 +28,18 @@ class BookStockController extends Controller
      */
     public function index()
     {
-        $books_stock = BookStock::all();
+        $books_stocks = BookStock::all();
         return response()->json(
-            $books_stock,
+            $books_stocks,
             200
         );
     }
 
     /**
      * @OA\Post(
-     *     path="/books_stock",
-     *     tags={"books_stock"},
-     *     summary="Create a new books_stock",
+     *     path="/books_stocks",
+     *     tags={"books_stocks"},
+     *     summary="Create a new books_stocks",
      *     @OA\RequestBody(
      *         required=true,
      *         description="BookStock data",
@@ -71,23 +71,23 @@ class BookStockController extends Controller
      */
     public function store(Request $request)
     {
-        $books_stock = BookStock::create($request->all());
+        $books_stocks = BookStock::create($request->all());
         return response()->json(
-            $books_stock,
+            $books_stocks,
             201
         );
     }
 
     /**
      * @OA\Get(
-     *     path="/books_stock/{id}",
-     *     tags={"books_stock"},
-     *     summary="Get a specific books_stock by ID",
+     *     path="/books_stocks/{id}",
+     *     tags={"books_stocks"},
+     *     summary="Get a specific books_stocks by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the books_stock",
+     *         description="ID of the books_stocks",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -119,14 +119,14 @@ class BookStockController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/books_stock/{id}",
-     *     tags={"books_stock"},
-     *     summary="Update a specific books_stock by ID",
+     *     path="/books_stocks/{id}",
+     *     tags={"books_stocks"},
+     *     summary="Update a specific books_stocks by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the books_stock",
+     *         description="ID of the books_stocks",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -181,14 +181,14 @@ class BookStockController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/books_stock/{id}",
-     *     tags={"books_stock"},
-     *     summary="Delete a specific books_stock by ID",
+     *     path="/books_stocks/{id}",
+     *     tags={"books_stocks"},
+     *     summary="Delete a specific books_stocks by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the books_stock",
+     *         description="ID of the books_stocks",
      *         @OA\Schema(
      *             type="string"
      *         )

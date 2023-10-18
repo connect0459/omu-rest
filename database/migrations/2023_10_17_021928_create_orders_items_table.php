@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('orders_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_customer_id')->constrained('orders_customers')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('numbering');
-            $table->integer('order_state');
+            $table->foreignId('type_order_state_id')->constrained('types_orders_states')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('book_info_id')->constrained('books_info')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('isbn', 13);
             $table->string('title');
             $table->integer('sale_price');

@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('types_order_state', function (Blueprint $table) {
+        Schema::create('types_branches', function (Blueprint $table) {
             $table->id();
             $table->string('type');
             $table->datetime('created_at')->useCurrent();
             $table->datetime('updated_at')->useCurrent()->useCurrentOnUpdate();
-        
         });
     }
 
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('types_order_state');
+        Schema::dropIfExists('types_branches');
     }
 };

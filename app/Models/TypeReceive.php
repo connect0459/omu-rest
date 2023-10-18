@@ -45,7 +45,7 @@ class TypeReceive extends Model
 {
     use HasFactory;
 
-    protected $table = 'types_receive';
+    protected $table = 'types_receives';
     protected $primaryKey = 'id';
     protected $fillable = [
         'type'

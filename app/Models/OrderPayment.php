@@ -19,6 +19,13 @@ use OpenApi\Annotations as OA;
  *          example="1"
  *      ),
  *      @OA\Property(
+ *          property="order_customer_id",
+ *          description="外部キー制約（orders_customersテーブル）",
+ *          type="integer",
+ *          format="int64",
+ *          example="1"
+ *      ),
+ *      @OA\Property(
  *          property="numbering",
  *          description="整理番号",
  *          type="string",
@@ -47,6 +54,13 @@ use OpenApi\Annotations as OA;
  *          example="100"
  *      ),
  *      @OA\Property(
+ *          property="is_paid",
+ *          description="支払い済みか",
+ *          type="boolean",
+ *          format="boolean",
+ *          example="true"
+ *      ),
+ *      @OA\Property(
  *          property="created_at",
  *          description="レコード作成日",
  *          type="string",
@@ -72,7 +86,8 @@ class OrderPayment extends Model
         'numbering',
         'subtotal',
         'postage',
-        'fee'
+        'fee',
+        'is_paid'
     ];
     protected $dates = ['created_at', 'updated_at'];
 }

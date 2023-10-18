@@ -8,7 +8,7 @@
     "servers": [
         {
             "url": "http://localhost:8000/api",
-            "description": "ローカルホストのAPI endpoint"
+            "description": "ローカルホストのAPIエンドポイント"
         }
     ],
     "paths": {
@@ -2007,6 +2007,12 @@
                         "format": "int64",
                         "example": "1"
                     },
+                    "branch": {
+                        "description": "支部番号",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
                     "isbn": {
                         "description": "ISBN-13 or ISBN-10",
                         "type": "string",
@@ -2147,6 +2153,12 @@
                 "properties": {
                     "id": {
                         "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
+                    "branch": {
+                        "description": "支部番号",
                         "type": "integer",
                         "format": "int64",
                         "example": "1"
