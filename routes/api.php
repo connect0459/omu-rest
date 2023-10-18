@@ -4,6 +4,7 @@ use App\Http\Controllers\BookInfoController;
 use App\Http\Controllers\BookStockController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\TypeBranchController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -62,3 +63,5 @@ Route::apiResource('/contacts', ContactController::class);
     DELETE          api/news/{news} ...................................................................... news.destroy › NewsController@destroy  
 */
 Route::apiResource('/news', NewsController::class);
+
+// Route::apiResource('/types_branches', TypeBranchController::class);
