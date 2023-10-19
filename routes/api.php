@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookInfoController;
 use App\Http\Controllers\BookStockController;
+use App\Http\Controllers\BookTestController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\TypeBranchController;
@@ -25,9 +27,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 /**
  * 以下、追加したコントローラーに対するルーティング設定
- * 使用するクラスを最上部でuse宣言することを忘れずに行う
  * `php artisan route:list`コマンドでルーティングを確認可能
+ * 使用するクラスを最上部でuse宣言することを忘れずに行う
+ * 
+ * 通常はapiResourceでルーティングを行い、リクエストパラメータはパスに含める
+ * getメソッドの中でも複合的にデータベースと接続して出力を行うものにのみ、クエリパラメータに含めることを許可する
  */
+/*
+    GET|HEAD        api/books/{type_branch_id} ................................... BookController@search 
+*/
+Route::get('/books/fetch/{type_branch_id}', [BookController::class, 'fetch']);
+Route::get('/books/{type_branch_id}', [BookController::class, 'search']);
+
 /*
     GET|HEAD        api/books_info ................................................... books_info.index › BookInfoController@index  
     POST            api/books_info ................................................... books_info.store › BookInfoController@store  
@@ -63,5 +74,3 @@ Route::apiResource('/contacts', ContactController::class);
     DELETE          api/news/{news} ...................................................................... news.destroy › NewsController@destroy  
 */
 Route::apiResource('/news', NewsController::class);
-
-// Route::apiResource('/types_branches', TypeBranchController::class);

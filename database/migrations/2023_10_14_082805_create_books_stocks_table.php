@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('type_branch_id')->constrained('types_branches')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('book_info_id')->constrained('books_info')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string('isbn', 13);
             $table->integer('stock')->default(0);
             $table->integer('order')->default(0);
             $table->integer('sold')->default(0);

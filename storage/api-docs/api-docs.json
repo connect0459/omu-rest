@@ -12,6 +12,75 @@
         }
     ],
     "paths": {
+        "/books/{type_branch_id}": {
+            "get": {
+                "tags": [
+                    "books"
+                ],
+                "summary": "書籍の検索と支部在庫の表示",
+                "description": "ANDおよびOR演算子を使用して書籍を検索します。",
+                "operationId": "9dc1766b22be1b87fd74634d5274fd22",
+                "parameters": [
+                    {
+                        "name": "type_branch_id",
+                        "in": "path",
+                        "description": "支部ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "description": "検索キーワードで構成されるquery strings（ANDおよびOR演算子を使用可能）",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "books_info": {
+                                                "$ref": "#/components/schemas/BookInfo"
+                                            },
+                                            "books_stocks": {
+                                                "$ref": "#/components/schemas/BookStock"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "該当する書籍が見つからない場合のレスポンス",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "該当する書籍が見つかりません。"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/books_info": {
             "get": {
                 "tags": [
@@ -2181,18 +2250,6 @@
                         "type": "integer",
                         "format": "int64",
                         "example": "1"
-                    },
-                    "branch": {
-                        "description": "支部番号",
-                        "type": "integer",
-                        "format": "int64",
-                        "example": "1"
-                    },
-                    "isbn": {
-                        "description": "ISBN-13 or ISBN-10",
-                        "type": "string",
-                        "format": "string",
-                        "example": "9784908434266"
                     },
                     "stock": {
                         "description": "未販売の在庫数",
