@@ -14,102 +14,7 @@ class BookController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/books/fetch/{type_branch_id}",
-     *     summary="書籍の検索と支部在庫の表示",
-     *     description="指定されたカラム名と値を使用して書籍を検索します。",
-     *     tags={"books"},
-     *     @OA\Parameter(
-     *         name="type_branch_id",
-     *         in="path",
-     *         description="支部ID",
-     *         required=true,
-     *         @OA\Schema(type="integer")
-     *     ),
-     *     @OA\Parameter(
-     *         name="{books_infoテーブルのカラム名}",
-     *         in="query",
-     *         description="検索クエリ",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="成功した場合のレスポンス",
-     *         @OA\JsonContent(
-     *             type="array",
-     *             @OA\Items(
-     *                 @OA\Property(
-     *                     property="books_info",
-     *                     type="object",
-     *                     ref="#/components/schemas/BookInfo"
-     *                 ),
-     *                 @OA\Property(
-     *                     property="books_stocks",
-     *                     type="object",
-     *                     ref="#/components/schemas/BookStock"
-     *                 )
-     *             )
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="該当する書籍が見つからない場合のレスポンス",
-     *         @OA\JsonContent(
-     *             @OA\Property(
-     *                 property="message",
-     *                 type="string",
-     *                 example="該当する書籍が見つかりません。"
-     *             )
-     *         )
-     *     ),
-     * )
-     */
-    public function fetch(Request $request, $type_branch_id)
-    {
-        // クエリパラメータをパースして検索条件を作成
-        $conditions = [];
-        $columns = array_keys($request->query());
-        foreach ($columns as $column) {
-            $value = $request->query($column);
-            $conditions[] = [$column, 'like', '%' . $value . '%'];
-        }
-
-        // 書籍情報を取得
-        $booksInfo = BookInfo::where('type_branch_id', $type_branch_id)->where(function ($query) use ($conditions) {
-            foreach ($conditions as $condition) {
-                $query->orWhere($condition[0], $condition[1], $condition[2]);
-            }
-        })->get();
-
-        if ($booksInfo->isEmpty()) {
-            return response()->json(['message' => '該当する書籍が見つかりません。'], 404);
-        }
-
-        // 書籍の在庫情報を取得
-        $bookStocks = BookStock::whereIn('book_info_id', $booksInfo->pluck('id')->all())->get();
-
-        // 書籍情報と在庫情報を結合
-        $formattedData = [];
-        foreach ($booksInfo as $info) {
-            $matchingStock = $bookStocks->where('book_info_id', $info->id)->first();
-            if ($matchingStock !== null) {
-                $formattedData[] = [
-                    'books_info' => $info,
-                    'books_stocks' => $matchingStock,
-                ];
-            }
-        }
-
-        if (empty($formattedData)) {
-            return response()->json(['message' => '該当する書籍が見つかりません。'], 404);
-        }
-
-        return response()->json($formattedData);
-    }
-
-    /**
-     * @OA\Get(
-     *     path="/books/{type_branch_id}",
+     *     path="/books/query/{type_branch_id}",
      *     summary="書籍の検索と支部在庫の表示",
      *     description="ANDおよびOR演算子を使用して書籍を検索します。",
      *     tags={"books"},
@@ -159,7 +64,7 @@ class BookController extends Controller
      *     ),
      * )
      */
-    public function search(Request $request, $type_branch_id)
+    public function get_by_query(Request $request, $type_branch_id)
     {
         $query_strings = $request->query('q');
 
@@ -181,8 +86,6 @@ class BookController extends Controller
                 ];
             }
         }
-
-        // ここで各キーワードを使って検索条件を構築できます
 
         // 初期化
         $booksInfo = BookInfo::query();
@@ -230,9 +133,140 @@ class BookController extends Controller
         }
 
         if (empty($formatted_data)) {
-            return $this->notfound_message;
+            return response()->json(['message' => $this->notfound_message], 404);
         }
 
         return response()->json($formatted_data);
     }
+
+    /**
+     * @OA\Get(
+     *     path="/books/column/{type_branch_id}",
+     *     summary="書籍の検索と支部在庫の表示",
+     *     description="指定されたbooks_infoテーブルのカラム名と値を使用して書籍を検索",
+     *     tags={"books"},
+     *     @OA\Parameter(
+     *         name="type_branch_id",
+     *         in="path",
+     *         description="支部ID",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="query",
+     *         description="idカラム",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="title",
+     *         in="query",
+     *         description="titleカラム",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="author",
+     *         in="query",
+     *         description="authorカラム",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="publisher",
+     *         in="query",
+     *         description="publisherカラム",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="genre",
+     *         in="query",
+     *         description="genreカラム",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="description",
+     *         in="query",
+     *         description="descriptionカラム",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="成功した場合のレスポンス",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(
+     *                 @OA\Property(
+     *                     property="books_info",
+     *                     type="object",
+     *                     ref="#/components/schemas/BookInfo"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="books_stocks",
+     *                     type="object",
+     *                     ref="#/components/schemas/BookStock"
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="該当する書籍が見つからない場合のレスポンス",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                 property="message",
+     *                 type="string",
+     *                 example="該当する書籍が見つかりません。"
+     *             )
+     *         )
+     *     ),
+     * )
+     */
+    public function get_by_column(Request $request, $type_branch_id)
+    {
+        // クエリパラメータをパースして検索条件を作成
+        $conditions = [];
+        $columns = array_keys($request->query());
+        foreach ($columns as $column) {
+            $value = $request->query($column);
+            $conditions[] = [$column, 'like', '%' . $value . '%'];
+        }
+
+        $booksInfo = BookInfo::where(function ($query) use ($conditions) {
+            foreach ($conditions as $condition) {
+                $query->orWhere($condition[0], $condition[1], $condition[2]);
+            }
+        })->get();
+
+        if ($booksInfo->isEmpty()) {
+            return response()->json(['message' => $this->notfound_message], 404);
+        }
+
+        // 書籍の在庫情報を取得 (type_branch_id が一致するレコードを取得)
+        $bookStocks = BookStock::where('type_branch_id', $type_branch_id)
+            ->whereIn('book_info_id', $booksInfo->pluck('id')->all())
+            ->get();
+
+        // 書籍情報と在庫情報を結合
+        $formattedData = [];
+        foreach ($booksInfo as $info) {
+            $matchingStock = $bookStocks->where('book_info_id', $info->id)->first();
+            if ($matchingStock !== null) {
+                $formattedData[] = [
+                    'books_info' => $info,
+                    'books_stocks' => $matchingStock,
+                ];
+            }
+        }
+
+        if (empty($formattedData)) {
+            return response()->json(['message' => $this->notfound_message], 404);
+        }
+
+        return response()->json($formattedData);
+    }    
 }

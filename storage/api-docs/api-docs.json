@@ -12,14 +12,14 @@
         }
     ],
     "paths": {
-        "/books/{type_branch_id}": {
+        "/books/query/{type_branch_id}": {
             "get": {
                 "tags": [
                     "books"
                 ],
                 "summary": "書籍の検索と支部在庫の表示",
                 "description": "ANDおよびOR演算子を使用して書籍を検索します。",
-                "operationId": "9dc1766b22be1b87fd74634d5274fd22",
+                "operationId": "14d04cd3a807843d383b87ccfca3da7b",
                 "parameters": [
                     {
                         "name": "type_branch_id",
@@ -43,6 +43,120 @@
                 "responses": {
                     "200": {
                         "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "books_info": {
+                                                "$ref": "#/components/schemas/BookInfo"
+                                            },
+                                            "books_stocks": {
+                                                "$ref": "#/components/schemas/BookStock"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "該当する書籍が見つからない場合のレスポンス",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "該当する書籍が見つかりません。"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/books/column/{type_branch_id}": {
+            "get": {
+                "tags": [
+                    "books"
+                ],
+                "summary": "書籍の検索と支部在庫の表示",
+                "description": "指定されたbooks_infoテーブルのカラム名と値を使用して書籍を検索",
+                "operationId": "24c56c274fc27bd118b5dfc62fbf0c3e",
+                "parameters": [
+                    {
+                        "name": "type_branch_id",
+                        "in": "path",
+                        "description": "支部ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "idカラム",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "titleカラム",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "author",
+                        "in": "query",
+                        "description": "authorカラム",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "publisher",
+                        "in": "query",
+                        "description": "publisherカラム",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "genre",
+                        "in": "query",
+                        "description": "genreカラム",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "descriptionカラム",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功した場合のレスポンス",
                         "content": {
                             "application/json": {
                                 "schema": {
