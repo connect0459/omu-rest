@@ -2,48 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TypePayment;
+use App\Models\TypeGenre;
 use Illuminate\Http\Request;
 use OpenApi\Annotations as OA;
 
-class TypePaymentController extends Controller
+class TypeGenreController extends Controller
 {
     /** @var string The message called when a record is not found  */
     private string $notfound_message = 'The record is not found';
 
     /**
      * @OA\Get(
-     *     path="/types_payments",
-     *     tags={"types_payments"},
-     *     summary="Get a list of types_payments",
+     *     path="/types_genres",
+     *     tags={"types_genres"},
+     *     summary="Get a list of types_genres",
      *     @OA\Response(
      *         response=200,
      *         description="Successful response",
      *         @OA\JsonContent(
      *             type="array",
-     *             @OA\Items(ref="#/components/schemas/TypePayment")
+     *             @OA\Items(ref="#/components/schemas/TypeGenre")
      *         )
      *     )
      * )
      */
     public function index()
     {
-        $types_payments = TypePayment::all();
+        $types_genres = TypeGenre::all();
         return response()->json(
-            $types_payments,
+            $types_genres,
             200
         );
     }
 
     /**
      * @OA\Post(
-     *     path="/types_payments",
-     *     tags={"types_payments"},
-     *     summary="Create a new types_payments",
+     *     path="/types_genres",
+     *     tags={"types_genres"},
+     *     summary="Create a new types_genres",
      *     @OA\RequestBody(
      *         required=true,
-     *         description="TypePayment data",
-     *         @OA\JsonContent(ref="#/components/schemas/TypePayment")
+     *         description="TypeGenre data",
+     *         @OA\JsonContent(ref="#/components/schemas/TypeGenre")
      *     ),
      *     @OA\Response(
      *         response=201,
@@ -51,7 +51,7 @@ class TypePaymentController extends Controller
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
-     *                 @OA\Schema(ref="#/components/schemas/TypePayment")
+     *                 @OA\Schema(ref="#/components/schemas/TypeGenre")
      *             }
      *         )
      *     )
@@ -59,23 +59,23 @@ class TypePaymentController extends Controller
      */
     public function store(Request $request)
     {
-        $types_payments = TypePayment::create($request->all());
+        $types_genres = TypeGenre::create($request->all());
         return response()->json(
-            $types_payments,
+            $types_genres,
             201
         );
     }
 
     /**
      * @OA\Get(
-     *     path="/types_payments/{id}",
-     *     tags={"types_payments"},
-     *     summary="Get a specific types_payments by ID",
+     *     path="/types_genres/{id}",
+     *     tags={"types_genres"},
+     *     summary="Get a specific types_genres by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_payments",
+     *         description="ID of the types_genres",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -83,7 +83,7 @@ class TypePaymentController extends Controller
      *     @OA\Response(
      *         response=200,
      *         description="Successful response",
-     *         @OA\JsonContent(ref="#/components/schemas/TypePayment")
+     *         @OA\JsonContent(ref="#/components/schemas/TypeGenre")
      *     ),
      *     @OA\Response(
      *         response=404,
@@ -93,36 +93,36 @@ class TypePaymentController extends Controller
      */
     public function show(string $id)
     {
-        $types_payments = TypePayment::find($id);
+        $types_genres = TypeGenre::find($id);
 
-        if (!$types_payments) {
+        if (!$types_genres) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
         return response()->json(
-            $types_payments,
+            $types_genres,
             200
         );
     }
 
     /**
      * @OA\Put(
-     *     path="/types_payments/{id}",
-     *     tags={"types_payments"},
-     *     summary="Update a specific types_payments by ID",
+     *     path="/types_genres/{id}",
+     *     tags={"types_genres"},
+     *     summary="Update a specific types_genres by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_payments",
+     *         description="ID of the types_genres",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         description="TypePayment data",
-     *         @OA\JsonContent(ref="#/components/schemas/TypePayment")
+     *         description="TypeGenre data",
+     *         @OA\JsonContent(ref="#/components/schemas/TypeGenre")
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -130,7 +130,7 @@ class TypePaymentController extends Controller
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
-     *                 @OA\Schema(ref="#/components/schemas/TypePayment")
+     *                 @OA\Schema(ref="#/components/schemas/TypeGenre")
      *             }
      *         )
      *     ),
@@ -142,29 +142,29 @@ class TypePaymentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $types_payments = TypePayment::find($id);
+        $types_genres = TypeGenre::find($id);
 
-        if (!$types_payments) {
+        if (!$types_genres) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $types_payments->update($request->all());
+        $types_genres->update($request->all());
         return response()->json(
-            $types_payments,
+            $types_genres,
             200
         );
     }
 
     /**
      * @OA\Delete(
-     *     path="/types_payments/{id}",
-     *     tags={"types_payments"},
-     *     summary="Delete a specific types_payments by ID",
+     *     path="/types_genres/{id}",
+     *     tags={"types_genres"},
+     *     summary="Delete a specific types_genres by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_payments",
+     *         description="ID of the types_genres",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -181,13 +181,13 @@ class TypePaymentController extends Controller
      */
     public function destroy(string $id)
     {
-        $types_payments = TypePayment::find($id);
+        $types_genres = TypeGenre::find($id);
 
-        if (!$types_payments) {
+        if (!$types_genres) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $types_payments->delete();
+        $types_genres->delete();
         return response()->json(
             null,
             204

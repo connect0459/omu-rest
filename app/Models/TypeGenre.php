@@ -8,9 +8,9 @@ use OpenApi\Annotations as OA;
 
 /**
  *  @OA\Schema(
- *      schema="TypeReceive",
+ *      schema="TypeGenre",
  *      type="object",
- *      description="TypeReceive Model",
+ *      description="TypeGenre Model",
  *      @OA\Property(
  *          property="id",
  *          description="ID",
@@ -20,10 +20,10 @@ use OpenApi\Annotations as OA;
  *      ),
  *      @OA\Property(
  *          property="type",
- *          description="受取り方法",
+ *          description="ジャンル名",
  *          type="string",
  *          format="string",
- *          example="露店"
+ *          example="○○大学"
  *      ),
  *      @OA\Property(
  *          property="created_at",
@@ -41,11 +41,11 @@ use OpenApi\Annotations as OA;
  *      )
  * )
  */
-class TypeReceive extends Model
+class TypeGenre extends Model
 {
     use HasFactory;
 
-    protected $table = 'types_receives';
+    protected $table = 'types_genres';
     protected $primaryKey = 'id';
     protected $fillable = [
         'type'

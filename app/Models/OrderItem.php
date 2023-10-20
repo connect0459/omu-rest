@@ -19,6 +19,13 @@ use OpenApi\Annotations as OA;
  *          example="1"
  *      ),
  *      @OA\Property(
+ *          property="order_customer_id",
+ *          description="外部キー制約（orders_customersテーブル）",
+ *          type="integer",
+ *          format="int64",
+ *          example="1"
+ *      ),
+ *      @OA\Property(
  *          property="numbering",
  *          description="整理番号",
  *          type="string",
@@ -26,8 +33,15 @@ use OpenApi\Annotations as OA;
  *          example="231B001"
  *      ),
  *      @OA\Property(
- *          property="order_state",
- *          description="予約の処理状態を表すステータス。types_order_stateテーブルから取得",
+ *          property="type_order_state_id",
+ *          description="予約の処理状態を表すステータス。types_orders_statesテーブルから取得",
+ *          type="integer",
+ *          format="int64",
+ *          example="1"
+ *      ),
+ *     @OA\Property(
+ *          property="book_info_id",
+ *          description="外部キー制約（books_info）",
  *          type="integer",
  *          format="int64",
  *          example="1"
@@ -77,7 +91,7 @@ class OrderItem extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'numbering',
-        'order_state',
+        'type_order_state_id',
         'isbn',
         'title',
         'sale_price'

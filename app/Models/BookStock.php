@@ -19,25 +19,18 @@ use OpenApi\Annotations as OA;
  *          example="1"
  *      ),
  *      @OA\Property(
- *          property="books_info_id",
- *          description="ユニーク制約・外部キー制約（books_infoテーブル）",
+ *          property="type_branch_id",
+ *          description="外部キー制約（types_branchesテーブル）",
  *          type="integer",
  *          format="int64",
  *          example="1"
  *      ),
  *      @OA\Property(
- *          property="branch",
- *          description="支部番号",
+ *          property="book_info_id",
+ *          description="外部キー制約（books_infoテーブル）",
  *          type="integer",
  *          format="int64",
  *          example="1"
- *      ),
- *      @OA\Property(
- *          property="isbn",
- *          description="ISBN-13 or ISBN-10",
- *          type="string",
- *          format="string",
- *          example="9784908434266"
  *      ),
  *      @OA\Property(
  *          property="stock",
@@ -80,11 +73,11 @@ class BookStock extends Model
 {
     use HasFactory;
 
-    protected $table = 'books_stock';
+    protected $table = 'books_stocks';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'books_info_id',
-        'isbn',
+        'type_branch_id',
+        'book_info_id',
         'stock',
         'order',
         'sold'

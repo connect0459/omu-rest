@@ -45,7 +45,7 @@ class TypePayment extends Model
 {
     use HasFactory;
 
-    protected $table = 'types_payment';
+    protected $table = 'types_payments';
     protected $primaryKey = 'id';
     protected $fillable = [
         'type'

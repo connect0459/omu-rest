@@ -45,7 +45,7 @@ class TypeBranch extends Model
 {
     use HasFactory;
 
-    protected $table = 'types_branch';
+    protected $table = 'types_branches';
     protected $primaryKey = 'id';
     protected $fillable = [
         'type'

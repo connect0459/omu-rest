@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('books_stock', function (Blueprint $table) {
+        Schema::create('books_stocks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('books_info_id')->unique()->constrained('books_info')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->integer('branch');
-            $table->string('isbn', 13);
+            $table->foreignId('type_branch_id')->constrained('types_branches')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('book_info_id')->constrained('books_info')->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer('stock')->default(0);
             $table->integer('order')->default(0);
             $table->integer('sold')->default(0);
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('books_stock');
+        Schema::dropIfExists('books_stocks');
     }
 };

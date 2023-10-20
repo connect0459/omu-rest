@@ -19,8 +19,8 @@ use OpenApi\Annotations as OA;
  *          example="1"
  *      ),
  *      @OA\Property(
- *          property="branch",
- *          description="支部番号",
+ *          property="type_branch_id",
+ *          description="支部番号（types_branchesテーブルからの外部キー制約）",
  *          type="integer",
  *          format="int64",
  *          example="1"
@@ -75,8 +75,15 @@ use OpenApi\Annotations as OA;
  *          example="example@gmail.com"
  *      ),
  *      @OA\Property(
- *          property="receive_type",
- *          description="受取り方法",
+ *          property="total",
+ *          description="請求合計金額",
+ *          type="integer",
+ *          format="int64",
+ *          example="1000"
+ *      ),
+ *      @OA\Property(
+ *          property="type_receive_id",
+ *          description="受取り方法分類id（types_receivesテーブルからの外部キー制約）",
  *          type="integer",
  *          format="int64",
  *          example="1"
@@ -89,8 +96,8 @@ use OpenApi\Annotations as OA;
  *          example="2023-06-20T21:20:14.000000Z"
  *      ),
  *      @OA\Property(
- *          property="payment_type",
- *          description="支払い方法",
+ *          property="type_payment_id",
+ *          description="支払い方法分類id（types_paymentsテーブルからの外部キー制約）",
  *          type="integer",
  *          format="int64",
  *          example="1"
@@ -101,13 +108,6 @@ use OpenApi\Annotations as OA;
  *          type="string",
  *          format="date-time",
  *          example="2023-06-20T21:20:14.000000Z"
- *      ),
- *      @OA\Property(
- *          property="is_paid",
- *          description="支払い済みか",
- *          type="boolean",
- *          format="boolean",
- *          example="true"
  *      ),
  *      @OA\Property(
  *          property="notes",
@@ -139,7 +139,7 @@ class OrderCustomer extends Model
     protected $table = 'orders_customers';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'branch',
+        'type_branch_id',
         'numbering',
         'name1',
         'name2',
@@ -147,11 +147,11 @@ class OrderCustomer extends Model
         'grade',
         'belong',
         'email',
-        'receive_type',
+        'total',
+        'type_receive_id',
         'receive_date',
-        'payment_type',
+        'type_payment_id',
         'payment_due_date',
-        'is_paid',
         'notes'
     ];
     protected $dates = ['created_at', 'updated_at'];

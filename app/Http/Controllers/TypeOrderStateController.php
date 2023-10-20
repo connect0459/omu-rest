@@ -13,9 +13,9 @@ class TypeOrderStateController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/types_order_state",
-     *     tags={"types_order_state"},
-     *     summary="Get a list of types_order_state",
+     *     path="/types_orders_states",
+     *     tags={"types_orders_states"},
+     *     summary="Get a list of types_orders_states",
      *     @OA\Response(
      *         response=200,
      *         description="Successful response",
@@ -28,18 +28,18 @@ class TypeOrderStateController extends Controller
      */
     public function index()
     {
-        $types_order_state = TypeOrderState::all();
+        $types_orders_states = TypeOrderState::all();
         return response()->json(
-            $types_order_state,
+            $types_orders_states,
             200
         );
     }
 
     /**
      * @OA\Post(
-     *     path="/types_order_state",
-     *     tags={"types_order_state"},
-     *     summary="Create a new types_order_state",
+     *     path="/types_orders_states",
+     *     tags={"types_orders_states"},
+     *     summary="Create a new types_orders_states",
      *     @OA\RequestBody(
      *         required=true,
      *         description="TypeOrderState data",
@@ -59,23 +59,23 @@ class TypeOrderStateController extends Controller
      */
     public function store(Request $request)
     {
-        $types_order_state = TypeOrderState::create($request->all());
+        $types_orders_states = TypeOrderState::create($request->all());
         return response()->json(
-            $types_order_state,
+            $types_orders_states,
             201
         );
     }
 
     /**
      * @OA\Get(
-     *     path="/types_order_state/{id}",
-     *     tags={"types_order_state"},
-     *     summary="Get a specific types_order_state by ID",
+     *     path="/types_orders_states/{id}",
+     *     tags={"types_orders_states"},
+     *     summary="Get a specific types_orders_states by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_order_state",
+     *         description="ID of the types_orders_states",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -93,28 +93,28 @@ class TypeOrderStateController extends Controller
      */
     public function show(string $id)
     {
-        $types_order_state = TypeOrderState::find($id);
+        $types_orders_states = TypeOrderState::find($id);
 
-        if (!$types_order_state) {
+        if (!$types_orders_states) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
         return response()->json(
-            $types_order_state,
+            $types_orders_states,
             200
         );
     }
 
     /**
      * @OA\Put(
-     *     path="/types_order_state/{id}",
-     *     tags={"types_order_state"},
-     *     summary="Update a specific types_order_state by ID",
+     *     path="/types_orders_states/{id}",
+     *     tags={"types_orders_states"},
+     *     summary="Update a specific types_orders_states by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_order_state",
+     *         description="ID of the types_orders_states",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -142,29 +142,29 @@ class TypeOrderStateController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $types_order_state = TypeOrderState::find($id);
+        $types_orders_states = TypeOrderState::find($id);
 
-        if (!$types_order_state) {
+        if (!$types_orders_states) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $types_order_state->update($request->all());
+        $types_orders_states->update($request->all());
         return response()->json(
-            $types_order_state,
+            $types_orders_states,
             200
         );
     }
 
     /**
      * @OA\Delete(
-     *     path="/types_order_state/{id}",
-     *     tags={"types_order_state"},
-     *     summary="Delete a specific types_order_state by ID",
+     *     path="/types_orders_states/{id}",
+     *     tags={"types_orders_states"},
+     *     summary="Delete a specific types_orders_states by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_order_state",
+     *         description="ID of the types_orders_states",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -181,13 +181,13 @@ class TypeOrderStateController extends Controller
      */
     public function destroy(string $id)
     {
-        $types_order_state = TypeOrderState::find($id);
+        $types_orders_states = TypeOrderState::find($id);
 
-        if (!$types_order_state) {
+        if (!$types_orders_states) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $types_order_state->delete();
+        $types_orders_states->delete();
         return response()->json(
             null,
             204

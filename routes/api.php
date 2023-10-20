@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookInfoController;
 use App\Http\Controllers\BookStockController;
+use App\Http\Controllers\BookTestController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\TypeBranchController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,9 +27,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 /**
  * 以下、追加したコントローラーに対するルーティング設定
- * 使用するクラスを最上部でuse宣言することを忘れずに行う
  * `php artisan route:list`コマンドでルーティングを確認可能
+ * 使用するクラスを最上部でuse宣言することを忘れずに行う
+ * 
+ * 通常はapiResourceでルーティングを行い、リクエストパラメータはパスに含める
+ * getメソッドの中でも複合的にデータベースと接続して出力を行うものにのみ、クエリパラメータに含めることを許可する
  */
+/*
+    GET|HEAD        api/books/{type_branch_id} ................................... BookController@search 
+*/
+Route::get('/books/query/{type_branch_id}', [BookController::class, 'get_by_query']);
+Route::get('/books/column/{type_branch_id}', [BookController::class, 'get_by_column']);
+
 /*
     GET|HEAD        api/books_info ................................................... books_info.index › BookInfoController@index  
     POST            api/books_info ................................................... books_info.store › BookInfoController@store  
@@ -37,13 +49,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('/books_info', BookInfoController::class);
 
 /*
-    GET|HEAD        api/books_stock ................................................ books_stock.index › BookStockController@index  
-    POST            api/books_stock ................................................ books_stock.store › BookStockController@store  
-    GET|HEAD        api/books_stock/{books_stock} .................................... books_stock.show › BookStockController@show  
-    PUT|PATCH       api/books_stock/{books_stock} ................................ books_stock.update › BookStockController@update  
-    DELETE          api/books_stock/{books_stock} .............................. books_stock.destroy › BookStockController@destroy  
+    GET|HEAD        api/books_stocks ................................................ books_stocks.index › BookStockController@index  
+    POST            api/books_stocks ................................................ books_stocks.store › BookStockController@store  
+    GET|HEAD        api/books_stocks/{books_stocks} .................................... books_stocks.show › BookStockController@show  
+    PUT|PATCH       api/books_stocks/{books_stocks} ................................ books_stocks.update › BookStockController@update  
+    DELETE          api/books_stocks/{books_stocks} .............................. books_stocks.destroy › BookStockController@destroy  
 */
-Route::apiResource('/books_stock', BookStockController::class);
+Route::apiResource('/books_stocks', BookStockController::class);
 
 /*
     GET|HEAD        api/contacts ..................... contacts.index › ContactController@index  

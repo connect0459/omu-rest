@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('types_payment', function (Blueprint $table) {
+        Schema::create('types_payments', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('type');
+            $table->datetime('created_at')->useCurrent();
+            $table->datetime('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('types_payment');
+        Schema::dropIfExists('types_payments');
     }
 };

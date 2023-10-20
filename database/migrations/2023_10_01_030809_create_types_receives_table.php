@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('types_branch', function (Blueprint $table) {
+        Schema::create('types_receives', function (Blueprint $table) {
             $table->id();
             $table->string('type');
             $table->datetime('created_at')->useCurrent();
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('types_branch');
+        Schema::dropIfExists('types_receives');
     }
 };

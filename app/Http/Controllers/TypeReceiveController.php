@@ -13,9 +13,9 @@ class TypeReceiveController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/types_receive",
-     *     tags={"types_receive"},
-     *     summary="Get a list of types_receive",
+     *     path="/types_receives",
+     *     tags={"types_receives"},
+     *     summary="Get a list of types_receives",
      *     @OA\Response(
      *         response=200,
      *         description="Successful response",
@@ -28,18 +28,18 @@ class TypeReceiveController extends Controller
      */
     public function index()
     {
-        $types_receive = TypeReceive::all();
+        $types_receives = TypeReceive::all();
         return response()->json(
-            $types_receive,
+            $types_receives,
             200
         );
     }
 
     /**
      * @OA\Post(
-     *     path="/types_receive",
-     *     tags={"types_receive"},
-     *     summary="Create a new types_receive",
+     *     path="/types_receives",
+     *     tags={"types_receives"},
+     *     summary="Create a new types_receives",
      *     @OA\RequestBody(
      *         required=true,
      *         description="TypeReceive data",
@@ -59,23 +59,23 @@ class TypeReceiveController extends Controller
      */
     public function store(Request $request)
     {
-        $types_receive = TypeReceive::create($request->all());
+        $types_receives = TypeReceive::create($request->all());
         return response()->json(
-            $types_receive,
+            $types_receives,
             201
         );
     }
 
     /**
      * @OA\Get(
-     *     path="/types_receive/{id}",
-     *     tags={"types_receive"},
-     *     summary="Get a specific types_receive by ID",
+     *     path="/types_receives/{id}",
+     *     tags={"types_receives"},
+     *     summary="Get a specific types_receives by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_receive",
+     *         description="ID of the types_receives",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -93,28 +93,28 @@ class TypeReceiveController extends Controller
      */
     public function show(string $id)
     {
-        $types_receive = TypeReceive::find($id);
+        $types_receives = TypeReceive::find($id);
 
-        if (!$types_receive) {
+        if (!$types_receives) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
         return response()->json(
-            $types_receive,
+            $types_receives,
             200
         );
     }
 
     /**
      * @OA\Put(
-     *     path="/types_receive/{id}",
-     *     tags={"types_receive"},
-     *     summary="Update a specific types_receive by ID",
+     *     path="/types_receives/{id}",
+     *     tags={"types_receives"},
+     *     summary="Update a specific types_receives by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_receive",
+     *         description="ID of the types_receives",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -142,29 +142,29 @@ class TypeReceiveController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $types_receive = TypeReceive::find($id);
+        $types_receives = TypeReceive::find($id);
 
-        if (!$types_receive) {
+        if (!$types_receives) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $types_receive->update($request->all());
+        $types_receives->update($request->all());
         return response()->json(
-            $types_receive,
+            $types_receives,
             200
         );
     }
 
     /**
      * @OA\Delete(
-     *     path="/types_receive/{id}",
-     *     tags={"types_receive"},
-     *     summary="Delete a specific types_receive by ID",
+     *     path="/types_receives/{id}",
+     *     tags={"types_receives"},
+     *     summary="Delete a specific types_receives by ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_receive",
+     *         description="ID of the types_receives",
      *         @OA\Schema(
      *             type="string"
      *         )
@@ -181,13 +181,13 @@ class TypeReceiveController extends Controller
      */
     public function destroy(string $id)
     {
-        $types_receive = TypeReceive::find($id);
+        $types_receives = TypeReceive::find($id);
 
-        if (!$types_receive) {
+        if (!$types_receives) {
             return response()->json(['message' => $this->notfound_message], 404);
         }
 
-        $types_receive->delete();
+        $types_receives->delete();
         return response()->json(
             null,
             204

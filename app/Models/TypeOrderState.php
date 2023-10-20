@@ -45,7 +45,7 @@ class TypeOrderState extends Model
 {
     use HasFactory;
 
-    protected $table = 'types_order_state';
+    protected $table = 'types_orders_states';
     protected $primaryKey = 'id';
     protected $fillable = [
         'type'
