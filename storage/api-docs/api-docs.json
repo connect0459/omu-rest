@@ -12,6 +12,189 @@
         }
     ],
     "paths": {
+        "/books/query/{type_branch_id}": {
+            "get": {
+                "tags": [
+                    "books"
+                ],
+                "summary": "書籍の検索と支部在庫の表示",
+                "description": "ANDおよびOR演算子を使用して書籍を検索します。",
+                "operationId": "14d04cd3a807843d383b87ccfca3da7b",
+                "parameters": [
+                    {
+                        "name": "type_branch_id",
+                        "in": "path",
+                        "description": "支部ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "description": "検索キーワードで構成されるquery strings（ANDおよびOR演算子を使用可能）",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "books_info": {
+                                                "$ref": "#/components/schemas/BookInfo"
+                                            },
+                                            "books_stocks": {
+                                                "$ref": "#/components/schemas/BookStock"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "該当する書籍が見つからない場合のレスポンス",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "該当する書籍が見つかりません。"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/books/column/{type_branch_id}": {
+            "get": {
+                "tags": [
+                    "books"
+                ],
+                "summary": "書籍の検索と支部在庫の表示",
+                "description": "指定されたbooks_infoテーブルのカラム名と値を使用して書籍を検索",
+                "operationId": "24c56c274fc27bd118b5dfc62fbf0c3e",
+                "parameters": [
+                    {
+                        "name": "type_branch_id",
+                        "in": "path",
+                        "description": "支部ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "idカラム",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "titleカラム",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "author",
+                        "in": "query",
+                        "description": "authorカラム",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "publisher",
+                        "in": "query",
+                        "description": "publisherカラム",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "genre",
+                        "in": "query",
+                        "description": "genreカラム",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "descriptionカラム",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功した場合のレスポンス",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "books_info": {
+                                                "$ref": "#/components/schemas/BookInfo"
+                                            },
+                                            "books_stocks": {
+                                                "$ref": "#/components/schemas/BookStock"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "該当する書籍が見つからない場合のレスポンス",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "該当する書籍が見つかりません。"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/books_info": {
             "get": {
                 "tags": [
@@ -207,13 +390,13 @@
                 }
             }
         },
-        "/books_stock": {
+        "/books_stocks": {
             "get": {
                 "tags": [
-                    "books_stock"
+                    "books_stocks"
                 ],
-                "summary": "Get a list of books_stock",
-                "operationId": "c9044c5b54d9d6b8c37064812524bb45",
+                "summary": "Get a list of books_stocks",
+                "operationId": "46c90e16b416e254ed79948864ae87aa",
                 "responses": {
                     "200": {
                         "description": "Successful response",
@@ -232,10 +415,10 @@
             },
             "post": {
                 "tags": [
-                    "books_stock"
+                    "books_stocks"
                 ],
-                "summary": "Create a new books_stock",
-                "operationId": "e50cdeddc9681f7435a9afe4a049ac83",
+                "summary": "Create a new books_stocks",
+                "operationId": "ecc649eea287e26856100c11f96bb3b9",
                 "requestBody": {
                     "description": "BookStock data",
                     "required": true,
@@ -279,18 +462,18 @@
                 }
             }
         },
-        "/books_stock/{id}": {
+        "/books_stocks/{id}": {
             "get": {
                 "tags": [
-                    "books_stock"
+                    "books_stocks"
                 ],
-                "summary": "Get a specific books_stock by ID",
-                "operationId": "008048fd9acd897a85d8a1426225a9ec",
+                "summary": "Get a specific books_stocks by ID",
+                "operationId": "d1c6d70f9a35791050b5da811f1abda1",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the books_stock",
+                        "description": "ID of the books_stocks",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -315,15 +498,15 @@
             },
             "put": {
                 "tags": [
-                    "books_stock"
+                    "books_stocks"
                 ],
-                "summary": "Update a specific books_stock by ID",
-                "operationId": "8e070be5f279eddb026b7f03673016f6",
+                "summary": "Update a specific books_stocks by ID",
+                "operationId": "dc7eef146e782e14cddc076176ff04c4",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the books_stock",
+                        "description": "ID of the books_stocks",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -377,15 +560,15 @@
             },
             "delete": {
                 "tags": [
-                    "books_stock"
+                    "books_stocks"
                 ],
-                "summary": "Delete a specific books_stock by ID",
-                "operationId": "97a518364a1e7381ea6bbc749668ee1f",
+                "summary": "Delete a specific books_stocks by ID",
+                "operationId": "45a5cfdaf4972cd73313133082ca0d26",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the books_stock",
+                        "description": "ID of the books_stocks",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1247,13 +1430,13 @@
                 }
             }
         },
-        "/types_branch": {
+        "/types_branches": {
             "get": {
                 "tags": [
-                    "types_branch"
+                    "types_branches"
                 ],
-                "summary": "Get a list of types_branch",
-                "operationId": "680fb4bfffe160f8b66f3f0d065a57af",
+                "summary": "Get a list of types_branches",
+                "operationId": "97af74bfee220c89b0c0c5700fd29b99",
                 "responses": {
                     "200": {
                         "description": "Successful response",
@@ -1272,10 +1455,10 @@
             },
             "post": {
                 "tags": [
-                    "types_branch"
+                    "types_branches"
                 ],
-                "summary": "Create a new types_branch",
-                "operationId": "d00cd959bca490146300dabddfd77416",
+                "summary": "Create a new types_branches",
+                "operationId": "ce050dbe8f9dcf8a1411581387496db6",
                 "requestBody": {
                     "description": "TypeBranch data",
                     "required": true,
@@ -1306,18 +1489,18 @@
                 }
             }
         },
-        "/types_branch/{id}": {
+        "/types_branches/{id}": {
             "get": {
                 "tags": [
-                    "types_branch"
+                    "types_branches"
                 ],
-                "summary": "Get a specific types_branch by ID",
-                "operationId": "a6ea0a8dae4bac8c5cd2e5b7329d81b8",
+                "summary": "Get a specific types_branches by ID",
+                "operationId": "e33a8a3abd11b078e164c05b62246e43",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_branch",
+                        "description": "ID of the types_branches",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1342,15 +1525,15 @@
             },
             "put": {
                 "tags": [
-                    "types_branch"
+                    "types_branches"
                 ],
-                "summary": "Update a specific types_branch by ID",
-                "operationId": "9c921c71297596a3321507fd311c8b85",
+                "summary": "Update a specific types_branches by ID",
+                "operationId": "98726087136b83ce1a215021e6eb76de",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_branch",
+                        "description": "ID of the types_branches",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1391,15 +1574,15 @@
             },
             "delete": {
                 "tags": [
-                    "types_branch"
+                    "types_branches"
                 ],
-                "summary": "Delete a specific types_branch by ID",
-                "operationId": "b630577c5f333e231347e92bd0de9701",
+                "summary": "Delete a specific types_branches by ID",
+                "operationId": "4f16c2a000161aa01c071b5beabaa1f2",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_branch",
+                        "description": "ID of the types_branches",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1416,13 +1599,182 @@
                 }
             }
         },
-        "/types_order_state": {
+        "/types_genres": {
             "get": {
                 "tags": [
-                    "types_order_state"
+                    "types_genres"
                 ],
-                "summary": "Get a list of types_order_state",
-                "operationId": "e4d3452bfc7a5e9875878ee276dc81d9",
+                "summary": "Get a list of types_genres",
+                "operationId": "6e1cdb613ad44750c97159198eac2c2e",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/TypeGenre"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "types_genres"
+                ],
+                "summary": "Create a new types_genres",
+                "operationId": "5876eb953745b47325ca0277455f8885",
+                "requestBody": {
+                    "description": "TypeGenre data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TypeGenre"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Resource created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/TypeGenre"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/types_genres/{id}": {
+            "get": {
+                "tags": [
+                    "types_genres"
+                ],
+                "summary": "Get a specific types_genres by ID",
+                "operationId": "70509fad3bfe1e67a2caf35fe9ddcd88",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the types_genres",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TypeGenre"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "types_genres"
+                ],
+                "summary": "Update a specific types_genres by ID",
+                "operationId": "32a2a32ec50d514a9cc3ca51fb2d6578",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the types_genres",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "TypeGenre data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TypeGenre"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Resource updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/TypeGenre"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "types_genres"
+                ],
+                "summary": "Delete a specific types_genres by ID",
+                "operationId": "8ecb93fe6d9f820f901f57aaca0c8650",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the types_genres",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            }
+        },
+        "/types_orders_states": {
+            "get": {
+                "tags": [
+                    "types_orders_states"
+                ],
+                "summary": "Get a list of types_orders_states",
+                "operationId": "629ceee33a2f3da61afd7c4b1e462219",
                 "responses": {
                     "200": {
                         "description": "Successful response",
@@ -1441,10 +1793,10 @@
             },
             "post": {
                 "tags": [
-                    "types_order_state"
+                    "types_orders_states"
                 ],
-                "summary": "Create a new types_order_state",
-                "operationId": "6e6a65d7be458b082d22b9a277919bfc",
+                "summary": "Create a new types_orders_states",
+                "operationId": "02b2536d5626b2b69c4eb31a6420a222",
                 "requestBody": {
                     "description": "TypeOrderState data",
                     "required": true,
@@ -1475,18 +1827,18 @@
                 }
             }
         },
-        "/types_order_state/{id}": {
+        "/types_orders_states/{id}": {
             "get": {
                 "tags": [
-                    "types_order_state"
+                    "types_orders_states"
                 ],
-                "summary": "Get a specific types_order_state by ID",
-                "operationId": "32f9a7463d0868fe5d0a126224a10bf3",
+                "summary": "Get a specific types_orders_states by ID",
+                "operationId": "f264dd50d2da88f988e3a8e7c592d301",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_order_state",
+                        "description": "ID of the types_orders_states",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1511,15 +1863,15 @@
             },
             "put": {
                 "tags": [
-                    "types_order_state"
+                    "types_orders_states"
                 ],
-                "summary": "Update a specific types_order_state by ID",
-                "operationId": "4015277c80f542148d2d6ea80056c8bd",
+                "summary": "Update a specific types_orders_states by ID",
+                "operationId": "f8e23ef739c0f341106a112ecde4ad7e",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_order_state",
+                        "description": "ID of the types_orders_states",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1560,15 +1912,15 @@
             },
             "delete": {
                 "tags": [
-                    "types_order_state"
+                    "types_orders_states"
                 ],
-                "summary": "Delete a specific types_order_state by ID",
-                "operationId": "cd1908f1588886fafc78f5fcbd7e6171",
+                "summary": "Delete a specific types_orders_states by ID",
+                "operationId": "035007899d1aeec37cb670bb3c8a4865",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_order_state",
+                        "description": "ID of the types_orders_states",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1585,13 +1937,13 @@
                 }
             }
         },
-        "/types_payment": {
+        "/types_payments": {
             "get": {
                 "tags": [
-                    "types_payment"
+                    "types_payments"
                 ],
-                "summary": "Get a list of types_payment",
-                "operationId": "9b80092029b115a9f65e7d63bff49263",
+                "summary": "Get a list of types_payments",
+                "operationId": "eaf58772b330330fc4d41fc0e8b3b40f",
                 "responses": {
                     "200": {
                         "description": "Successful response",
@@ -1610,10 +1962,10 @@
             },
             "post": {
                 "tags": [
-                    "types_payment"
+                    "types_payments"
                 ],
-                "summary": "Create a new types_payment",
-                "operationId": "80c537417b9cbfb6fee32d0c37c90058",
+                "summary": "Create a new types_payments",
+                "operationId": "e757690d6c96a1463bd2f8fce9b45b12",
                 "requestBody": {
                     "description": "TypePayment data",
                     "required": true,
@@ -1644,18 +1996,18 @@
                 }
             }
         },
-        "/types_payment/{id}": {
+        "/types_payments/{id}": {
             "get": {
                 "tags": [
-                    "types_payment"
+                    "types_payments"
                 ],
-                "summary": "Get a specific types_payment by ID",
-                "operationId": "581af02e6aa4ea77b2233bf92ab11517",
+                "summary": "Get a specific types_payments by ID",
+                "operationId": "15eb6d8e179f295d0df87be744c28155",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_payment",
+                        "description": "ID of the types_payments",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1680,15 +2032,15 @@
             },
             "put": {
                 "tags": [
-                    "types_payment"
+                    "types_payments"
                 ],
-                "summary": "Update a specific types_payment by ID",
-                "operationId": "ac8b0661b952549d152d7ddd5ba97470",
+                "summary": "Update a specific types_payments by ID",
+                "operationId": "9dd9af2fc19d3f1e1688cf1b0528218b",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_payment",
+                        "description": "ID of the types_payments",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1729,15 +2081,15 @@
             },
             "delete": {
                 "tags": [
-                    "types_payment"
+                    "types_payments"
                 ],
-                "summary": "Delete a specific types_payment by ID",
-                "operationId": "cbb922f2a8472eba820e954f6a5cfdaa",
+                "summary": "Delete a specific types_payments by ID",
+                "operationId": "e83a182945610fbcf279008b97e0de46",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_payment",
+                        "description": "ID of the types_payments",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1754,13 +2106,13 @@
                 }
             }
         },
-        "/types_receive": {
+        "/types_receives": {
             "get": {
                 "tags": [
-                    "types_receive"
+                    "types_receives"
                 ],
-                "summary": "Get a list of types_receive",
-                "operationId": "60e40651e889a946cb02f7cd642930d6",
+                "summary": "Get a list of types_receives",
+                "operationId": "0417ea5e25bfb8fd8ee49856f17016fa",
                 "responses": {
                     "200": {
                         "description": "Successful response",
@@ -1779,10 +2131,10 @@
             },
             "post": {
                 "tags": [
-                    "types_receive"
+                    "types_receives"
                 ],
-                "summary": "Create a new types_receive",
-                "operationId": "610ad288b24a66d9196f37b7fdd422d0",
+                "summary": "Create a new types_receives",
+                "operationId": "50090e82cc0eacb3d7b613a9ff868b17",
                 "requestBody": {
                     "description": "TypeReceive data",
                     "required": true,
@@ -1813,18 +2165,18 @@
                 }
             }
         },
-        "/types_receive/{id}": {
+        "/types_receives/{id}": {
             "get": {
                 "tags": [
-                    "types_receive"
+                    "types_receives"
                 ],
-                "summary": "Get a specific types_receive by ID",
-                "operationId": "276a714bfbd4795126a848f8bc11bccc",
+                "summary": "Get a specific types_receives by ID",
+                "operationId": "f84e4922d0eeb8c8d92bcbf48af06a74",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_receive",
+                        "description": "ID of the types_receives",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1849,15 +2201,15 @@
             },
             "put": {
                 "tags": [
-                    "types_receive"
+                    "types_receives"
                 ],
-                "summary": "Update a specific types_receive by ID",
-                "operationId": "2c2b11422907ef1c682ee7cabfc46def",
+                "summary": "Update a specific types_receives by ID",
+                "operationId": "c1543df8694acb50827b80eb08cd5b4a",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_receive",
+                        "description": "ID of the types_receives",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1898,15 +2250,15 @@
             },
             "delete": {
                 "tags": [
-                    "types_receive"
+                    "types_receives"
                 ],
-                "summary": "Delete a specific types_receive by ID",
-                "operationId": "4bb0f0c50631dc0c8af3740a26bf5f87",
+                "summary": "Delete a specific types_receives by ID",
+                "operationId": "b1a600a99289da180209079339415e49",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_receive",
+                        "description": "ID of the types_receives",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -2001,23 +2353,17 @@
                         "format": "int64",
                         "example": "1"
                     },
-                    "books_info_id": {
-                        "description": "ユニーク制約・外部キー制約（books_infoテーブル）",
+                    "type_branch_id": {
+                        "description": "外部キー制約（types_branchesテーブル）",
                         "type": "integer",
                         "format": "int64",
                         "example": "1"
                     },
-                    "branch": {
-                        "description": "支部番号",
+                    "book_info_id": {
+                        "description": "外部キー制約（books_infoテーブル）",
                         "type": "integer",
                         "format": "int64",
                         "example": "1"
-                    },
-                    "isbn": {
-                        "description": "ISBN-13 or ISBN-10",
-                        "type": "string",
-                        "format": "string",
-                        "example": "9784908434266"
                     },
                     "stock": {
                         "description": "未販売の在庫数",
@@ -2157,8 +2503,8 @@
                         "format": "int64",
                         "example": "1"
                     },
-                    "branch": {
-                        "description": "支部番号",
+                    "type_branch_id": {
+                        "description": "支部番号（types_branchesテーブルからの外部キー制約）",
                         "type": "integer",
                         "format": "int64",
                         "example": "1"
@@ -2205,8 +2551,14 @@
                         "format": "string",
                         "example": "example@gmail.com"
                     },
-                    "receive_type": {
-                        "description": "受取り方法",
+                    "total": {
+                        "description": "請求合計金額",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1000"
+                    },
+                    "type_receive_id": {
+                        "description": "受取り方法分類id（types_receivesテーブルからの外部キー制約）",
                         "type": "integer",
                         "format": "int64",
                         "example": "1"
@@ -2217,8 +2569,8 @@
                         "format": "date-time",
                         "example": "2023-06-20T21:20:14.000000Z"
                     },
-                    "payment_type": {
-                        "description": "支払い方法",
+                    "type_payment_id": {
+                        "description": "支払い方法分類id（types_paymentsテーブルからの外部キー制約）",
                         "type": "integer",
                         "format": "int64",
                         "example": "1"
@@ -2228,12 +2580,6 @@
                         "type": "string",
                         "format": "date-time",
                         "example": "2023-06-20T21:20:14.000000Z"
-                    },
-                    "is_paid": {
-                        "description": "支払い済みか",
-                        "type": "boolean",
-                        "format": "boolean",
-                        "example": "true"
                     },
                     "notes": {
                         "description": "備考・質問",
@@ -2265,14 +2611,26 @@
                         "format": "int64",
                         "example": "1"
                     },
+                    "order_customer_id": {
+                        "description": "外部キー制約（orders_customersテーブル）",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
                     "numbering": {
                         "description": "整理番号",
                         "type": "string",
                         "format": "string",
                         "example": "231B001"
                     },
-                    "order_state": {
-                        "description": "予約の処理状態を表すステータス。types_order_stateテーブルから取得",
+                    "type_order_state_id": {
+                        "description": "予約の処理状態を表すステータス。types_orders_statesテーブルから取得",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
+                    "book_info_id": {
+                        "description": "外部キー制約（books_info）",
                         "type": "integer",
                         "format": "int64",
                         "example": "1"
@@ -2319,6 +2677,12 @@
                         "format": "int64",
                         "example": "1"
                     },
+                    "order_customer_id": {
+                        "description": "外部キー制約（orders_customersテーブル）",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
                     "numbering": {
                         "description": "整理番号",
                         "type": "string",
@@ -2342,6 +2706,12 @@
                         "type": "integer",
                         "format": "int64",
                         "example": "100"
+                    },
+                    "is_paid": {
+                        "description": "支払い済みか",
+                        "type": "boolean",
+                        "format": "boolean",
+                        "example": "true"
                     },
                     "created_at": {
                         "description": "レコード作成日",
@@ -2369,6 +2739,36 @@
                     },
                     "type": {
                         "description": "支部名",
+                        "type": "string",
+                        "format": "string",
+                        "example": "○○大学"
+                    },
+                    "created_at": {
+                        "description": "レコード作成日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    },
+                    "updated_at": {
+                        "description": "レコード更新日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "TypeGenre": {
+                "description": "TypeGenre Model",
+                "properties": {
+                    "id": {
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
+                    "type": {
+                        "description": "ジャンル名",
                         "type": "string",
                         "format": "string",
                         "example": "○○大学"
