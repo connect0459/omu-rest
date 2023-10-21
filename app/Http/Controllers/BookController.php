@@ -16,7 +16,7 @@ class BookController extends Controller
      * @OA\Get(
      *     path="/books/query/{type_branch_id}",
      *     summary="書籍の検索と支部在庫の表示",
-     *     description="ANDおよびOR演算子を使用して書籍を検索します。",
+     *     description="ANDおよびOR演算子を使用して書籍を検索します。idの範囲指定も可能。",
      *     tags={"books"},
      *     @OA\Parameter(
      *         name="type_branch_id",
@@ -31,6 +31,20 @@ class BookController extends Controller
      *         description="検索キーワードで構成されるクエリ（ANDおよびOR演算子を使用可能）",
      *         required=false,
      *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="f",
+     *         in="query",
+     *         description="取得範囲の開始ID",
+     *         required=false,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Parameter(
+     *         name="t",
+     *         in="query",
+     *         description="取得範囲の終了ID",
+     *         required=false,
+     *         @OA\Schema(type="integer")
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -67,6 +81,8 @@ class BookController extends Controller
     public function get_by_query(Request $request, $type_branch_id)
     {
         $query_strings = $request->query('q');
+        $startId = $request->query('f');
+        $endId = $request->query('t');
 
         $operators = ['AND', 'OR'];
         $parsed_keywords = [];
@@ -91,6 +107,17 @@ class BookController extends Controller
         $booksInfo = BookInfo::query();
         $booksStocks = BookStock::where('type_branch_id', $type_branch_id)->get();
         $formatted_data = [];
+
+        if ($startId && $endId) {
+            // f と t が指定された場合
+            $booksInfo->whereBetween('id', [$startId, $endId]);
+        } elseif ($startId) {
+            // f のみ指定された場合
+            $booksInfo->where('id', '>=', $startId);
+        } elseif ($endId) {
+            // t のみ指定された場合
+            $booksInfo->where('id', '<=', $endId);
+        }
 
         // パースされたキーワードを使用して検索条件を構築
         foreach ($parsed_keywords as $parsed_keyword) {
