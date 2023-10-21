@@ -29,7 +29,7 @@ class BookController extends Controller
      *         name="q",
      *         in="query",
      *         description="検索キーワードで構成されるクエリ（ANDおよびOR演算子を使用可能）",
-     *         required=true,
+     *         required=false,
      *         @OA\Schema(type="string")
      *     ),
      *     @OA\Response(
@@ -268,5 +268,5 @@ class BookController extends Controller
         }
 
         return response()->json($formattedData);
-    }    
+    }
 }

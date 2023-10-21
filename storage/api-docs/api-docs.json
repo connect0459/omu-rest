@@ -9,6 +9,10 @@
         {
             "url": "http://localhost:8000/api",
             "description": "ローカルホストのAPIエンドポイント"
+        },
+        {
+            "url": "https://example.studyfortwo.org/omu-rest/public/api",
+            "description": "lolipopのAPIエンドポイント"
         }
     ],
     "paths": {
@@ -33,8 +37,8 @@
                     {
                         "name": "q",
                         "in": "query",
-                        "description": "検索キーワードで構成されるquery strings（ANDおよびOR演算子を使用可能）",
-                        "required": true,
+                        "description": "検索キーワードで構成されるクエリ（ANDおよびOR演算子を使用可能）",
+                        "required": false,
                         "schema": {
                             "type": "string"
                         }
