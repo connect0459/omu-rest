@@ -16,8 +16,8 @@ use OpenApi\Annotations as OA;
  *
  * サーバー情報
  * @OA\Server(
- *   description="ローカルホストのAPIエンドポイント",
- *   url="http://localhost:8000/api"
+ *   description="lilipopサーバーにデプロイしたAPIエンドポイント",
+ *   url="https://rest.studyfortwo.org/public/api"
  * )
  * 
  * セキュリティスキーマ

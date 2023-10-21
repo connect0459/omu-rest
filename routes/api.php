@@ -3,10 +3,8 @@
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookInfoController;
 use App\Http\Controllers\BookStockController;
-use App\Http\Controllers\BookTestController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\TypeBranchController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

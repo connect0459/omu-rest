@@ -28,7 +28,7 @@ class BookController extends Controller
      *     @OA\Parameter(
      *         name="q",
      *         in="query",
-     *         description="検索キーワードで構成されるquery strings（ANDおよびOR演算子を使用可能）",
+     *         description="検索キーワードで構成されるクエリ（ANDおよびOR演算子を使用可能）",
      *         required=true,
      *         @OA\Schema(type="string")
      *     ),
