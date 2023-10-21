@@ -18,6 +18,10 @@ use OpenApi\Annotations as OA;
  * @OA\Server(
  *   description="ローカルホストのAPIエンドポイント",
  *   url="http://localhost:8000/api"
+ * ),
+ * @OA\Server(
+ *   description="lolipopのAPIエンドポイント",
+ *   url="https://example.studyfortwo.org/omu-rest/public/api"
  * )
  * 
  * セキュリティスキーマ
