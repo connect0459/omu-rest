@@ -1,6 +1,6 @@
 # omu-rest
 
-Laravel で構築された RESTful API サーバーです。PHP・Composer・MySQL はインストール済みであることを前提としています。MySQL Workbench と phpMyAdmin があればデータ管理が楽なので併せてセッティングしましょう。
+Laravel で構築された RESTful API サーバーです。PHP・Composer・MySQL はインストール済みであることを前提としています。DBeaver と phpMyAdmin があればデータ管理が楽なので併せてセッティングしましょう。
 
 ## ローカル環境へのインストール
 
