@@ -15,7 +15,7 @@ class TypePaymentController extends Controller
      * @OA\Get(
      *     path="/types_payments",
      *     tags={"types_payments"},
-     *     summary="types_paymentsのリストを取得する",
+     *     summary="支払い方法のリストを取得する",
      *     @OA\Response(
      *         response=200,
      *         description="成功した応答",
@@ -39,7 +39,7 @@ class TypePaymentController extends Controller
      * @OA\Post(
      *     path="/types_payments",
      *     tags={"types_payments"},
-     *     summary="新しいtypes_paymentsを作成する",
+     *     summary="新しい支払い方法を作成する",
      *     @OA\RequestBody(
      *         required=true,
      *         description="TypePaymentのデータ",
@@ -70,7 +70,7 @@ class TypePaymentController extends Controller
      * @OA\Get(
      *     path="/types_payments/{id}",
      *     tags={"types_payments"},
-     *     summary="特定のIDでtypes_paymentsを取得する",
+     *     summary="特定のIDで支払い方法を取得する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -109,7 +109,7 @@ class TypePaymentController extends Controller
      * @OA\Put(
      *     path="/types_payments/{id}",
      *     tags={"types_payments"},
-     *     summary="特定のIDでtypes_paymentsを更新する",
+     *     summary="特定のIDで支払い方法を更新する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -159,7 +159,7 @@ class TypePaymentController extends Controller
      * @OA\Delete(
      *     path="/types_payments/{id}",
      *     tags={"types_payments"},
-     *     summary="特定のIDでtypes_paymentsを削除する",
+     *     summary="特定のIDで支払い方法を削除する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",

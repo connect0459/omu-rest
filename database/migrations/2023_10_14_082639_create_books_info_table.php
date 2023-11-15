@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('author')->nullable();
             $table->string('publisher')->nullable();
-            $table->string('genre')->nullable();
             $table->text('description')->nullable();
+            $table->foreignId('type_genre_id')->constrained('types_genres')->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer('list_price');
             $table->integer('sale_price');
             $table->datetime('created_at')->useCurrent();

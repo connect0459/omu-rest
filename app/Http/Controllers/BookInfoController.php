@@ -52,18 +52,6 @@ class BookInfoController extends Controller
      *             type="object",
      *             allOf={
      *                 @OA\Schema(ref="#/components/schemas/BookInfo"),
-     *                 @OA\Schema(
-     *                     @OA\Property(
-     *                         property="created_at",
-     *                         type="string",
-     *                         format="date-time"
-     *                     ),
-     *                     @OA\Property(
-     *                         property="updated_at",
-     *                         type="string",
-     *                         format="date-time"
-     *                     )
-     *                 )
      *             }
      *         )
      *     )
@@ -143,18 +131,6 @@ class BookInfoController extends Controller
      *             type="object",
      *             allOf={
      *                 @OA\Schema(ref="#/components/schemas/BookInfo"),
-     *                 @OA\Schema(
-     *                     @OA\Property(
-     *                         property="created_at",
-     *                         type="string",
-     *                         format="date-time"
-     *                     ),
-     *                     @OA\Property(
-     *                         property="updated_at",
-     *                         type="string",
-     *                         format="date-time"
-     *                     )
-     *                 )
      *             }
      *         )
      *     ),

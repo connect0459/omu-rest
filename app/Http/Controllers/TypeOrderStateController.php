@@ -15,7 +15,7 @@ class TypeOrderStateController extends Controller
      * @OA\Get(
      *     path="/types_orders_states",
      *     tags={"types_orders_states"},
-     *     summary="types_orders_statesのリストを取得する",
+     *     summary="商品ステータスのリストを取得する",
      *     @OA\Response(
      *         response=200,
      *         description="成功した応答",
@@ -39,7 +39,7 @@ class TypeOrderStateController extends Controller
      * @OA\Post(
      *     path="/types_orders_states",
      *     tags={"types_orders_states"},
-     *     summary="新しいtypes_orders_statesを作成する",
+     *     summary="新しい商品ステータスを作成する",
      *     @OA\RequestBody(
      *         required=true,
      *         description="TypeOrderStateのデータ",
@@ -70,7 +70,7 @@ class TypeOrderStateController extends Controller
      * @OA\Get(
      *     path="/types_orders_states/{id}",
      *     tags={"types_orders_states"},
-     *     summary="特定のIDでtypes_orders_statesを取得する",
+     *     summary="特定のIDで商品ステータスを取得する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -109,7 +109,7 @@ class TypeOrderStateController extends Controller
      * @OA\Put(
      *     path="/types_orders_states/{id}",
      *     tags={"types_orders_states"},
-     *     summary="特定のIDでtypes_orders_statesを更新する",
+     *     summary="特定のIDで商品ステータスを更新する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -159,7 +159,7 @@ class TypeOrderStateController extends Controller
      * @OA\Delete(
      *     path="/types_orders_states/{id}",
      *     tags={"types_orders_states"},
-     *     summary="特定のIDでtypes_orders_statesを削除する",
+     *     summary="特定のIDで商品ステータスを削除する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",

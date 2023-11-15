@@ -15,7 +15,7 @@ class TypeReceiveController extends Controller
      * @OA\Get(
      *     path="/types_receives",
      *     tags={"types_receives"},
-     *     summary="types_receivesのリストを取得する",
+     *     summary="受取り方法のリストを取得する",
      *     @OA\Response(
      *         response=200,
      *         description="成功した応答",
@@ -39,7 +39,7 @@ class TypeReceiveController extends Controller
      * @OA\Post(
      *     path="/types_receives",
      *     tags={"types_receives"},
-     *     summary="新しいtypes_receivesを作成する",
+     *     summary="新しい受取り方法を作成する",
      *     @OA\RequestBody(
      *         required=true,
      *         description="TypeReceiveのデータ",
@@ -70,7 +70,7 @@ class TypeReceiveController extends Controller
      * @OA\Get(
      *     path="/types_receives/{id}",
      *     tags={"types_receives"},
-     *     summary="特定のIDでtypes_receivesを取得する",
+     *     summary="特定のIDで受取り方法を取得する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -109,7 +109,7 @@ class TypeReceiveController extends Controller
      * @OA\Put(
      *     path="/types_receives/{id}",
      *     tags={"types_receives"},
-     *     summary="特定のIDでtypes_receivesを更新する",
+     *     summary="特定のIDで受取り方法を更新する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -159,7 +159,7 @@ class TypeReceiveController extends Controller
      * @OA\Delete(
      *     path="/types_receives/{id}",
      *     tags={"types_receives"},
-     *     summary="特定のIDでtypes_receivesを削除する",
+     *     summary="特定のIDで受取り方法を削除する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",

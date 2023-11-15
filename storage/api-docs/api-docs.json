@@ -267,19 +267,6 @@
                                     "allOf": [
                                         {
                                             "$ref": "#/components/schemas/BookInfo"
-                                        },
-                                        {
-                                            "properties": {
-                                                "created_at": {
-                                                    "type": "string",
-                                                    "format": "date-time"
-                                                },
-                                                "updated_at": {
-                                                    "type": "string",
-                                                    "format": "date-time"
-                                                }
-                                            },
-                                            "type": "object"
                                         }
                                     ]
                                 }
@@ -361,19 +348,6 @@
                                     "allOf": [
                                         {
                                             "$ref": "#/components/schemas/BookInfo"
-                                        },
-                                        {
-                                            "properties": {
-                                                "created_at": {
-                                                    "type": "string",
-                                                    "format": "date-time"
-                                                },
-                                                "updated_at": {
-                                                    "type": "string",
-                                                    "format": "date-time"
-                                                }
-                                            },
-                                            "type": "object"
                                         }
                                     ]
                                 }
@@ -462,19 +436,6 @@
                                     "allOf": [
                                         {
                                             "$ref": "#/components/schemas/BookStock"
-                                        },
-                                        {
-                                            "properties": {
-                                                "created_at": {
-                                                    "type": "string",
-                                                    "format": "date-time"
-                                                },
-                                                "updated_at": {
-                                                    "type": "string",
-                                                    "format": "date-time"
-                                                }
-                                            },
-                                            "type": "object"
                                         }
                                     ]
                                 }
@@ -556,19 +517,6 @@
                                     "allOf": [
                                         {
                                             "$ref": "#/components/schemas/BookStock"
-                                        },
-                                        {
-                                            "properties": {
-                                                "created_at": {
-                                                    "type": "string",
-                                                    "format": "date-time"
-                                                },
-                                                "updated_at": {
-                                                    "type": "string",
-                                                    "format": "date-time"
-                                                }
-                                            },
-                                            "type": "object"
                                         }
                                     ]
                                 }
@@ -1795,7 +1743,7 @@
                 "tags": [
                     "types_orders_states"
                 ],
-                "summary": "types_orders_statesのリストを取得する",
+                "summary": "商品ステータスのリストを取得する",
                 "operationId": "629ceee33a2f3da61afd7c4b1e462219",
                 "responses": {
                     "200": {
@@ -1817,7 +1765,7 @@
                 "tags": [
                     "types_orders_states"
                 ],
-                "summary": "新しいtypes_orders_statesを作成する",
+                "summary": "新しい商品ステータスを作成する",
                 "operationId": "02b2536d5626b2b69c4eb31a6420a222",
                 "requestBody": {
                     "description": "TypeOrderStateのデータ",
@@ -1854,7 +1802,7 @@
                 "tags": [
                     "types_orders_states"
                 ],
-                "summary": "特定のIDでtypes_orders_statesを取得する",
+                "summary": "特定のIDで商品ステータスを取得する",
                 "operationId": "f264dd50d2da88f988e3a8e7c592d301",
                 "parameters": [
                     {
@@ -1887,7 +1835,7 @@
                 "tags": [
                     "types_orders_states"
                 ],
-                "summary": "特定のIDでtypes_orders_statesを更新する",
+                "summary": "特定のIDで商品ステータスを更新する",
                 "operationId": "f8e23ef739c0f341106a112ecde4ad7e",
                 "parameters": [
                     {
@@ -1936,7 +1884,7 @@
                 "tags": [
                     "types_orders_states"
                 ],
-                "summary": "特定のIDでtypes_orders_statesを削除する",
+                "summary": "特定のIDで商品ステータスを削除する",
                 "operationId": "035007899d1aeec37cb670bb3c8a4865",
                 "parameters": [
                     {
@@ -1964,7 +1912,7 @@
                 "tags": [
                     "types_payments"
                 ],
-                "summary": "types_paymentsのリストを取得する",
+                "summary": "支払い方法のリストを取得する",
                 "operationId": "eaf58772b330330fc4d41fc0e8b3b40f",
                 "responses": {
                     "200": {
@@ -1986,7 +1934,7 @@
                 "tags": [
                     "types_payments"
                 ],
-                "summary": "新しいtypes_paymentsを作成する",
+                "summary": "新しい支払い方法を作成する",
                 "operationId": "e757690d6c96a1463bd2f8fce9b45b12",
                 "requestBody": {
                     "description": "TypePaymentのデータ",
@@ -2023,7 +1971,7 @@
                 "tags": [
                     "types_payments"
                 ],
-                "summary": "特定のIDでtypes_paymentsを取得する",
+                "summary": "特定のIDで支払い方法を取得する",
                 "operationId": "15eb6d8e179f295d0df87be744c28155",
                 "parameters": [
                     {
@@ -2056,7 +2004,7 @@
                 "tags": [
                     "types_payments"
                 ],
-                "summary": "特定のIDでtypes_paymentsを更新する",
+                "summary": "特定のIDで支払い方法を更新する",
                 "operationId": "9dd9af2fc19d3f1e1688cf1b0528218b",
                 "parameters": [
                     {
@@ -2105,7 +2053,7 @@
                 "tags": [
                     "types_payments"
                 ],
-                "summary": "特定のIDでtypes_paymentsを削除する",
+                "summary": "特定のIDで支払い方法を削除する",
                 "operationId": "e83a182945610fbcf279008b97e0de46",
                 "parameters": [
                     {
@@ -2133,7 +2081,7 @@
                 "tags": [
                     "types_receives"
                 ],
-                "summary": "types_receivesのリストを取得する",
+                "summary": "受取り方法のリストを取得する",
                 "operationId": "0417ea5e25bfb8fd8ee49856f17016fa",
                 "responses": {
                     "200": {
@@ -2155,7 +2103,7 @@
                 "tags": [
                     "types_receives"
                 ],
-                "summary": "新しいtypes_receivesを作成する",
+                "summary": "新しい受取り方法を作成する",
                 "operationId": "50090e82cc0eacb3d7b613a9ff868b17",
                 "requestBody": {
                     "description": "TypeReceiveのデータ",
@@ -2192,7 +2140,7 @@
                 "tags": [
                     "types_receives"
                 ],
-                "summary": "特定のIDでtypes_receivesを取得する",
+                "summary": "特定のIDで受取り方法を取得する",
                 "operationId": "f84e4922d0eeb8c8d92bcbf48af06a74",
                 "parameters": [
                     {
@@ -2225,7 +2173,7 @@
                 "tags": [
                     "types_receives"
                 ],
-                "summary": "特定のIDでtypes_receivesを更新する",
+                "summary": "特定のIDで受取り方法を更新する",
                 "operationId": "c1543df8694acb50827b80eb08cd5b4a",
                 "parameters": [
                     {
@@ -2274,7 +2222,7 @@
                 "tags": [
                     "types_receives"
                 ],
-                "summary": "特定のIDでtypes_receivesを削除する",
+                "summary": "特定のIDで受取り方法を削除する",
                 "operationId": "b1a600a99289da180209079339415e49",
                 "parameters": [
                     {
@@ -2561,11 +2509,17 @@
                         "format": "string",
                         "example": "9784908434266"
                     },
-                    "genre": {
-                        "description": "ジャンル",
+                    "description": {
+                        "description": "説明",
                         "type": "string",
                         "format": "string",
-                        "example": "情報学"
+                        "example": "ハードウェア、ソフトウェア、ネットワーク、セキュリティ、情報モラルまで知っておきたい基礎知識が1冊にわかりやすくまとまっているテキストです。"
+                    },
+                    "type_genre_id": {
+                        "description": "外部キー制約（types_genresテーブル）",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
                     },
                     "list_price": {
                         "description": "定価",

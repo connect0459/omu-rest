@@ -47,11 +47,18 @@ use OpenApi\Annotations as OA;
  *          example="9784908434266"
  *      ),
  *      @OA\Property(
- *          property="genre",
- *          description="ジャンル",
+ *          property="description",
+ *          description="説明",
  *          type="string",
  *          format="string",
- *          example="情報学"
+ *          example="ハードウェア、ソフトウェア、ネットワーク、セキュリティ、情報モラルまで知っておきたい基礎知識が1冊にわかりやすくまとまっているテキストです。"
+ *      ),
+ *      @OA\Property(
+ *          property="type_genre_id",
+ *          description="外部キー制約（types_genresテーブル）",
+ *          type="integer",
+ *          format="int64",
+ *          example="1"
  *      ),
  *      @OA\Property(
  *          property="list_price",
@@ -94,8 +101,8 @@ class BookInfo extends Model
         'title',
         'author',
         'publisher',
-        'genre',
         'description',
+        'type_genre_id',
         'list_price',
         'sale_price'
     ];
