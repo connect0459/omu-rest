@@ -8,11 +8,11 @@
     "servers": [
         {
             "url": "http://localhost:8000/api",
-            "description": "ローカルホストのAPIエンドポイント"
+            "description": "ローカルホスト"
         },
         {
             "url": "https://example.studyfortwo.org/omu-rest/public/api",
-            "description": "lolipopのAPIエンドポイント"
+            "description": "ロリポップ！レンタルサーバー"
         }
     ],
     "paths": {
@@ -2296,6 +2296,234 @@
                     }
                 }
             }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "ユーザー一覧取得",
+                "description": "ユーザー一覧を取得します。",
+                "operationId": "7e2f5799553ec93c9c43e2a58490d447",
+                "responses": {
+                    "200": {
+                        "description": "成功した場合のレスポンス",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "ユーザー作成",
+                "description": "新しいユーザーを作成します。",
+                "operationId": "a1fce870c566eb5fc0cf3178ec5d2fed",
+                "requestBody": {
+                    "description": "ユーザー情報",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "成功した場合のレスポンス",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "ユーザー詳細取得",
+                "description": "指定したユーザーの詳細情報を取得します。",
+                "operationId": "910a0c7cf580e1c605648d82a4e57f46",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ユーザーID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功した場合のレスポンス",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "該当するユーザーが見つからない場合のレスポンス",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "ユーザー更新",
+                "description": "指定したユーザーの情報を更新します。",
+                "operationId": "ddfe232db1870b82493bf8bd25596d37",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ユーザーID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "更新するユーザー情報",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功した場合のレスポンス",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "該当するユーザーが見つからない場合のレスポンス",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "ユーザー削除",
+                "description": "指定したユーザーを削除します。",
+                "operationId": "43dd20becb1f47444e484cbb18ce345c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ユーザーID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "成功した場合のレスポンス"
+                    },
+                    "404": {
+                        "description": "該当するユーザーが見つからない場合のレスポンス",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ]
+            }
         }
     },
     "components": {
@@ -2884,6 +3112,66 @@
                         "type": "string",
                         "format": "string",
                         "example": "露店"
+                    },
+                    "created_at": {
+                        "description": "レコード作成日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    },
+                    "updated_at": {
+                        "description": "レコード更新日",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "User": {
+                "description": "User Model",
+                "properties": {
+                    "id": {
+                        "description": "ユーザーID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
+                    "name": {
+                        "description": "ユーザー名",
+                        "type": "string",
+                        "format": "string",
+                        "example": "John Doe"
+                    },
+                    "auth_scope": {
+                        "description": "認証スコープ",
+                        "type": "string",
+                        "format": "string",
+                        "example": "admin"
+                    },
+                    "email": {
+                        "description": "メールアドレス",
+                        "type": "string",
+                        "format": "email",
+                        "example": "john.doe@example.com"
+                    },
+                    "password": {
+                        "description": "パスワード",
+                        "type": "string",
+                        "format": "password",
+                        "example": "password123"
+                    },
+                    "email_verified_at": {
+                        "description": "メール認証済み日時",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-06-20T21:20:14.000000Z"
+                    },
+                    "remember_token": {
+                        "description": "Rememberトークン",
+                        "type": "string",
+                        "format": "string",
+                        "example": "randomtoken123"
                     },
                     "created_at": {
                         "description": "レコード作成日",

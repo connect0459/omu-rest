@@ -12,11 +12,22 @@ class UserController extends Controller
     private string $notfound_message = 'User not found';
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *     path="/users",
+     *     summary="ユーザー一覧取得",
+     *     description="ユーザー一覧を取得します。",
+     *     tags={"users"},
+     *     security={{ "BearerAuth": {} }},
+     *     @OA\Response(
+     *         response=200,
+     *         description="成功した場合のレスポンス",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/User")
+     *         )
+     *     )
+     * )
      */
-    
     public function index()
     {
         $users = User::all();
@@ -24,12 +35,24 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @OA\Post(
+     *     path="/users",
+     *     summary="ユーザー作成",
+     *     description="新しいユーザーを作成します。",
+     *     tags={"users"},
+     *     security={{ "BearerAuth": {} }},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="ユーザー情報",
+     *         @OA\JsonContent(ref="#/components/schemas/User")
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="成功した場合のレスポンス",
+     *         @OA\JsonContent(ref="#/components/schemas/User")
+     *     )
+     * )
      */
-    
     public function store(Request $request)
     {
         $user = User::create($request->all());
@@ -37,12 +60,37 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *     path="/users/{id}",
+     *     summary="ユーザー詳細取得",
+     *     description="指定したユーザーの詳細情報を取得します。",
+     *     tags={"users"},
+     *     security={{ "BearerAuth": {} }},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="ユーザーID",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="成功した場合のレスポンス",
+     *         @OA\JsonContent(ref="#/components/schemas/User")
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="該当するユーザーが見つからない場合のレスポンス",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                 property="message",
+     *                 type="string",
+     *                 example="User not found"
+     *             )
+     *         )
+     *     )
+     * )
      */
-    
     public function show($id)
     {
         $user = User::find($id);
@@ -53,13 +101,42 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @OA\Put(
+     *     path="/users/{id}",
+     *     summary="ユーザー更新",
+     *     description="指定したユーザーの情報を更新します。",
+     *     tags={"users"},
+     *     security={{ "BearerAuth": {} }},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="ユーザーID",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="更新するユーザー情報",
+     *         @OA\JsonContent(ref="#/components/schemas/User")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="成功した場合のレスポンス",
+     *         @OA\JsonContent(ref="#/components/schemas/User")
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="該当するユーザーが見つからない場合のレスポンス",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                 property="message",
+     *                 type="string",
+     *                 example="User not found"
+     *             )
+     *         )
+     *     )
+     * )
      */
-    
     public function update(Request $request, $id)
     {
         $user = User::find($id);
@@ -72,12 +149,36 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @OA\Delete(
+     *     path="/users/{id}",
+     *     summary="ユーザー削除",
+     *     description="指定したユーザーを削除します。",
+     *     tags={"users"},
+     *     security={{ "BearerAuth": {} }},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="ユーザーID",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=204,
+     *         description="成功した場合のレスポンス"
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="該当するユーザーが見つからない場合のレスポンス",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                 property="message",
+     *                 type="string",
+     *                 example="User not found"
+     *             )
+     *         )
+     *     )
+     * )
      */
-    
     public function destroy($id)
     {
         $user = User::find($id);

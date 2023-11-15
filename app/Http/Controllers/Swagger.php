@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use OpenApi\Annotations as OA;
 
 /**
- * Swaggerに出力する単一または共通の設定を記述するための空クラス
+ * Swaggerに出力する共通の設定を記述するための空クラス
  * 
  * 基本情報
  * @OA\Info(
@@ -16,11 +16,11 @@ use OpenApi\Annotations as OA;
  *
  * サーバー情報
  * @OA\Server(
- *   description="ローカルホストのAPIエンドポイント",
+ *   description="ローカルホスト",
  *   url="http://localhost:8000/api"
  * ),
  * @OA\Server(
- *   description="lolipopのAPIエンドポイント",
+ *   description="ロリポップ！レンタルサーバー",
  *   url="https://example.studyfortwo.org/omu-rest/public/api"
  * )
  * 
