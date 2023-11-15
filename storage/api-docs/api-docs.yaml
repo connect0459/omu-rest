@@ -15,7 +15,7 @@ paths:
     get:
       tags:
         - books
-      summary: 書籍の検索と支部在庫の表示
+      summary: 検索クエリによる支部在庫の表示
       description: ANDおよびOR演算子を使用して書籍を検索します。idの範囲指定も可能。
       operationId: 14d04cd3a807843d383b87ccfca3da7b
       parameters:
@@ -75,7 +75,7 @@ paths:
     get:
       tags:
         - books
-      summary: 書籍の検索と支部在庫の表示
+      summary: カラム指定による支部在庫の表示
       description: 指定されたbooks_infoテーブルのカラム名と値を使用して書籍を検索
       operationId: 24c56c274fc27bd118b5dfc62fbf0c3e
       parameters:
