@@ -15,7 +15,7 @@ class BookController extends Controller
     /**
      * @OA\Get(
      *     path="/books/query/{type_branch_id}",
-     *     summary="書籍の検索と支部在庫の表示",
+     *     summary="検索クエリによる支部在庫の表示",
      *     description="ANDおよびOR演算子を使用して書籍を検索します。idの範囲指定も可能。",
      *     tags={"books"},
      *     @OA\Parameter(
@@ -169,7 +169,7 @@ class BookController extends Controller
     /**
      * @OA\Get(
      *     path="/books/column/{type_branch_id}",
-     *     summary="書籍の検索と支部在庫の表示",
+     *     summary="カラム指定による支部在庫の表示",
      *     description="指定されたbooks_infoテーブルのカラム名と値を使用して書籍を検索",
      *     tags={"books"},
      *     @OA\Parameter(
