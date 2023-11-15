@@ -30,11 +30,7 @@ paths:
           name: q
           in: query
           description: 検索キーワードで構成されるクエリ（ANDおよびOR演算子を使用可能）
-<<<<<<< HEAD
-          required: true
-=======
           required: false
->>>>>>> 5db07349cf130dea8b14b767eefa7ee7550f58bd
           schema:
             type: string
         -
