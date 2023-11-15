@@ -8,17 +8,17 @@ use OpenApi\Annotations as OA;
 
 class NewsController extends Controller
 {
-    /** @var string The message called when a record is not found  */
-    private string $notfound_message = 'The record is not found';
+    /** @var string レコードが見つからない場合に呼び出されるメッセージ */
+    private string $notfound_message = 'レコードが見つかりません';
 
     /**
      * @OA\Get(
      *     path="/news",
      *     tags={"news"},
-     *     summary="Get a list of news",
+     *     summary="ニュースのリストを取得する",
      *     @OA\Response(
      *         response=200,
-     *         description="Successful response",
+     *         description="成功した応答",
      *         @OA\JsonContent(
      *             type="array",
      *             @OA\Items(ref="#/components/schemas/News")
@@ -39,15 +39,15 @@ class NewsController extends Controller
      * @OA\Post(
      *     path="/news",
      *     tags={"news"},
-     *     summary="Create a new news",
+     *     summary="新しいニュースを作成する",
      *     @OA\RequestBody(
      *         required=true,
-     *         description="News data",
+     *         description="ニュースのデータ",
      *         @OA\JsonContent(ref="#/components/schemas/News")
      *     ),
      *     @OA\Response(
      *         response=201,
-     *         description="Resource created",
+     *         description="リソースが作成されました",
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
@@ -70,24 +70,24 @@ class NewsController extends Controller
      * @OA\Get(
      *     path="/news/{id}",
      *     tags={"news"},
-     *     summary="Get a specific news by ID",
+     *     summary="特定のIDでニュースを取得する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the news",
+     *         description="ニュースのID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Successful response",
+     *         description="成功した応答",
      *         @OA\JsonContent(ref="#/components/schemas/News")
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
@@ -109,24 +109,24 @@ class NewsController extends Controller
      * @OA\Put(
      *     path="/news/{id}",
      *     tags={"news"},
-     *     summary="Update a specific news by ID",
+     *     summary="特定のIDでニュースを更新する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the news",
+     *         description="ニュースのID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         description="News data",
+     *         description="ニュースのデータ",
      *         @OA\JsonContent(ref="#/components/schemas/News")
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Resource updated",
+     *         description="リソースが更新されました",
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
@@ -136,7 +136,7 @@ class NewsController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
@@ -159,23 +159,23 @@ class NewsController extends Controller
      * @OA\Delete(
      *     path="/news/{id}",
      *     tags={"news"},
-     *     summary="Delete a specific news by ID",
+     *     summary="特定のIDでニュースを削除する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the news",
+     *         description="ニュースのID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\Response(
      *         response=204,
-     *         description="Resource deleted"
+     *         description="リソースが削除されました"
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */

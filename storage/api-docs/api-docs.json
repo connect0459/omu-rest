@@ -9,6 +9,10 @@
         {
             "url": "http://localhost:8000/api",
             "description": "ローカルホストのAPIエンドポイント"
+        },
+        {
+            "url": "https://example.studyfortwo.org/omu-rest/public/api",
+            "description": "lolipopのAPIエンドポイント"
         }
     ],
     "paths": {
@@ -33,7 +37,7 @@
                     {
                         "name": "q",
                         "in": "query",
-                        "description": "検索キーワードで構成されるquery strings（ANDおよびOR演算子を使用可能）",
+                        "description": "検索キーワードで構成されるクエリ（ANDおよびOR演算子を使用可能）",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -200,11 +204,11 @@
                 "tags": [
                     "books_info"
                 ],
-                "summary": "Get a list of books_info",
+                "summary": "書籍情報のリストを取得する",
                 "operationId": "2f9e356b188781492d6410beee2297c6",
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -222,10 +226,10 @@
                 "tags": [
                     "books_info"
                 ],
-                "summary": "Create a new books_info",
+                "summary": "新しい書籍情報を作成する",
                 "operationId": "0c3283a323f1a4a3e81dbd5915be7518",
                 "requestBody": {
-                    "description": "BookInfo data",
+                    "description": "BookInfoのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -237,7 +241,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Resource created",
+                        "description": "リソースが作成されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -272,13 +276,13 @@
                 "tags": [
                     "books_info"
                 ],
-                "summary": "Get a specific books_info by ID",
+                "summary": "特定のIDで書籍情報を取得する",
                 "operationId": "aefd1f8354eca94d504850ef936b3fb4",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the books_info",
+                        "description": "書籍情報のID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -287,7 +291,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -297,7 +301,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -305,13 +309,13 @@
                 "tags": [
                     "books_info"
                 ],
-                "summary": "Update a specific books_info by ID",
+                "summary": "特定のIDで書籍情報を更新する",
                 "operationId": "57b90f97a8a076e500862e557256c7aa",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the books_info",
+                        "description": "書籍情報のID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -319,7 +323,7 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "BookInfo data",
+                    "description": "BookInfoのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -331,7 +335,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Resource updated",
+                        "description": "リソースが更新されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -359,7 +363,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -367,13 +371,13 @@
                 "tags": [
                     "books_info"
                 ],
-                "summary": "Delete a specific books_info by ID",
+                "summary": "特定のIDで書籍情報を削除する",
                 "operationId": "e98599424d7afa9076f6f9f4df52e4e4",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the books_info",
+                        "description": "書籍情報のID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -382,10 +386,10 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "Resource deleted"
+                        "description": "リソースが削除されました"
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             }
@@ -395,11 +399,11 @@
                 "tags": [
                     "books_stocks"
                 ],
-                "summary": "Get a list of books_stocks",
+                "summary": "書籍在庫のリストを取得する",
                 "operationId": "46c90e16b416e254ed79948864ae87aa",
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -417,10 +421,10 @@
                 "tags": [
                     "books_stocks"
                 ],
-                "summary": "Create a new books_stocks",
+                "summary": "新しい書籍在庫を作成する",
                 "operationId": "ecc649eea287e26856100c11f96bb3b9",
                 "requestBody": {
-                    "description": "BookStock data",
+                    "description": "BookStockのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -432,7 +436,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Resource created",
+                        "description": "リソースが作成されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -467,13 +471,13 @@
                 "tags": [
                     "books_stocks"
                 ],
-                "summary": "Get a specific books_stocks by ID",
+                "summary": "特定のIDで書籍在庫を取得する",
                 "operationId": "d1c6d70f9a35791050b5da811f1abda1",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the books_stocks",
+                        "description": "書籍在庫のID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -482,7 +486,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -492,7 +496,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -500,13 +504,13 @@
                 "tags": [
                     "books_stocks"
                 ],
-                "summary": "Update a specific books_stocks by ID",
+                "summary": "特定のIDで書籍在庫を更新する",
                 "operationId": "dc7eef146e782e14cddc076176ff04c4",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the books_stocks",
+                        "description": "書籍在庫のID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -514,7 +518,7 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "BookStock data",
+                    "description": "BookStockのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -526,7 +530,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Resource updated",
+                        "description": "リソースが更新されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -554,7 +558,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -562,13 +566,13 @@
                 "tags": [
                     "books_stocks"
                 ],
-                "summary": "Delete a specific books_stocks by ID",
+                "summary": "特定のIDで書籍在庫を削除する",
                 "operationId": "45a5cfdaf4972cd73313133082ca0d26",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the books_stocks",
+                        "description": "書籍在庫のID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -577,10 +581,10 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "Resource deleted"
+                        "description": "リソースが削除されました"
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             }
@@ -590,11 +594,11 @@
                 "tags": [
                     "contacts"
                 ],
-                "summary": "Get a list of contacts",
+                "summary": "連絡先のリストを取得する",
                 "operationId": "e670331f5da6af785062a857ec92def2",
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -612,10 +616,10 @@
                 "tags": [
                     "contacts"
                 ],
-                "summary": "Create a new contact",
+                "summary": "新しい連絡先を作成する",
                 "operationId": "77b53a0b0cb97bf04eafa192e4cbac4e",
                 "requestBody": {
-                    "description": "Contact data",
+                    "description": "連絡先のデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -627,7 +631,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Resource created",
+                        "description": "リソースが作成されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -649,13 +653,13 @@
                 "tags": [
                     "contacts"
                 ],
-                "summary": "Get a specific contact by ID",
+                "summary": "特定のIDで連絡先を取得する",
                 "operationId": "4c4e002507e3a53acc022b210aad20ac",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the contact",
+                        "description": "連絡先のID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -664,7 +668,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -674,7 +678,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -682,13 +686,13 @@
                 "tags": [
                     "contacts"
                 ],
-                "summary": "Update a specific contact by ID",
+                "summary": "特定のIDで連絡先を更新する",
                 "operationId": "adc814a54ff3a1fdc424293b19ffe8a7",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the contact",
+                        "description": "連絡先のID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -696,7 +700,7 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "Contact data",
+                    "description": "連絡先のデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -708,7 +712,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Resource updated",
+                        "description": "リソースが更新されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -723,7 +727,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -731,13 +735,13 @@
                 "tags": [
                     "contacts"
                 ],
-                "summary": "Delete a specific contact by ID",
+                "summary": "特定のIDで連絡先を削除する",
                 "operationId": "bc8b0b91abd89481c321fcdb966dc355",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the contact",
+                        "description": "連絡先のID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -746,10 +750,10 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "Resource deleted"
+                        "description": "リソースが削除されました"
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             }
@@ -759,11 +763,11 @@
                 "tags": [
                     "news"
                 ],
-                "summary": "Get a list of news",
+                "summary": "ニュースのリストを取得する",
                 "operationId": "21b84dbdd75fd20b9c9ddb9b9e68f0a1",
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -781,10 +785,10 @@
                 "tags": [
                     "news"
                 ],
-                "summary": "Create a new news",
+                "summary": "新しいニュースを作成する",
                 "operationId": "d6a12c2e3b4ea9ab588ba9b1cb14748f",
                 "requestBody": {
-                    "description": "News data",
+                    "description": "ニュースのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -796,7 +800,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Resource created",
+                        "description": "リソースが作成されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -818,13 +822,13 @@
                 "tags": [
                     "news"
                 ],
-                "summary": "Get a specific news by ID",
+                "summary": "特定のIDでニュースを取得する",
                 "operationId": "eb815321a4dd395639d4aeef25d9a45c",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the news",
+                        "description": "ニュースのID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -833,7 +837,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -843,7 +847,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -851,13 +855,13 @@
                 "tags": [
                     "news"
                 ],
-                "summary": "Update a specific news by ID",
+                "summary": "特定のIDでニュースを更新する",
                 "operationId": "25ea273290c6cb379ab85e08ff4fadfc",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the news",
+                        "description": "ニュースのID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -865,7 +869,7 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "News data",
+                    "description": "ニュースのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -877,7 +881,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Resource updated",
+                        "description": "リソースが更新されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -892,7 +896,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -900,13 +904,13 @@
                 "tags": [
                     "news"
                 ],
-                "summary": "Delete a specific news by ID",
+                "summary": "特定のIDでニュースを削除する",
                 "operationId": "bbe79a918bfbb58bc46ed74b43e9b986",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the news",
+                        "description": "ニュースのID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -915,10 +919,10 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "Resource deleted"
+                        "description": "リソースが削除されました"
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             }
@@ -928,11 +932,11 @@
                 "tags": [
                     "orders_customers"
                 ],
-                "summary": "Get a list of orders_customers",
+                "summary": "注文顧客のリストを取得する",
                 "operationId": "5217a452519ec6ef916c6a3e2f4070dc",
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -950,10 +954,10 @@
                 "tags": [
                     "orders_customers"
                 ],
-                "summary": "Create a new orders_customers",
+                "summary": "新しい注文顧客を作成する",
                 "operationId": "75e0485900f170d2424fdeadf59b0752",
                 "requestBody": {
-                    "description": "OrderCustomer data",
+                    "description": "OrderCustomerのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -965,7 +969,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Resource created",
+                        "description": "リソースが作成されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -987,13 +991,13 @@
                 "tags": [
                     "orders_customers"
                 ],
-                "summary": "Get a specific orders_customers by ID",
+                "summary": "特定のIDで注文顧客を取得する",
                 "operationId": "4dd012aac3be308644f1e2e152f92c19",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the orders_customers",
+                        "description": "注文顧客のID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1002,7 +1006,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1012,7 +1016,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -1020,13 +1024,13 @@
                 "tags": [
                     "orders_customers"
                 ],
-                "summary": "Update a specific orders_customers by ID",
+                "summary": "特定のIDで注文顧客を更新する",
                 "operationId": "a0a94057f0311e2193b5897f80221470",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the orders_customers",
+                        "description": "注文顧客のID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1034,7 +1038,7 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "OrderCustomer data",
+                    "description": "OrderCustomerのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -1046,7 +1050,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Resource updated",
+                        "description": "リソースが更新されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1061,7 +1065,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -1069,13 +1073,13 @@
                 "tags": [
                     "orders_customers"
                 ],
-                "summary": "Delete a specific orders_customers by ID",
+                "summary": "特定のIDで注文顧客を削除する",
                 "operationId": "5608eff2ef8984e0b7447765f27595aa",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the orders_customers",
+                        "description": "注文顧客のID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1084,10 +1088,10 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "Resource deleted"
+                        "description": "リソースが削除されました"
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             }
@@ -1097,11 +1101,11 @@
                 "tags": [
                     "orders_items"
                 ],
-                "summary": "Get a list of orders_items",
+                "summary": "注文商品のリストを取得する",
                 "operationId": "89fde6ad08076b992c521fb7c680e29e",
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1119,10 +1123,10 @@
                 "tags": [
                     "orders_items"
                 ],
-                "summary": "Create a new orders_items",
+                "summary": "新しい注文商品を作成する",
                 "operationId": "b2909cc3849277b1d5345ccb4205c71d",
                 "requestBody": {
-                    "description": "OrderItem data",
+                    "description": "OrderItemのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -1134,7 +1138,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Resource created",
+                        "description": "リソースが作成されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1156,13 +1160,13 @@
                 "tags": [
                     "orders_items"
                 ],
-                "summary": "Get a specific orders_items by ID",
+                "summary": "特定のIDで注文商品を取得する",
                 "operationId": "0b2a7a56e7d5c2c49b7d11bdb0f48f5c",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the orders_items",
+                        "description": "注文商品のID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1171,7 +1175,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1181,7 +1185,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -1189,13 +1193,13 @@
                 "tags": [
                     "orders_items"
                 ],
-                "summary": "Update a specific orders_items by ID",
+                "summary": "特定のIDで注文商品を更新する",
                 "operationId": "8bee2e95aba24db3af9b2bc7b5a53f0d",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the orders_items",
+                        "description": "注文商品のID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1203,7 +1207,7 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "OrderItem data",
+                    "description": "OrderItemのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -1215,7 +1219,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Resource updated",
+                        "description": "リソースが更新されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1230,7 +1234,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -1238,13 +1242,13 @@
                 "tags": [
                     "orders_items"
                 ],
-                "summary": "Delete a specific orders_items by ID",
+                "summary": "特定のIDで注文商品を削除する",
                 "operationId": "6d397dbc3afd3a3f44e4cc08820e0921",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the orders_items",
+                        "description": "注文商品のID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1253,10 +1257,10 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "Resource deleted"
+                        "description": "リソースが削除されました"
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             }
@@ -1266,11 +1270,11 @@
                 "tags": [
                     "orders_payments"
                 ],
-                "summary": "Get a list of orders_payments",
+                "summary": "注文支払いのリストを取得する",
                 "operationId": "52140bdaf9965edfc692b030a9f1898f",
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1288,10 +1292,10 @@
                 "tags": [
                     "orders_payments"
                 ],
-                "summary": "Create a new orders_payments",
+                "summary": "新しい注文支払いを作成する",
                 "operationId": "231e4438ab66e1f3ba4205adf67e0df7",
                 "requestBody": {
-                    "description": "OrderPayment data",
+                    "description": "OrderPaymentのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -1303,7 +1307,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Resource created",
+                        "description": "リソースが作成されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1325,13 +1329,13 @@
                 "tags": [
                     "orders_payments"
                 ],
-                "summary": "Get a specific orders_payments by ID",
+                "summary": "特定のIDで注文支払いを取得する",
                 "operationId": "ed63e750658440b279ee8040dc02aba5",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the orders_payments",
+                        "description": "注文支払いのID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1340,7 +1344,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1350,7 +1354,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -1358,13 +1362,13 @@
                 "tags": [
                     "orders_payments"
                 ],
-                "summary": "Update a specific orders_payments by ID",
+                "summary": "特定のIDで注文支払いを更新する",
                 "operationId": "e7043bcd7e8fc712b2e3a6516f1b8ca8",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the orders_payments",
+                        "description": "注文支払いのID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1372,7 +1376,7 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "OrderPayment data",
+                    "description": "OrderPaymentのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -1384,7 +1388,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Resource updated",
+                        "description": "リソースが更新されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1399,7 +1403,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -1407,13 +1411,13 @@
                 "tags": [
                     "orders_payments"
                 ],
-                "summary": "Delete a specific orders_payments by ID",
+                "summary": "特定のIDで注文支払いを削除する",
                 "operationId": "41c8a438add65c3a1a6f1f7f0efeeea3",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the orders_payments",
+                        "description": "注文支払いのID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1422,10 +1426,10 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "Resource deleted"
+                        "description": "リソースが削除されました"
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             }
@@ -1435,11 +1439,11 @@
                 "tags": [
                     "types_branches"
                 ],
-                "summary": "Get a list of types_branches",
+                "summary": "支部のリストを取得する",
                 "operationId": "97af74bfee220c89b0c0c5700fd29b99",
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1457,10 +1461,10 @@
                 "tags": [
                     "types_branches"
                 ],
-                "summary": "Create a new types_branches",
+                "summary": "新しい支部を作成する",
                 "operationId": "ce050dbe8f9dcf8a1411581387496db6",
                 "requestBody": {
-                    "description": "TypeBranch data",
+                    "description": "TypeBranchのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -1472,7 +1476,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Resource created",
+                        "description": "リソースが作成されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1494,13 +1498,13 @@
                 "tags": [
                     "types_branches"
                 ],
-                "summary": "Get a specific types_branches by ID",
+                "summary": "特定のIDで支部を取得する",
                 "operationId": "e33a8a3abd11b078e164c05b62246e43",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_branches",
+                        "description": "支部のID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1509,7 +1513,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1519,7 +1523,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -1527,13 +1531,13 @@
                 "tags": [
                     "types_branches"
                 ],
-                "summary": "Update a specific types_branches by ID",
+                "summary": "特定のIDで支部を更新する",
                 "operationId": "98726087136b83ce1a215021e6eb76de",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_branches",
+                        "description": "支部のID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1541,7 +1545,7 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "TypeBranch data",
+                    "description": "TypeBranchのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -1553,7 +1557,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Resource updated",
+                        "description": "リソースが更新されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1568,7 +1572,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -1576,13 +1580,13 @@
                 "tags": [
                     "types_branches"
                 ],
-                "summary": "Delete a specific types_branches by ID",
+                "summary": "特定のIDで支部を削除する",
                 "operationId": "4f16c2a000161aa01c071b5beabaa1f2",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_branches",
+                        "description": "支部のID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1591,10 +1595,10 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "Resource deleted"
+                        "description": "リソースが削除されました"
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             }
@@ -1604,11 +1608,11 @@
                 "tags": [
                     "types_genres"
                 ],
-                "summary": "Get a list of types_genres",
+                "summary": "書籍のジャンルのリストを取得する",
                 "operationId": "6e1cdb613ad44750c97159198eac2c2e",
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1626,10 +1630,10 @@
                 "tags": [
                     "types_genres"
                 ],
-                "summary": "Create a new types_genres",
+                "summary": "新しい書籍のジャンルを作成する",
                 "operationId": "5876eb953745b47325ca0277455f8885",
                 "requestBody": {
-                    "description": "TypeGenre data",
+                    "description": "TypeGenreのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -1641,7 +1645,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Resource created",
+                        "description": "リソースが作成されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1663,13 +1667,13 @@
                 "tags": [
                     "types_genres"
                 ],
-                "summary": "Get a specific types_genres by ID",
+                "summary": "特定のIDで書籍のジャンルを取得する",
                 "operationId": "70509fad3bfe1e67a2caf35fe9ddcd88",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_genres",
+                        "description": "書籍のジャンルのID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1678,7 +1682,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1688,7 +1692,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -1696,13 +1700,13 @@
                 "tags": [
                     "types_genres"
                 ],
-                "summary": "Update a specific types_genres by ID",
+                "summary": "特定のIDで書籍のジャンルを更新する",
                 "operationId": "32a2a32ec50d514a9cc3ca51fb2d6578",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_genres",
+                        "description": "書籍のジャンルのID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1710,7 +1714,7 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "TypeGenre data",
+                    "description": "TypeGenreのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -1722,7 +1726,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Resource updated",
+                        "description": "リソースが更新されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1737,7 +1741,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -1745,13 +1749,13 @@
                 "tags": [
                     "types_genres"
                 ],
-                "summary": "Delete a specific types_genres by ID",
+                "summary": "特定のIDで書籍のジャンルを削除する",
                 "operationId": "8ecb93fe6d9f820f901f57aaca0c8650",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_genres",
+                        "description": "書籍のジャンルのID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1760,10 +1764,10 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "Resource deleted"
+                        "description": "リソースが削除されました"
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             }
@@ -1773,11 +1777,11 @@
                 "tags": [
                     "types_orders_states"
                 ],
-                "summary": "Get a list of types_orders_states",
+                "summary": "types_orders_statesのリストを取得する",
                 "operationId": "629ceee33a2f3da61afd7c4b1e462219",
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1795,10 +1799,10 @@
                 "tags": [
                     "types_orders_states"
                 ],
-                "summary": "Create a new types_orders_states",
+                "summary": "新しいtypes_orders_statesを作成する",
                 "operationId": "02b2536d5626b2b69c4eb31a6420a222",
                 "requestBody": {
-                    "description": "TypeOrderState data",
+                    "description": "TypeOrderStateのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -1810,7 +1814,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Resource created",
+                        "description": "リソースが作成されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1832,13 +1836,13 @@
                 "tags": [
                     "types_orders_states"
                 ],
-                "summary": "Get a specific types_orders_states by ID",
+                "summary": "特定のIDでtypes_orders_statesを取得する",
                 "operationId": "f264dd50d2da88f988e3a8e7c592d301",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_orders_states",
+                        "description": "types_orders_statesのID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1847,7 +1851,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1857,7 +1861,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -1865,13 +1869,13 @@
                 "tags": [
                     "types_orders_states"
                 ],
-                "summary": "Update a specific types_orders_states by ID",
+                "summary": "特定のIDでtypes_orders_statesを更新する",
                 "operationId": "f8e23ef739c0f341106a112ecde4ad7e",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_orders_states",
+                        "description": "types_orders_statesのID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1879,7 +1883,7 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "TypeOrderState data",
+                    "description": "TypeOrderStateのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -1891,7 +1895,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Resource updated",
+                        "description": "リソースが更新されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1906,7 +1910,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -1914,13 +1918,13 @@
                 "tags": [
                     "types_orders_states"
                 ],
-                "summary": "Delete a specific types_orders_states by ID",
+                "summary": "特定のIDでtypes_orders_statesを削除する",
                 "operationId": "035007899d1aeec37cb670bb3c8a4865",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_orders_states",
+                        "description": "types_orders_statesのID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1929,10 +1933,10 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "Resource deleted"
+                        "description": "リソースが削除されました"
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             }
@@ -1942,11 +1946,11 @@
                 "tags": [
                     "types_payments"
                 ],
-                "summary": "Get a list of types_payments",
+                "summary": "types_paymentsのリストを取得する",
                 "operationId": "eaf58772b330330fc4d41fc0e8b3b40f",
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1964,10 +1968,10 @@
                 "tags": [
                     "types_payments"
                 ],
-                "summary": "Create a new types_payments",
+                "summary": "新しいtypes_paymentsを作成する",
                 "operationId": "e757690d6c96a1463bd2f8fce9b45b12",
                 "requestBody": {
-                    "description": "TypePayment data",
+                    "description": "TypePaymentのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -1979,7 +1983,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Resource created",
+                        "description": "リソースが作成されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -2001,13 +2005,13 @@
                 "tags": [
                     "types_payments"
                 ],
-                "summary": "Get a specific types_payments by ID",
+                "summary": "特定のIDでtypes_paymentsを取得する",
                 "operationId": "15eb6d8e179f295d0df87be744c28155",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_payments",
+                        "description": "types_paymentsのID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -2016,7 +2020,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -2026,7 +2030,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -2034,13 +2038,13 @@
                 "tags": [
                     "types_payments"
                 ],
-                "summary": "Update a specific types_payments by ID",
+                "summary": "特定のIDでtypes_paymentsを更新する",
                 "operationId": "9dd9af2fc19d3f1e1688cf1b0528218b",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_payments",
+                        "description": "types_paymentsのID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -2048,7 +2052,7 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "TypePayment data",
+                    "description": "TypePaymentのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -2060,7 +2064,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Resource updated",
+                        "description": "リソースが更新されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -2075,7 +2079,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -2083,13 +2087,13 @@
                 "tags": [
                     "types_payments"
                 ],
-                "summary": "Delete a specific types_payments by ID",
+                "summary": "特定のIDでtypes_paymentsを削除する",
                 "operationId": "e83a182945610fbcf279008b97e0de46",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_payments",
+                        "description": "types_paymentsのID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -2098,10 +2102,10 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "Resource deleted"
+                        "description": "リソースが削除されました"
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             }
@@ -2111,11 +2115,11 @@
                 "tags": [
                     "types_receives"
                 ],
-                "summary": "Get a list of types_receives",
+                "summary": "types_receivesのリストを取得する",
                 "operationId": "0417ea5e25bfb8fd8ee49856f17016fa",
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -2133,10 +2137,10 @@
                 "tags": [
                     "types_receives"
                 ],
-                "summary": "Create a new types_receives",
+                "summary": "新しいtypes_receivesを作成する",
                 "operationId": "50090e82cc0eacb3d7b613a9ff868b17",
                 "requestBody": {
-                    "description": "TypeReceive data",
+                    "description": "TypeReceiveのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -2148,7 +2152,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Resource created",
+                        "description": "リソースが作成されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -2170,13 +2174,13 @@
                 "tags": [
                     "types_receives"
                 ],
-                "summary": "Get a specific types_receives by ID",
+                "summary": "特定のIDでtypes_receivesを取得する",
                 "operationId": "f84e4922d0eeb8c8d92bcbf48af06a74",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_receives",
+                        "description": "types_receivesのID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -2185,7 +2189,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "成功した応答",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -2195,7 +2199,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -2203,13 +2207,13 @@
                 "tags": [
                     "types_receives"
                 ],
-                "summary": "Update a specific types_receives by ID",
+                "summary": "特定のIDでtypes_receivesを更新する",
                 "operationId": "c1543df8694acb50827b80eb08cd5b4a",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_receives",
+                        "description": "types_receivesのID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -2217,7 +2221,7 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "TypeReceive data",
+                    "description": "TypeReceiveのデータ",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -2229,7 +2233,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Resource updated",
+                        "description": "リソースが更新されました",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -2244,7 +2248,7 @@
                         }
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             },
@@ -2252,13 +2256,13 @@
                 "tags": [
                     "types_receives"
                 ],
-                "summary": "Delete a specific types_receives by ID",
+                "summary": "特定のIDでtypes_receivesを削除する",
                 "operationId": "b1a600a99289da180209079339415e49",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID of the types_receives",
+                        "description": "types_receivesのID",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -2267,10 +2271,10 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "Resource deleted"
+                        "description": "リソースが削除されました"
                     },
                     "404": {
-                        "description": "Resource not found"
+                        "description": "リソースが見つかりません"
                     }
                 }
             }

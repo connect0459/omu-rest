@@ -8,17 +8,17 @@ use OpenApi\Annotations as OA;
 
 class TypeBranchController extends Controller
 {
-    /** @var string The message called when a record is not found  */
-    private string $notfound_message = 'The record is not found';
+    /** @var string レコードが見つからない場合に呼び出されるメッセージ */
+    private string $notfound_message = 'レコードが見つかりません';
 
     /**
      * @OA\Get(
      *     path="/types_branches",
      *     tags={"types_branches"},
-     *     summary="Get a list of types_branches",
+     *     summary="支部のリストを取得する",
      *     @OA\Response(
      *         response=200,
-     *         description="Successful response",
+     *         description="成功した応答",
      *         @OA\JsonContent(
      *             type="array",
      *             @OA\Items(ref="#/components/schemas/TypeBranch")
@@ -39,15 +39,15 @@ class TypeBranchController extends Controller
      * @OA\Post(
      *     path="/types_branches",
      *     tags={"types_branches"},
-     *     summary="Create a new types_branches",
+     *     summary="新しい支部を作成する",
      *     @OA\RequestBody(
      *         required=true,
-     *         description="TypeBranch data",
+     *         description="TypeBranchのデータ",
      *         @OA\JsonContent(ref="#/components/schemas/TypeBranch")
      *     ),
      *     @OA\Response(
      *         response=201,
-     *         description="Resource created",
+     *         description="リソースが作成されました",
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
@@ -70,24 +70,24 @@ class TypeBranchController extends Controller
      * @OA\Get(
      *     path="/types_branches/{id}",
      *     tags={"types_branches"},
-     *     summary="Get a specific types_branches by ID",
+     *     summary="特定のIDで支部を取得する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_branches",
+     *         description="支部のID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Successful response",
+     *         description="成功した応答",
      *         @OA\JsonContent(ref="#/components/schemas/TypeBranch")
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
@@ -109,24 +109,24 @@ class TypeBranchController extends Controller
      * @OA\Put(
      *     path="/types_branches/{id}",
      *     tags={"types_branches"},
-     *     summary="Update a specific types_branches by ID",
+     *     summary="特定のIDで支部を更新する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_branches",
+     *         description="支部のID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         description="TypeBranch data",
+     *         description="TypeBranchのデータ",
      *         @OA\JsonContent(ref="#/components/schemas/TypeBranch")
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Resource updated",
+     *         description="リソースが更新されました",
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
@@ -136,7 +136,7 @@ class TypeBranchController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
@@ -159,23 +159,23 @@ class TypeBranchController extends Controller
      * @OA\Delete(
      *     path="/types_branches/{id}",
      *     tags={"types_branches"},
-     *     summary="Delete a specific types_branches by ID",
+     *     summary="特定のIDで支部を削除する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_branches",
+     *         description="支部のID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\Response(
      *         response=204,
-     *         description="Resource deleted"
+     *         description="リソースが削除されました"
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */

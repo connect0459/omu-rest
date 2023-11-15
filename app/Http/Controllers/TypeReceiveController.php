@@ -8,17 +8,17 @@ use OpenApi\Annotations as OA;
 
 class TypeReceiveController extends Controller
 {
-    /** @var string The message called when a record is not found  */
-    private string $notfound_message = 'The record is not found';
+    /** @var string レコードが見つからない場合に呼び出されるメッセージ */
+    private string $notfound_message = 'レコードが見つかりません';
 
     /**
      * @OA\Get(
      *     path="/types_receives",
      *     tags={"types_receives"},
-     *     summary="Get a list of types_receives",
+     *     summary="types_receivesのリストを取得する",
      *     @OA\Response(
      *         response=200,
-     *         description="Successful response",
+     *         description="成功した応答",
      *         @OA\JsonContent(
      *             type="array",
      *             @OA\Items(ref="#/components/schemas/TypeReceive")
@@ -39,15 +39,15 @@ class TypeReceiveController extends Controller
      * @OA\Post(
      *     path="/types_receives",
      *     tags={"types_receives"},
-     *     summary="Create a new types_receives",
+     *     summary="新しいtypes_receivesを作成する",
      *     @OA\RequestBody(
      *         required=true,
-     *         description="TypeReceive data",
+     *         description="TypeReceiveのデータ",
      *         @OA\JsonContent(ref="#/components/schemas/TypeReceive")
      *     ),
      *     @OA\Response(
      *         response=201,
-     *         description="Resource created",
+     *         description="リソースが作成されました",
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
@@ -70,24 +70,24 @@ class TypeReceiveController extends Controller
      * @OA\Get(
      *     path="/types_receives/{id}",
      *     tags={"types_receives"},
-     *     summary="Get a specific types_receives by ID",
+     *     summary="特定のIDでtypes_receivesを取得する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_receives",
+     *         description="types_receivesのID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Successful response",
+     *         description="成功した応答",
      *         @OA\JsonContent(ref="#/components/schemas/TypeReceive")
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
@@ -109,24 +109,24 @@ class TypeReceiveController extends Controller
      * @OA\Put(
      *     path="/types_receives/{id}",
      *     tags={"types_receives"},
-     *     summary="Update a specific types_receives by ID",
+     *     summary="特定のIDでtypes_receivesを更新する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_receives",
+     *         description="types_receivesのID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         description="TypeReceive data",
+     *         description="TypeReceiveのデータ",
      *         @OA\JsonContent(ref="#/components/schemas/TypeReceive")
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Resource updated",
+     *         description="リソースが更新されました",
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
@@ -136,7 +136,7 @@ class TypeReceiveController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
@@ -159,23 +159,23 @@ class TypeReceiveController extends Controller
      * @OA\Delete(
      *     path="/types_receives/{id}",
      *     tags={"types_receives"},
-     *     summary="Delete a specific types_receives by ID",
+     *     summary="特定のIDでtypes_receivesを削除する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_receives",
+     *         description="types_receivesのID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\Response(
      *         response=204,
-     *         description="Resource deleted"
+     *         description="リソースが削除されました"
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */

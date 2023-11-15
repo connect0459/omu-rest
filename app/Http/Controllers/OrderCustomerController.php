@@ -8,17 +8,17 @@ use OpenApi\Annotations as OA;
 
 class OrderCustomerController extends Controller
 {
-    /** @var string The message called when a record is not found  */
-    private string $notfound_message = 'The record is not found';
+    /** @var string レコードが見つからない場合に呼び出されるメッセージ */
+    private string $notfound_message = 'レコードが見つかりません';
 
     /**
      * @OA\Get(
      *     path="/orders_customers",
      *     tags={"orders_customers"},
-     *     summary="Get a list of orders_customers",
+     *     summary="注文顧客のリストを取得する",
      *     @OA\Response(
      *         response=200,
-     *         description="Successful response",
+     *         description="成功した応答",
      *         @OA\JsonContent(
      *             type="array",
      *             @OA\Items(ref="#/components/schemas/OrderCustomer")
@@ -39,15 +39,15 @@ class OrderCustomerController extends Controller
      * @OA\Post(
      *     path="/orders_customers",
      *     tags={"orders_customers"},
-     *     summary="Create a new orders_customers",
+     *     summary="新しい注文顧客を作成する",
      *     @OA\RequestBody(
      *         required=true,
-     *         description="OrderCustomer data",
+     *         description="OrderCustomerのデータ",
      *         @OA\JsonContent(ref="#/components/schemas/OrderCustomer")
      *     ),
      *     @OA\Response(
      *         response=201,
-     *         description="Resource created",
+     *         description="リソースが作成されました",
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
@@ -70,24 +70,24 @@ class OrderCustomerController extends Controller
      * @OA\Get(
      *     path="/orders_customers/{id}",
      *     tags={"orders_customers"},
-     *     summary="Get a specific orders_customers by ID",
+     *     summary="特定のIDで注文顧客を取得する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the orders_customers",
+     *         description="注文顧客のID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Successful response",
+     *         description="成功した応答",
      *         @OA\JsonContent(ref="#/components/schemas/OrderCustomer")
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
@@ -109,24 +109,24 @@ class OrderCustomerController extends Controller
      * @OA\Put(
      *     path="/orders_customers/{id}",
      *     tags={"orders_customers"},
-     *     summary="Update a specific orders_customers by ID",
+     *     summary="特定のIDで注文顧客を更新する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the orders_customers",
+     *         description="注文顧客のID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         description="OrderCustomer data",
+     *         description="OrderCustomerのデータ",
      *         @OA\JsonContent(ref="#/components/schemas/OrderCustomer")
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Resource updated",
+     *         description="リソースが更新されました",
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
@@ -136,7 +136,7 @@ class OrderCustomerController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
@@ -159,23 +159,23 @@ class OrderCustomerController extends Controller
      * @OA\Delete(
      *     path="/orders_customers/{id}",
      *     tags={"orders_customers"},
-     *     summary="Delete a specific orders_customers by ID",
+     *     summary="特定のIDで注文顧客を削除する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the orders_customers",
+     *         description="注文顧客のID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\Response(
      *         response=204,
-     *         description="Resource deleted"
+     *         description="リソースが削除されました"
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */

@@ -8,17 +8,17 @@ use OpenApi\Annotations as OA;
 
 class OrderPaymentController extends Controller
 {
-    /** @var string The message called when a record is not found  */
-    private string $notfound_message = 'The record is not found';
+    /** @var string レコードが見つからない場合に呼び出されるメッセージ */
+    private string $notfound_message = 'レコードが見つかりません';
 
     /**
      * @OA\Get(
      *     path="/orders_payments",
      *     tags={"orders_payments"},
-     *     summary="Get a list of orders_payments",
+     *     summary="注文支払いのリストを取得する",
      *     @OA\Response(
      *         response=200,
-     *         description="Successful response",
+     *         description="成功した応答",
      *         @OA\JsonContent(
      *             type="array",
      *             @OA\Items(ref="#/components/schemas/OrderPayment")
@@ -39,15 +39,15 @@ class OrderPaymentController extends Controller
      * @OA\Post(
      *     path="/orders_payments",
      *     tags={"orders_payments"},
-     *     summary="Create a new orders_payments",
+     *     summary="新しい注文支払いを作成する",
      *     @OA\RequestBody(
      *         required=true,
-     *         description="OrderPayment data",
+     *         description="OrderPaymentのデータ",
      *         @OA\JsonContent(ref="#/components/schemas/OrderPayment")
      *     ),
      *     @OA\Response(
      *         response=201,
-     *         description="Resource created",
+     *         description="リソースが作成されました",
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
@@ -70,24 +70,24 @@ class OrderPaymentController extends Controller
      * @OA\Get(
      *     path="/orders_payments/{id}",
      *     tags={"orders_payments"},
-     *     summary="Get a specific orders_payments by ID",
+     *     summary="特定のIDで注文支払いを取得する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the orders_payments",
+     *         description="注文支払いのID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Successful response",
+     *         description="成功した応答",
      *         @OA\JsonContent(ref="#/components/schemas/OrderPayment")
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
@@ -109,24 +109,24 @@ class OrderPaymentController extends Controller
      * @OA\Put(
      *     path="/orders_payments/{id}",
      *     tags={"orders_payments"},
-     *     summary="Update a specific orders_payments by ID",
+     *     summary="特定のIDで注文支払いを更新する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the orders_payments",
+     *         description="注文支払いのID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         description="OrderPayment data",
+     *         description="OrderPaymentのデータ",
      *         @OA\JsonContent(ref="#/components/schemas/OrderPayment")
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Resource updated",
+     *         description="リソースが更新されました",
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
@@ -136,7 +136,7 @@ class OrderPaymentController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
@@ -159,23 +159,23 @@ class OrderPaymentController extends Controller
      * @OA\Delete(
      *     path="/orders_payments/{id}",
      *     tags={"orders_payments"},
-     *     summary="Delete a specific orders_payments by ID",
+     *     summary="特定のIDで注文支払いを削除する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the orders_payments",
+     *         description="注文支払いのID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\Response(
      *         response=204,
-     *         description="Resource deleted"
+     *         description="リソースが削除されました"
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */

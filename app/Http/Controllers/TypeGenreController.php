@@ -8,17 +8,17 @@ use OpenApi\Annotations as OA;
 
 class TypeGenreController extends Controller
 {
-    /** @var string The message called when a record is not found  */
-    private string $notfound_message = 'The record is not found';
+    /** @var string レコードが見つからない場合に呼び出されるメッセージ */
+    private string $notfound_message = 'レコードが見つかりません';
 
     /**
      * @OA\Get(
      *     path="/types_genres",
      *     tags={"types_genres"},
-     *     summary="Get a list of types_genres",
+     *     summary="書籍のジャンルのリストを取得する",
      *     @OA\Response(
      *         response=200,
-     *         description="Successful response",
+     *         description="成功した応答",
      *         @OA\JsonContent(
      *             type="array",
      *             @OA\Items(ref="#/components/schemas/TypeGenre")
@@ -39,15 +39,15 @@ class TypeGenreController extends Controller
      * @OA\Post(
      *     path="/types_genres",
      *     tags={"types_genres"},
-     *     summary="Create a new types_genres",
+     *     summary="新しい書籍のジャンルを作成する",
      *     @OA\RequestBody(
      *         required=true,
-     *         description="TypeGenre data",
+     *         description="TypeGenreのデータ",
      *         @OA\JsonContent(ref="#/components/schemas/TypeGenre")
      *     ),
      *     @OA\Response(
      *         response=201,
-     *         description="Resource created",
+     *         description="リソースが作成されました",
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
@@ -70,24 +70,24 @@ class TypeGenreController extends Controller
      * @OA\Get(
      *     path="/types_genres/{id}",
      *     tags={"types_genres"},
-     *     summary="Get a specific types_genres by ID",
+     *     summary="特定のIDで書籍のジャンルを取得する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_genres",
+     *         description="書籍のジャンルのID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Successful response",
+     *         description="成功した応答",
      *         @OA\JsonContent(ref="#/components/schemas/TypeGenre")
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
@@ -109,24 +109,24 @@ class TypeGenreController extends Controller
      * @OA\Put(
      *     path="/types_genres/{id}",
      *     tags={"types_genres"},
-     *     summary="Update a specific types_genres by ID",
+     *     summary="特定のIDで書籍のジャンルを更新する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_genres",
+     *         description="書籍のジャンルのID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         description="TypeGenre data",
+     *         description="TypeGenreのデータ",
      *         @OA\JsonContent(ref="#/components/schemas/TypeGenre")
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Resource updated",
+     *         description="リソースが更新されました",
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
@@ -136,7 +136,7 @@ class TypeGenreController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
@@ -159,23 +159,23 @@ class TypeGenreController extends Controller
      * @OA\Delete(
      *     path="/types_genres/{id}",
      *     tags={"types_genres"},
-     *     summary="Delete a specific types_genres by ID",
+     *     summary="特定のIDで書籍のジャンルを削除する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_genres",
+     *         description="書籍のジャンルのID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\Response(
      *         response=204,
-     *         description="Resource deleted"
+     *         description="リソースが削除されました"
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */

@@ -8,17 +8,17 @@ use OpenApi\Annotations as OA;
 
 class BookStockController extends Controller
 {
-    /** @var string The message called when a record is not found  */
-    private string $notfound_message = 'The record is not found';
+    /** @var string レコードが見つからない場合に呼び出されるメッセージ */
+    private string $notfound_message = 'レコードが見つかりません';
 
     /**
      * @OA\Get(
      *     path="/books_stocks",
      *     tags={"books_stocks"},
-     *     summary="Get a list of books_stocks",
+     *     summary="書籍在庫のリストを取得する",
      *     @OA\Response(
      *         response=200,
-     *         description="Successful response",
+     *         description="成功した応答",
      *         @OA\JsonContent(
      *             type="array",
      *             @OA\Items(ref="#/components/schemas/BookStock")
@@ -39,15 +39,15 @@ class BookStockController extends Controller
      * @OA\Post(
      *     path="/books_stocks",
      *     tags={"books_stocks"},
-     *     summary="Create a new books_stocks",
+     *     summary="新しい書籍在庫を作成する",
      *     @OA\RequestBody(
      *         required=true,
-     *         description="BookStock data",
+     *         description="BookStockのデータ",
      *         @OA\JsonContent(ref="#/components/schemas/BookStock")
      *     ),
      *     @OA\Response(
      *         response=201,
-     *         description="Resource created",
+     *         description="リソースが作成されました",
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
@@ -82,24 +82,24 @@ class BookStockController extends Controller
      * @OA\Get(
      *     path="/books_stocks/{id}",
      *     tags={"books_stocks"},
-     *     summary="Get a specific books_stocks by ID",
+     *     summary="特定のIDで書籍在庫を取得する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the books_stocks",
+     *         description="書籍在庫のID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Successful response",
+     *         description="成功した応答",
      *         @OA\JsonContent(ref="#/components/schemas/BookStock")
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
@@ -121,24 +121,24 @@ class BookStockController extends Controller
      * @OA\Put(
      *     path="/books_stocks/{id}",
      *     tags={"books_stocks"},
-     *     summary="Update a specific books_stocks by ID",
+     *     summary="特定のIDで書籍在庫を更新する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the books_stocks",
+     *         description="書籍在庫のID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         description="BookStock data",
+     *         description="BookStockのデータ",
      *         @OA\JsonContent(ref="#/components/schemas/BookStock")
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Resource updated",
+     *         description="リソースが更新されました",
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
@@ -160,7 +160,7 @@ class BookStockController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
@@ -183,23 +183,23 @@ class BookStockController extends Controller
      * @OA\Delete(
      *     path="/books_stocks/{id}",
      *     tags={"books_stocks"},
-     *     summary="Delete a specific books_stocks by ID",
+     *     summary="特定のIDで書籍在庫を削除する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the books_stocks",
+     *         description="書籍在庫のID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\Response(
      *         response=204,
-     *         description="Resource deleted"
+     *         description="リソースが削除されました"
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */

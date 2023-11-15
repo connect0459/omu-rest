@@ -548,7 +548,7 @@ php artisan l5-swagger:generate
 `.env`ファイルに以下を追記すると、ドキュメントの自動生成とyamlファイルでの保存を行ってくれます。
 ```
 L5_SWAGGER_GENERATE_ALWAYS=true
-L5_SWAGGER_GENERATE_YAML_COPY=ture
+L5_SWAGGER_GENERATE_YAML_COPY=true
 L5_FORMAT_TO_USE_FOR_DOCS=yaml
 ```
 

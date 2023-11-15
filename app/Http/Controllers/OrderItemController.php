@@ -8,17 +8,17 @@ use OpenApi\Annotations as OA;
 
 class OrderItemController extends Controller
 {
-    /** @var string The message called when a record is not found  */
-    private string $notfound_message = 'The record is not found';
+    /** @var string レコードが見つからない場合に呼び出されるメッセージ */
+    private string $notfound_message = 'レコードが見つかりません';
 
     /**
      * @OA\Get(
      *     path="/orders_items",
      *     tags={"orders_items"},
-     *     summary="Get a list of orders_items",
+     *     summary="注文商品のリストを取得する",
      *     @OA\Response(
      *         response=200,
-     *         description="Successful response",
+     *         description="成功した応答",
      *         @OA\JsonContent(
      *             type="array",
      *             @OA\Items(ref="#/components/schemas/OrderItem")
@@ -39,15 +39,15 @@ class OrderItemController extends Controller
      * @OA\Post(
      *     path="/orders_items",
      *     tags={"orders_items"},
-     *     summary="Create a new orders_items",
+     *     summary="新しい注文商品を作成する",
      *     @OA\RequestBody(
      *         required=true,
-     *         description="OrderItem data",
+     *         description="OrderItemのデータ",
      *         @OA\JsonContent(ref="#/components/schemas/OrderItem")
      *     ),
      *     @OA\Response(
      *         response=201,
-     *         description="Resource created",
+     *         description="リソースが作成されました",
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
@@ -70,24 +70,24 @@ class OrderItemController extends Controller
      * @OA\Get(
      *     path="/orders_items/{id}",
      *     tags={"orders_items"},
-     *     summary="Get a specific orders_items by ID",
+     *     summary="特定のIDで注文商品を取得する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the orders_items",
+     *         description="注文商品のID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Successful response",
+     *         description="成功した応答",
      *         @OA\JsonContent(ref="#/components/schemas/OrderItem")
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
@@ -109,24 +109,24 @@ class OrderItemController extends Controller
      * @OA\Put(
      *     path="/orders_items/{id}",
      *     tags={"orders_items"},
-     *     summary="Update a specific orders_items by ID",
+     *     summary="特定のIDで注文商品を更新する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the orders_items",
+     *         description="注文商品のID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         description="OrderItem data",
+     *         description="OrderItemのデータ",
      *         @OA\JsonContent(ref="#/components/schemas/OrderItem")
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Resource updated",
+     *         description="リソースが更新されました",
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
@@ -136,7 +136,7 @@ class OrderItemController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
@@ -159,23 +159,23 @@ class OrderItemController extends Controller
      * @OA\Delete(
      *     path="/orders_items/{id}",
      *     tags={"orders_items"},
-     *     summary="Delete a specific orders_items by ID",
+     *     summary="特定のIDで注文商品を削除する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the orders_items",
+     *         description="注文商品のID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\Response(
      *         response=204,
-     *         description="Resource deleted"
+     *         description="リソースが削除されました"
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */

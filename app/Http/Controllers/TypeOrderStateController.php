@@ -8,17 +8,17 @@ use OpenApi\Annotations as OA;
 
 class TypeOrderStateController extends Controller
 {
-    /** @var string The message called when a record is not found  */
-    private string $notfound_message = 'The record is not found';
+    /** @var string レコードが見つからない場合に呼び出されるメッセージ */
+    private string $notfound_message = 'レコードが見つかりません';
 
     /**
      * @OA\Get(
      *     path="/types_orders_states",
      *     tags={"types_orders_states"},
-     *     summary="Get a list of types_orders_states",
+     *     summary="types_orders_statesのリストを取得する",
      *     @OA\Response(
      *         response=200,
-     *         description="Successful response",
+     *         description="成功した応答",
      *         @OA\JsonContent(
      *             type="array",
      *             @OA\Items(ref="#/components/schemas/TypeOrderState")
@@ -39,15 +39,15 @@ class TypeOrderStateController extends Controller
      * @OA\Post(
      *     path="/types_orders_states",
      *     tags={"types_orders_states"},
-     *     summary="Create a new types_orders_states",
+     *     summary="新しいtypes_orders_statesを作成する",
      *     @OA\RequestBody(
      *         required=true,
-     *         description="TypeOrderState data",
+     *         description="TypeOrderStateのデータ",
      *         @OA\JsonContent(ref="#/components/schemas/TypeOrderState")
      *     ),
      *     @OA\Response(
      *         response=201,
-     *         description="Resource created",
+     *         description="リソースが作成されました",
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
@@ -70,24 +70,24 @@ class TypeOrderStateController extends Controller
      * @OA\Get(
      *     path="/types_orders_states/{id}",
      *     tags={"types_orders_states"},
-     *     summary="Get a specific types_orders_states by ID",
+     *     summary="特定のIDでtypes_orders_statesを取得する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_orders_states",
+     *         description="types_orders_statesのID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Successful response",
+     *         description="成功した応答",
      *         @OA\JsonContent(ref="#/components/schemas/TypeOrderState")
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
@@ -109,24 +109,24 @@ class TypeOrderStateController extends Controller
      * @OA\Put(
      *     path="/types_orders_states/{id}",
      *     tags={"types_orders_states"},
-     *     summary="Update a specific types_orders_states by ID",
+     *     summary="特定のIDでtypes_orders_statesを更新する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_orders_states",
+     *         description="types_orders_statesのID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         description="TypeOrderState data",
+     *         description="TypeOrderStateのデータ",
      *         @OA\JsonContent(ref="#/components/schemas/TypeOrderState")
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Resource updated",
+     *         description="リソースが更新されました",
      *         @OA\JsonContent(
      *             type="object",
      *             allOf={
@@ -136,7 +136,7 @@ class TypeOrderStateController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
@@ -159,23 +159,23 @@ class TypeOrderStateController extends Controller
      * @OA\Delete(
      *     path="/types_orders_states/{id}",
      *     tags={"types_orders_states"},
-     *     summary="Delete a specific types_orders_states by ID",
+     *     summary="特定のIDでtypes_orders_statesを削除する",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID of the types_orders_states",
+     *         description="types_orders_statesのID",
      *         @OA\Schema(
      *             type="string"
      *         )
      *     ),
      *     @OA\Response(
      *         response=204,
-     *         description="Resource deleted"
+     *         description="リソースが削除されました"
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Resource not found"
+     *         description="リソースが見つかりません"
      *     )
      * )
      */
