@@ -2507,7 +2507,7 @@
                         "description": "出版社",
                         "type": "string",
                         "format": "string",
-                        "example": "9784908434266"
+                        "example": "noa出版"
                     },
                     "description": {
                         "description": "説明",

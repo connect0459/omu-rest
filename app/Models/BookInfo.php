@@ -44,7 +44,7 @@ use OpenApi\Annotations as OA;
  *          description="出版社",
  *          type="string",
  *          format="string",
- *          example="9784908434266"
+ *          example="noa出版"
  *      ),
  *      @OA\Property(
  *          property="description",
