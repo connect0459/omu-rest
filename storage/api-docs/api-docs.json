@@ -22,7 +22,7 @@
                     "books"
                 ],
                 "summary": "検索クエリによる支部在庫の表示",
-                "description": "ANDおよびOR演算子を使用して書籍を検索します。idの範囲指定も可能。",
+                "description": "ANDおよびOR演算子を使用して書籍を検索します。取得するレコード数を指定も可能。",
                 "operationId": "14d04cd3a807843d383b87ccfca3da7b",
                 "parameters": [
                     {
@@ -44,18 +44,9 @@
                         }
                     },
                     {
-                        "name": "f",
+                        "name": "limit",
                         "in": "query",
-                        "description": "取得範囲の開始ID",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "t",
-                        "in": "query",
-                        "description": "取得範囲の終了ID",
+                        "description": "取得するレコード数",
                         "required": false,
                         "schema": {
                             "type": "integer"
