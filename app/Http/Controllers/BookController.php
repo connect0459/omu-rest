@@ -193,18 +193,18 @@ class BookController extends Controller
      *         @OA\Schema(type="string")
      *     ),
      *     @OA\Parameter(
-     *         name="genre",
-     *         in="query",
-     *         description="genreカラム",
-     *         required=false,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
      *         name="description",
      *         in="query",
      *         description="descriptionカラム",
      *         required=false,
      *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="type_genre_id",
+     *         in="query",
+     *         description="type_genre_idカラム",
+     *         required=false,
+     *         @OA\Schema(type="integer")
      *     ),
      *     @OA\Response(
      *         response=200,

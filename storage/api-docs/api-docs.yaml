@@ -108,19 +108,19 @@ paths:
           schema:
             type: string
         -
-          name: genre
-          in: query
-          description: genreカラム
-          required: false
-          schema:
-            type: string
-        -
           name: description
           in: query
           description: descriptionカラム
           required: false
           schema:
             type: string
+        -
+          name: type_genre_id
+          in: query
+          description: type_genre_idカラム
+          required: false
+          schema:
+            type: integer
       responses:
         200:
           description: 成功した場合のレスポンス
