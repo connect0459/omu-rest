@@ -2518,12 +2518,6 @@
                         "format": "int64",
                         "example": "1000"
                     },
-                    "sale_price": {
-                        "description": "販売額",
-                        "type": "integer",
-                        "format": "int64",
-                        "example": "500"
-                    },
                     "created_at": {
                         "description": "レコード作成日",
                         "type": "string",
@@ -2559,6 +2553,12 @@
                         "type": "integer",
                         "format": "int64",
                         "example": "1"
+                    },
+                    "sale_price": {
+                        "description": "販売額",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "500"
                     },
                     "stock": {
                         "description": "未販売の在庫数",

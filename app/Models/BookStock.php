@@ -33,6 +33,13 @@ use OpenApi\Annotations as OA;
  *          example="1"
  *      ),
  *      @OA\Property(
+ *          property="sale_price",
+ *          description="販売額",
+ *          type="integer",
+ *          format="int64",
+ *          example="500"
+ *      ),
+ *      @OA\Property(
  *          property="stock",
  *          description="未販売の在庫数",
  *          type="integer",
@@ -78,6 +85,7 @@ class BookStock extends Model
     protected $fillable = [
         'type_branch_id',
         'book_info_id',
+        'sale_price',
         'stock',
         'order',
         'sold'

@@ -68,13 +68,6 @@ use OpenApi\Annotations as OA;
  *          example="1000"
  *      ),
  *      @OA\Property(
- *          property="sale_price",
- *          description="販売額",
- *          type="integer",
- *          format="int64",
- *          example="500"
- *      ),
- *      @OA\Property(
  *          property="created_at",
  *          description="レコード作成日",
  *          type="string",
@@ -103,8 +96,7 @@ class BookInfo extends Model
         'publisher',
         'description',
         'type_genre_id',
-        'list_price',
-        'sale_price'
+        'list_price'
     ];
     protected $dates = ['created_at', 'updated_at'];
 }

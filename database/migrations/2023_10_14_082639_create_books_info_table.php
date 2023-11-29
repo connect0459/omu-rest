@@ -20,7 +20,6 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->foreignId('type_genre_id')->constrained('types_genres')->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer('list_price');
-            $table->integer('sale_price');
             $table->datetime('created_at')->useCurrent();
             $table->datetime('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
