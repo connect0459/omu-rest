@@ -21,8 +21,8 @@ use OpenApi\Annotations as OA;
  *      @OA\Property(
  *          property="isbn",
  *          description="ISBN-13 or ISBN-10",
- *          type="string",
- *          format="string",
+ *          type="int",
+ *          format="int64",
  *          example="9784908434266"
  *      ),
  *      @OA\Property(

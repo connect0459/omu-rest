@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('books_info', function (Blueprint $table) {
             $table->id();
-            $table->string('isbn', 13);
+            // $table->string('isbn', 13);
+            $table->bigInteger('isbn');
             $table->string('title');
             $table->string('author')->nullable();
             $table->string('publisher')->nullable();

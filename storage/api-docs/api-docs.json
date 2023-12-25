@@ -2478,8 +2478,8 @@
                     },
                     "isbn": {
                         "description": "ISBN-13 or ISBN-10",
-                        "type": "string",
-                        "format": "string",
+                        "type": "integer",
+                        "format": "int64",
                         "example": "9784908434266"
                     },
                     "title": {
