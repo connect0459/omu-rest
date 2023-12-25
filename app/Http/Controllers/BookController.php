@@ -111,7 +111,6 @@ class BookController extends Controller
                         ->orWhere('title', 'like', "%$kw%")
                         ->orWhere('author', 'like', "%$kw%")
                         ->orWhere('publisher', 'like', "%$kw%")
-                        ->orWhere('genre', 'like', "%$kw%")
                         ->orWhere('description', 'like', "%$kw%");
                 });
             } elseif ($operator === 'OR') {
@@ -120,7 +119,6 @@ class BookController extends Controller
                         ->orWhere('title', 'like', "%$kw%")
                         ->orWhere('author', 'like', "%$kw%")
                         ->orWhere('publisher', 'like', "%$kw%")
-                        ->orWhere('genre', 'like', "%$kw%")
                         ->orWhere('description', 'like', "%$kw%");
                 });
             }
