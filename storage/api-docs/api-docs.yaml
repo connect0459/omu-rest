@@ -46,14 +46,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  properties:
-                    books_info:
-                      $ref: '#/components/schemas/BookInfo'
-                    books_stocks:
-                      $ref: '#/components/schemas/BookStock'
-                  type: object
+                type: object
+                additionalProperties:
+                  -
+                    $ref: '#/components/schemas/BookInfo'
+                  -
+                    $ref: '#/components/schemas/BookStock'
         404:
           description: 該当する書籍が見つからない場合のレスポンス
           content:
@@ -127,14 +125,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  properties:
-                    books_info:
-                      $ref: '#/components/schemas/BookInfo'
-                    books_stocks:
-                      $ref: '#/components/schemas/BookStock'
-                  type: object
+                type: object
+                additionalProperties:
+                  -
+                    $ref: '#/components/schemas/BookInfo'
+                  -
+                    $ref: '#/components/schemas/BookStock'
         404:
           description: 該当する書籍が見つからない場合のレスポンス
           content:

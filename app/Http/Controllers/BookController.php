@@ -43,8 +43,8 @@ class BookController extends Controller
      *         response=200,
      *         description="Successful response",
      *         @OA\JsonContent(
-     *             type="array",
-     *             @OA\Items(
+     *             type="object",
+     *             additionalProperties={
      *                 @OA\Property(
      *                     property="books_info",
      *                     type="object",
@@ -55,7 +55,7 @@ class BookController extends Controller
      *                     type="object",
      *                     ref="#/components/schemas/BookStock"
      *                 )
-     *             )
+     *             }
      *         )
      *     ),
      *     @OA\Response(
@@ -208,8 +208,8 @@ class BookController extends Controller
      *         response=200,
      *         description="成功した場合のレスポンス",
      *         @OA\JsonContent(
-     *             type="array",
-     *             @OA\Items(
+     *             type="object",
+     *             additionalProperties={
      *                 @OA\Property(
      *                     property="books_info",
      *                     type="object",
@@ -220,7 +220,7 @@ class BookController extends Controller
      *                     type="object",
      *                     ref="#/components/schemas/BookStock"
      *                 )
-     *             )
+     *             }
      *         )
      *     ),
      *     @OA\Response(
