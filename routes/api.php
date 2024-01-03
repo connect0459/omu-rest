@@ -36,6 +36,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 */
 Route::get('/books/query/{type_branch_id}', [BookController::class, 'get_by_query']);
 Route::get('/books/column/{type_branch_id}', [BookController::class, 'get_by_column']);
+Route::get('/books/stocks_ids', [BookController::class, 'get_by_stocks_ids']);
 
 /*
     GET|HEAD        api/books_info ................................................... books_info.index › BookInfoController@index  

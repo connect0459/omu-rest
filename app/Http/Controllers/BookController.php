@@ -43,8 +43,8 @@ class BookController extends Controller
      *         response=200,
      *         description="Successful response",
      *         @OA\JsonContent(
-     *             type="object",
-     *             additionalProperties={
+     *             type="array",
+     *             @OA\Items(
      *                 @OA\Property(
      *                     property="books_info",
      *                     type="object",
@@ -55,7 +55,7 @@ class BookController extends Controller
      *                     type="object",
      *                     ref="#/components/schemas/BookStock"
      *                 )
-     *             }
+     *             )
      *         )
      *     ),
      *     @OA\Response(
@@ -133,9 +133,9 @@ class BookController extends Controller
         foreach ($booksInfo as $info) {
             $infoId = $info->id;
             $matching_stock = $booksStocks->where('book_info_id', $infoId)->first();
-        
+
             if ($matching_stock !== null) {
-                $formatted_data[$matching_stock->id] = [
+                $formatted_data[] = [
                     'books_info' => $info,
                     'books_stocks' => $matching_stock,
                 ];
@@ -208,8 +208,8 @@ class BookController extends Controller
      *         response=200,
      *         description="成功した場合のレスポンス",
      *         @OA\JsonContent(
-     *             type="object",
-     *             additionalProperties={
+     *             type="array",
+     *             @OA\Items(
      *                 @OA\Property(
      *                     property="books_info",
      *                     type="object",
@@ -220,7 +220,7 @@ class BookController extends Controller
      *                     type="object",
      *                     ref="#/components/schemas/BookStock"
      *                 )
-     *             }
+     *             )
      *         )
      *     ),
      *     @OA\Response(
@@ -257,26 +257,97 @@ class BookController extends Controller
         }
 
         // 書籍の在庫情報を取得 (type_branch_id が一致するレコードを取得)
-        $booksStocks = BookStock::where('type_branch_id', $type_branch_id)
+        $bookStocks = BookStock::where('type_branch_id', $type_branch_id)
             ->whereIn('book_info_id', $booksInfo->pluck('id')->all())
             ->get();
 
         // 書籍情報と在庫情報を結合
         $formattedData = [];
         foreach ($booksInfo as $info) {
-            $infoId = $info->id;
-            $matching_stock = $booksStocks->where('book_info_id', $infoId)->first();
-        
-            if ($matching_stock !== null) {
-                $formatted_data[$matching_stock->id] = [
+            $matchingStock = $bookStocks->where('book_info_id', $info->id)->first();
+            if ($matchingStock !== null) {
+                $formattedData[] = [
                     'books_info' => $info,
-                    'books_stocks' => $matching_stock,
+                    'books_stocks' => $matchingStock,
                 ];
             }
         }
 
         if (empty($formattedData)) {
             return response()->json(['message' => $this->notfound_message], 404);
+        }
+
+        return response()->json($formattedData);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/books/stocks_ids",
+     *     summary="IDによる書籍情報と在庫情報の取得",
+     *     description="books_stocksのIDを複数受け取り、それに対応するbooks_infoとbooks_stocksのデータを取得します。",
+     *     tags={"books"},
+     *     @OA\Parameter(
+     *         name="ids",
+     *         in="query",
+     *         description="books_stocksのID（プラス記号で区切る）",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="成功した場合のレスポンス",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(
+     *                 @OA\Property(
+     *                     property="books_info",
+     *                     type="object",
+     *                     ref="#/components/schemas/BookInfo"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="books_stocks",
+     *                     type="object",
+     *                     ref="#/components/schemas/BookStock"
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="該当する書籍が見つからない場合のレスポンス",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                 property="message",
+     *                 type="string",
+     *                 example="該当する書籍が見つかりません。"
+     *             )
+     *         )
+     *     ),
+     * )
+     */
+    public function get_by_stocks_ids(Request $request)
+    {
+        $stocks_ids = explode('+', $request->query('ids'));
+
+        $booksStocks = BookStock::whereIn('id', $stocks_ids)->get();
+        if ($booksStocks->isEmpty()) {
+            return response()->json(['message' => $this->notfound_message], 404);
+        }
+
+        $booksInfo = BookInfo::whereIn('id', $booksStocks->pluck('book_info_id')->all())->get();
+
+        $formattedData = [];
+        foreach ($stocks_ids as $id) {
+            $stock = $booksStocks->where('id', $id)->first();
+            if ($stock !== null) {
+                $info = $booksInfo->where('id', $stock->book_info_id)->first();
+                if ($info !== null) {
+                    $formattedData[] = [
+                        'books_info' => $info,
+                        'books_stocks' => $stock,
+                    ];
+                }
+            }
         }
 
         return response()->json($formattedData);

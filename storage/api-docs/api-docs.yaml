@@ -46,12 +46,14 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                additionalProperties:
-                  -
-                    $ref: '#/components/schemas/BookInfo'
-                  -
-                    $ref: '#/components/schemas/BookStock'
+                type: array
+                items:
+                  properties:
+                    books_info:
+                      $ref: '#/components/schemas/BookInfo'
+                    books_stocks:
+                      $ref: '#/components/schemas/BookStock'
+                  type: object
         404:
           description: 該当する書籍が見つからない場合のレスポンス
           content:
@@ -125,12 +127,53 @@ paths:
           content:
             application/json:
               schema:
+                type: array
+                items:
+                  properties:
+                    books_info:
+                      $ref: '#/components/schemas/BookInfo'
+                    books_stocks:
+                      $ref: '#/components/schemas/BookStock'
+                  type: object
+        404:
+          description: 該当する書籍が見つからない場合のレスポンス
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    example: 該当する書籍が見つかりません。
                 type: object
-                additionalProperties:
-                  -
-                    $ref: '#/components/schemas/BookInfo'
-                  -
-                    $ref: '#/components/schemas/BookStock'
+  /books/stocks_ids:
+    get:
+      tags:
+        - books
+      summary: IDによる書籍情報と在庫情報の取得
+      description: books_stocksのIDを複数受け取り、それに対応するbooks_infoとbooks_stocksのデータを取得します。
+      operationId: 6d80c00f2ec48b90abd95088cc6a3aea
+      parameters:
+        -
+          name: ids
+          in: query
+          description: books_stocksのID（プラス記号で区切る）
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: 成功した場合のレスポンス
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    books_info:
+                      $ref: '#/components/schemas/BookInfo'
+                    books_stocks:
+                      $ref: '#/components/schemas/BookStock'
+                  type: object
         404:
           description: 該当する書籍が見つからない場合のレスポンス
           content:
