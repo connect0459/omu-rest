@@ -133,9 +133,9 @@ class BookController extends Controller
         foreach ($booksInfo as $info) {
             $infoId = $info->id;
             $matching_stock = $booksStocks->where('book_info_id', $infoId)->first();
-
+        
             if ($matching_stock !== null) {
-                $formatted_data[] = [
+                $formatted_data[$matching_stock->id] = [
                     'books_info' => $info,
                     'books_stocks' => $matching_stock,
                 ];
@@ -257,18 +257,20 @@ class BookController extends Controller
         }
 
         // 書籍の在庫情報を取得 (type_branch_id が一致するレコードを取得)
-        $bookStocks = BookStock::where('type_branch_id', $type_branch_id)
+        $booksStocks = BookStock::where('type_branch_id', $type_branch_id)
             ->whereIn('book_info_id', $booksInfo->pluck('id')->all())
             ->get();
 
         // 書籍情報と在庫情報を結合
         $formattedData = [];
         foreach ($booksInfo as $info) {
-            $matchingStock = $bookStocks->where('book_info_id', $info->id)->first();
-            if ($matchingStock !== null) {
-                $formattedData[] = [
+            $infoId = $info->id;
+            $matching_stock = $booksStocks->where('book_info_id', $infoId)->first();
+        
+            if ($matching_stock !== null) {
+                $formatted_data[$matching_stock->id] = [
                     'books_info' => $info,
-                    'books_stocks' => $matchingStock,
+                    'books_stocks' => $matching_stock,
                 ];
             }
         }
